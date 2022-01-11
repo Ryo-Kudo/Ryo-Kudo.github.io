@@ -4,5 +4,12 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
+# - file: markdown
+# - file: notebooks
+- file: docs/2022-01-09-First-commit
+# - file: docs/2022-01-10-OB
+- file: docs/0101_team_development
+- file: docs/0201_leadership
+- file: docs/0201_motivation
+- file: docs/0201_personality
+- file: references

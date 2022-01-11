@@ -1,2 +1,12 @@
+<<<<<<< Updated upstream
 
+=======
+.DS_Store
+_build/.DS_Store
+_build/html/.DS_Store
+.Readme
+.nojekyll
+>>>>>>> Stashed changes
+.DS_Store
+.DS_Store
 .DS_Store
