@@ -106,7 +106,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0101_team_development.html">
-   1. チームの成果を最大化するために
+   1. チームビルディング
   </a>
  </li>
  <li class="toctree-l1">
@@ -122,6 +122,18 @@
  <li class="toctree-l1">
   <a class="reference internal" href="0201_personality.html">
    4. 個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/stats_overview.html">
+   5. Stats Overview
   </a>
  </li>
 </ul>
@@ -222,33 +234,40 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     3.3.1. 不満足を減らし、満足を増やすべき
+    <a class="reference internal nav-link" href="#equity-theory">
+     3.3.1. Equity Theory, 公平性理論
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     3.3.2. 基本的な欲求から順に満たすべき
+    <a class="reference internal nav-link" href="#expectancy-theory">
+     3.3.2. Expectancy Theory, 期待理論
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.4. （参考）その他の補足的理論
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     3.3.3. 行動に対し、本質的な報酬を与えるべき
+     3.4.1. 不満足を減らし、満足を増やすべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.3.4. 自ら行動を選択させるべき
+     3.4.2. 基本的な欲求から順に満たすべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#equity-theory">
-     3.3.5. Equity Theory, 公平性理論
+    <a class="reference internal nav-link" href="#id9">
+     3.4.3. 本質的な報酬を与えるべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ecpectancy-theory">
-     3.3.6. Ecpectancy Theory, 期待理論
+    <a class="reference internal nav-link" href="#id10">
+     3.4.4. 自ら行動を選択させるべきである
     </a>
    </li>
   </ul>
@@ -289,33 +308,40 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     3.3.1. 不満足を減らし、満足を増やすべき
+    <a class="reference internal nav-link" href="#equity-theory">
+     3.3.1. Equity Theory, 公平性理論
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     3.3.2. 基本的な欲求から順に満たすべき
+    <a class="reference internal nav-link" href="#expectancy-theory">
+     3.3.2. Expectancy Theory, 期待理論
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.4. （参考）その他の補足的理論
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     3.3.3. 行動に対し、本質的な報酬を与えるべき
+     3.4.1. 不満足を減らし、満足を増やすべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     3.3.4. 自ら行動を選択させるべき
+     3.4.2. 基本的な欲求から順に満たすべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#equity-theory">
-     3.3.5. Equity Theory, 公平性理論
+    <a class="reference internal nav-link" href="#id9">
+     3.4.3. 本質的な報酬を与えるべきである
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ecpectancy-theory">
-     3.3.6. Ecpectancy Theory, 期待理論
+    <a class="reference internal nav-link" href="#id10">
+     3.4.4. 自ら行動を選択させるべきである
     </a>
    </li>
   </ul>
@@ -332,7 +358,8 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1><span class="section-number">3. </span>モチベーション<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>モチベーションが生じる原理を知ることで、自分や他者のモチベーションを意図的に上げ、高いチームパフォーマンスを維持できるようになる。</p>
-<p>モチベーションに関する研究やモデルはとても多い。今回は、先にまとめを述べ、それ以降に理論を紹介する。</p>
+<p>モチベーションに関する研究やモデルはとても多い。先にまとめを述べ、それ以降に理論を紹介する。</p>
+<hr class="docutils" />
 <div class="section" id="id2">
 <h2><span class="section-number">3.1. </span>モチベーションを維持するために本当に大切なこと<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -341,6 +368,7 @@
 （keywords: 多様性、自律性、意味、アイデンティティ、挑戦、創造性）</p></li>
 </ul>
 </div>
+<hr class="docutils" />
 <div class="section" id="id3">
 <h2><span class="section-number">3.2. </span>リーダーシップを用いて、どうやってモチベーションを向上させるか<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -353,9 +381,75 @@
 <hr class="docutils" />
 <div class="section" id="id4">
 <h2><span class="section-number">3.3. </span>モチベーションの理論<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3><span class="section-number">3.3.1. </span>不満足を減らし、満足を増やすべき<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p><strong>人には、「不満足を減らしたい」、「満足を増やしたい」という２種類のニーズがある。両方が満たされた時、人は高いモチベーションを持つ。</strong> Herzberg_1959</p>
+<p>特に、公平性理論と期待理論は、モチベーションを高く保つ仕組みづくりに重要である。</p>
+<div class="section" id="equity-theory">
+<h3><span class="section-number">3.3.1. </span>Equity Theory, 公平性理論<a class="headerlink" href="#equity-theory" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>人は、自分と他人の、<strong>”仕事量：報酬”の比率</strong>を比べ、公平になるように行動を変更する。
+例えば、仕事量を減らしたり、横領などで不当に報酬を得ようとする。
+（Equity Theory, 公平性理論）</p>
+</div>
+<p><strong>不公平と感じたとき、公平性を得るために人が取り得る５つの行動</strong></p>
+<ol class="simple">
+<li><p>仕事の量を減らす。</p></li>
+<li><p>報酬の量を増やす。<br />
+（報酬交渉などの正攻法を取りにくい場合、横領などに結びつく）</p></li>
+<li><p>仕事量、報酬の認識を自分の中で変える。<br />
+例えば、仕事量に負荷や難しさを考慮したり、報酬として給料以外の利得（福利厚生など）を考慮したりする。</p></li>
+<li><p>比較対象となる他人を変える。<br />
+例えば、もっと待遇の悪い他社の人と比べ、公平感を得る。</p></li>
+<li><p>現在の仕事をやめ、別のことを始める。</p></li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>本質的には、公平な”仕事量／報酬”比率を実現するべきである。
+不公平と感じ取られてしまった場合、こちらから”2. 報酬の量を増やす。”を提案することは可能である。また、上記の”3. 仕事量、報酬の認識を自分の中で変える。”を促し、実は公平であることに気づいてもらうことはできる。他の選択をこちらから押し付けることは悪い結果しか産まないだろう。</p>
+</div>
+<p><strong>人が公平だと感じる組織／職場に必要な３つの正義。</strong><br />
+以下を実現することで、メンバーに公平を感じてもらうことができる。
+（Justice and Equity Theory）</p>
+<ul class="simple">
+<li><p>Procedure Justice, 手続的正義<br />
+結果に至る過程が正しければ、評価される。</p></li>
+<li><p>Distributive Justice, 配分的正義<br />
+たくさん働けば、より多くの報酬が得られる。</p></li>
+<li><p>Interactional Justice, 相互作用的正義<br />
+敬意と尊厳をもって接してもらうことができる。</p></li>
+</ul>
+<div class="figure align-default" id="justice-equity">
+<img alt="Justice and Equity Theory" src="../_images/motivation_03.png" />
+<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Justice and Equity Theory</span><a class="headerlink" href="#justice-equity" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="expectancy-theory">
+<h3><span class="section-number">3.3.2. </span>Expectancy Theory, 期待理論<a class="headerlink" href="#expectancy-theory" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>人が実際に行動に移すかどうかは、結果が得られる期待値の高さと、
+その結果がその人にとって魅力的かどうかに依存する。（Expectancy Theory） <em>(Vroom, 1964)</em></p>
+</div>
+<p>最終的なモチベーション<span class="math notranslate nohighlight">\(M\)</span>は、以下のように表すことができる。</p>
+<div class="math notranslate nohighlight">
+\[
+M = (E \rightarrow P) \times (P \rightarrow O) \times I
+\]</div>
+<p>ただし、<span class="math notranslate nohighlight">\(E \rightarrow P\)</span> は努力が結果につながる確率、<span class="math notranslate nohighlight">\(P \rightarrow O\)</span> は結果が出た時に報酬がもらえる確率、<span class="math notranslate nohighlight">\(I\)</span> は報酬量である。努力したら、確実に成果がでて、確実に多くの報酬がもらえるのであれば、人のモチベーションは上がる。モチベーション量は上記の”積”でモデル化されているので、どれか一つでも <span class="math notranslate nohighlight">\(0\)</span> になるのであれば、モチベーションは <span class="math notranslate nohighlight">\(0\)</span> になる。</p>
+<p>メンバーのモチベーションを上げたいのであれば、<span class="math notranslate nohighlight">\(E \rightarrow P, P \rightarrow O, I\)</span> の全てが高水準の環境を作ることが効果的である。</p>
+<p>また、<strong>その人にとってはどんな報酬が魅力的であるのか</strong>を日頃のコミュニケーションで理解することが大切である。</p>
+<div class="figure align-default" id="id5">
+<img alt="Expectancy Theory" src="../_images/motivation_04.png" />
+<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Expectancy Theory</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2><span class="section-number">3.4. </span>（参考）その他の補足的理論<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>今回の結論に直接関係はないが重要な理論をいくつか紹介する。</p>
+<div class="section" id="id7">
+<h3><span class="section-number">3.4.1. </span>不満足を減らし、満足を増やすべきである<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><strong>人には、「不満足を減らしたい」、「満足を増やしたい」という２種類のニーズがある。両方が満たされた時、人は高いモチベーションを持つ。</strong> <em>(Herzberg, 1959)</em></p>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
@@ -392,11 +486,11 @@
 </div>
 <div class="figure align-default" id="herzberg">
 <img alt="Two-Factor Theory, Herzberg" src="../_images/motivation_02.png" />
-<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Two-Factor Theory, Herzberg</span><a class="headerlink" href="#herzberg" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Two-Factor Theory, Herzberg</span><a class="headerlink" href="#herzberg" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="id6">
-<h3><span class="section-number">3.3.2. </span>基本的な欲求から順に満たすべき<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><span class="section-number">3.4.2. </span>基本的な欲求から順に満たすべきである<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p><strong>基本的な欲求が満たされていない場合、それよりも高次な欲求に対するモチベーションは働かない</strong>（マズローの欲求5段階説）。このモデルは何事にも適用することができるが、仕事においての例を以下に示す。より、低い階層の欲求が満たされていないと、それより上の階層の欲求に対して働きかけてもモチベーションは向上しない。</p>
 <p>（階層の高い順）</p>
 <ul class="simple">
@@ -428,15 +522,17 @@
 </ul>
 <div class="figure align-default" id="maslow">
 <img alt="マズローの欲求5段階説, Maslow" src="../_images/motivation_01.png" />
-<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">マズローの欲求5段階説, Maslow</span><a class="headerlink" href="#maslow" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">マズローの欲求5段階説, Maslow</span><a class="headerlink" href="#maslow" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="id7">
-<h3><span class="section-number">3.3.3. </span>行動に対し、本質的な報酬を与えるべき<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><span class="section-number">3.4.3. </span>本質的な報酬を与えるべきである<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>本質的に評価されていた行動に対して、非本質的な（表面的な）報酬を与えると、
 モチベーションのレベルが減ってしまう。（Cognitive Evaluation Theory）</p>
-<p>(e.g.)
-自発的に勉強し、テストで良い結果を出した子供に対して……</p>
+</div>
+<p>例：自発的に勉強し、テストで良い結果を出した子供に対して……</p>
 <ul class="simple">
 <li><p>その行動とテスト結果の因果関係を誉める（＝本質的な報酬）<br />
 「あんなに毎日たくさん勉強をしたから、良い結果になったんだね。すごいね！」<br />
@@ -444,77 +540,15 @@
 <li><p>お金を与えることで誉める（＝非本質的な報酬）<br />
 ⇒ 自発的な勉強は減る。</p></li>
 </ul>
-<p>💡 <strong>仕事でも同様で、メンバーの本質的な成果を理解・評価し、報酬を与えなければならない。</strong></p>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">3.3.4. </span>自ら行動を選択させるべき<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>人は行動を自分でコントロールしていると感じることを好む。
-（Self-Determination Theory, 自己決定理論）</p>
-</div>
-<p>お金稼ぎのために働いている人は、やりたいという気持ちよりも、やらなければならないという気持ちが強い。
-⇒ モチベーションが続きにくい。</p>
-</div>
-<div class="section" id="equity-theory">
-<h3><span class="section-number">3.3.5. </span>Equity Theory, 公平性理論<a class="headerlink" href="#equity-theory" title="Permalink to this headline">¶</a></h3>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>人は、自分と他人の、<strong>”仕事量：報酬”の比率</strong>を比べ、公平になるように行動を変更する。
-例えば、仕事量を減らしたり、横領などで不当に報酬を得ようとする。
-（Equity Theory, 公平性理論）</p>
-</div>
-<p><strong>不公平と感じたとき、公平性を得るために人が取り得る５つの行動</strong></p>
-<ol class="simple">
-<li><p>仕事の量を減らす。</p></li>
-<li><p>報酬の量を増やす。<br />
-（報酬交渉などの正攻法を取りにくい場合、横領などに結びつく）</p></li>
-<li><p>仕事量、報酬の認識を自分の中で変える。<br />
-例えば、仕事量に負荷や難しさを考慮したり、報酬として給料以外の利得（福利厚生など）を考慮したりする。</p></li>
-<li><p>比較対象となる他人を変える。<br />
-例えば、もっと待遇の悪い他社の人と比べ、公平感を得る。</p></li>
-<li><p>現在の仕事をやめ、別のことを始める。</p></li>
-</ol>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>本質的には、公平な”仕事量／報酬”比率を実現するべきである。
-不公平と感じ取られてしまった場合、こちらから”2. 報酬の量を増やす。”を提案することは可能である。また、上記の”3. 仕事量、報酬の認識を自分の中で変える。”を促し、実は公平であることに気づいてもらうことはできる。<br />
-他の選択をこちらから押し付けることは悪い結果しか産まないだろう。</p>
-</div>
-<p><strong>人が公平だと感じる組織／職場に必要な３つの正義。</strong><br />
-以下を実現することで、メンバーに公平を感じてもらうことができる。
-（Justice and Equity Theory）</p>
-<ul class="simple">
-<li><p>Procedure Justice, 手続的正義<br />
-結果に至る過程が正しければ、評価される。</p></li>
-<li><p>Distributive Justice, 配分的正義<br />
-たくさん働けば、より多くの報酬が得られる。</p></li>
-<li><p>Interactional Justice, 相互作用的正義<br />
-敬意と尊厳をもって接してもらうことができる。</p></li>
-</ul>
-<div class="figure align-default" id="justice-equity">
-<img alt="Justice and Equity Theory" src="assets/media/motivation_03.png" />
-<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Justice and Equity Theory</span><a class="headerlink" href="#justice-equity" title="Permalink to this image">¶</a></p>
+<p><strong>仕事においても同様であり、メンバーの本質的な成果を理解・評価し、報酬を与えなければならない。</strong></p>
 </div>
 </div>
-<div class="section" id="ecpectancy-theory">
-<h3><span class="section-number">3.3.6. </span>Ecpectancy Theory, 期待理論<a class="headerlink" href="#ecpectancy-theory" title="Permalink to this headline">¶</a></h3>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>人が実際に行動に移すかどうかは、結果が得られる期待値の高さと、
-その結果がその人にとって魅力的かどうかに依存する。（Expectancy Theory）[Vroom(1964)]</p>
-</div>
-<p>最終的なモチベーション<span class="math notranslate nohighlight">\(M\)</span>は、以下のように表すことができる。</p>
-<div class="math notranslate nohighlight">
-\[
-M = (E \rightarrow P) \times (P \rightarrow O) \times I
-\]</div>
-<p>ただし、<span class="math notranslate nohighlight">\(E \rightarrow P\)</span>は努力が結果につながる確率、<span class="math notranslate nohighlight">\(P \rightarrow O\)</span>は結果が出た時に報酬がもらえる確率、<span class="math notranslate nohighlight">\(I\)</span>は報酬量である。努力したら、確実に成果がでて、確実に多くの報酬がもらえるのであれば、人のモチベーションは上がる。モチベーション量は上記の”積”でモデル化されているので、どれか一つでも<span class="math notranslate nohighlight">\(0\)</span>になるのであれば、モチベーションは<span class="math notranslate nohighlight">\(0\)</span>になる。</p>
-<p>メンバーのモチベーションを上げたいのであれば、<span class="math notranslate nohighlight">\(E \rightarrow P, P \rightarrow O, I\)</span>の全てが高水準の環境を作ることが効果的である。</p>
-<div class="figure align-default" id="expectancy-theory">
-<img alt="Expectancy Theory" src="../_images/motivation_04.png" />
-<p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Expectancy Theory</span><a class="headerlink" href="#expectancy-theory" title="Permalink to this image">¶</a></p>
-</div>
+<div class="section" id="id10">
+<h3><span class="section-number">3.4.4. </span>自ら行動を選択させるべきである<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>人は行動を自分でコントロールしていると感じることを好む。（Self-Determination Theory, 自己決定理論）</p>
+<p>例えば、お金稼ぎのために働いている人は、やりたいという気持ちよりも、やらなければならないという気持ちが強いため、モチベーションが続きにくい。<strong>最終的に行動（タスク）をするかしないかの判断を、メンバーに自由に選択させる</strong>ことが理想的である。</p>
 </div>
 </div>
 </div>
