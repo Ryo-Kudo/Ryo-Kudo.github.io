@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Stats Overview &#8212; Tech×MBA -ryok</title>
+    <title>Stats Overview &#8212; Tech×MBA -ryok</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="References" href="../../references.html" />
+    <link rel="next" title="グラフの表示 (visualization)" href="visualization.html" />
     <link rel="prev" title="4. 個人の性格・特性" href="../0201_personality.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -133,7 +133,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Stats Overview
+   Stats Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correlation_coefficient.html">
+   相関係数 (correlation coefficient)
   </a>
  </li>
 </ul>
@@ -220,49 +230,49 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-mining">
-   5.1. Data Mining とは？
+   Data Mining とは？
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#methods">
-   5.2. Methods
+   Methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     5.2.1. 線形回帰, Linear Regression
+     線形回帰, Linear Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-regression">
-     5.2.2. ロジスティック回帰, Logistic Regression
+     ロジスティック回帰, Logistic Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-tree">
-     5.2.3. 回帰木, Regression Tree
+     回帰木, Regression Tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-tree">
-     5.2.4. 分類木, Classification Tree
+     分類木, Classification Tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#random-forest">
-     5.2.5. ランダムフォレスト, Random Forest
+     ランダムフォレスト, Random Forest
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   5.3. モデル評価方法
+   モデル評価方法
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#osr-2-out-of-sample-r-2">
-     5.3.1. OSR
+     OSR
      <span class="math notranslate nohighlight">
       \(^2\)
      </span>
@@ -274,19 +284,19 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mean-absolute-error">
-     5.3.2. Mean Absolute Error
+     Mean Absolute Error
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-confusion-matrix">
-     5.3.3. 混合行列, The Confusion Matrix
+     混合行列, The Confusion Matrix
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.4. （参考）
+   （参考）
   </a>
  </li>
 </ul>
@@ -311,49 +321,49 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-mining">
-   5.1. Data Mining とは？
+   Data Mining とは？
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#methods">
-   5.2. Methods
+   Methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     5.2.1. 線形回帰, Linear Regression
+     線形回帰, Linear Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-regression">
-     5.2.2. ロジスティック回帰, Logistic Regression
+     ロジスティック回帰, Logistic Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-tree">
-     5.2.3. 回帰木, Regression Tree
+     回帰木, Regression Tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-tree">
-     5.2.4. 分類木, Classification Tree
+     分類木, Classification Tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#random-forest">
-     5.2.5. ランダムフォレスト, Random Forest
+     ランダムフォレスト, Random Forest
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   5.3. モデル評価方法
+   モデル評価方法
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#osr-2-out-of-sample-r-2">
-     5.3.1. OSR
+     OSR
      <span class="math notranslate nohighlight">
       \(^2\)
      </span>
@@ -365,19 +375,19 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mean-absolute-error">
-     5.3.2. Mean Absolute Error
+     Mean Absolute Error
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-confusion-matrix">
-     5.3.3. 混合行列, The Confusion Matrix
+     混合行列, The Confusion Matrix
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.4. （参考）
+   （参考）
   </a>
  </li>
 </ul>
@@ -390,18 +400,18 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="stats-overview">
-<h1><span class="section-number">5. </span>Stats Overview<a class="headerlink" href="#stats-overview" title="Permalink to this headline">¶</a></h1>
-<p>（2021.Jan 日々、追記中…）</p>
+<h1>Stats Overview<a class="headerlink" href="#stats-overview" title="Permalink to this headline">¶</a></h1>
+<p>（2022.Jan 日々、追記中…）</p>
 <p>ビジネスデータからデータマイニングをする機会や、初めての人にやり方を教える機会が多い。データ分析には数多くの手法があるが、その内の基本的なものについて、<strong>重要な点を短時間で復習するための情報</strong>を、本ページに記述する。</p>
 <p><em>（例えば、正規分布、中心極限定理、信頼区間、検定などの話はここでは触れない。統計学の基礎については、良い書籍やwebがたくさんあるのでそちらを見た方が良い。）</em></p>
 <div class="section" id="data-mining">
-<h2><span class="section-number">5.1. </span>Data Mining とは？<a class="headerlink" href="#data-mining" title="Permalink to this headline">¶</a></h2>
+<h2>Data Mining とは？<a class="headerlink" href="#data-mining" title="Permalink to this headline">¶</a></h2>
 <p>“データマイニングとは、変数間の一貫した規則性や関係性を求め、データを探索するための分析プロセスである。さらに、その発見した規則性を新しいデータセットに適用することで、その発見の正確さを検証する。データマイニングの最終的な目的は、予測である。” (<a class="reference external" href="https://www.tibco.com/reference-center/what-is-data-mining">https://www.tibco.com/reference-center/what-is-data-mining</a>)</p>
 <p>具体的には、データマイニングで作成した予測モデルは、企業や個人の意思決定に活用される。特に、マーケティングの課題解決でのニーズが高い。</p>
 <p>統計学やデータマイニングは、MBAでも必修科目に入るほど、有効なビジネス課題解決手法として認識されている。学ばない手はない。</p>
 </div>
 <div class="section" id="methods">
-<h2><span class="section-number">5.2. </span>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <!--
 :::{figure-md} stat_methods
 ![Methods](/assets/media/stat_01.png)
@@ -440,7 +450,7 @@ Methods / toolkit
 </tbody>
 </table>
 <div class="section" id="linear-regression">
-<h3><span class="section-number">5.2.1. </span>線形回帰, Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
+<h3>線形回帰, Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[
 y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \cdots + \beta_k x_{ki} + \epsilon = \hat{y_i} + \epsilon_i
@@ -468,7 +478,7 @@ y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \cdots + \beta_k x_{ki} + \eps
 </ul>
 </div>
 <div class="section" id="logistic-regression">
-<h3><span class="section-number">5.2.2. </span>ロジスティック回帰, Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
+<h3>ロジスティック回帰, Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[
 P(Y=1) = f(\beta_0 + \beta_1 x_{1} + \beta_2 x_{2} + \cdots + \beta_k x_{k})
@@ -483,23 +493,23 @@ where \cdots  f(z) = \dfrac{1}{1+e^{-z}}
 </ul>
 </div>
 <div class="section" id="regression-tree">
-<h3><span class="section-number">5.2.3. </span>回帰木, Regression Tree<a class="headerlink" href="#regression-tree" title="Permalink to this headline">¶</a></h3>
+<h3>回帰木, Regression Tree<a class="headerlink" href="#regression-tree" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="classification-tree">
-<h3><span class="section-number">5.2.4. </span>分類木, Classification Tree<a class="headerlink" href="#classification-tree" title="Permalink to this headline">¶</a></h3>
+<h3>分類木, Classification Tree<a class="headerlink" href="#classification-tree" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="random-forest">
-<h3><span class="section-number">5.2.5. </span>ランダムフォレスト, Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
+<h3>ランダムフォレスト, Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="stat-random-forest">
 <img alt="Random Forest" src="../../_images/stat_02.png" />
-<p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Random Forest</span><a class="headerlink" href="#stat-random-forest" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Random Forest</span><a class="headerlink" href="#stat-random-forest" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">5.3. </span>モデル評価方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>モデル評価方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="osr-2-out-of-sample-r-2">
-<h3><span class="section-number">5.3.1. </span>OSR<span class="math notranslate nohighlight">\(^2\)</span>, Out of Sample R<span class="math notranslate nohighlight">\(^2\)</span><a class="headerlink" href="#osr-2-out-of-sample-r-2" title="Permalink to this headline">¶</a></h3>
+<h3>OSR<span class="math notranslate nohighlight">\(^2\)</span>, Out of Sample R<span class="math notranslate nohighlight">\(^2\)</span><a class="headerlink" href="#osr-2-out-of-sample-r-2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y\)</span>が連続値の時に利用できる。</p></li>
 </ul>
@@ -509,7 +519,7 @@ OSR^2 = 1- \dfrac{\Sigma ^n _{i=1} ( y_{test, i} - \hat{y}_{test, i} )^2 }{\Sigm
 \]</div>
 </div>
 <div class="section" id="mean-absolute-error">
-<h3><span class="section-number">5.3.2. </span>Mean Absolute Error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
+<h3>Mean Absolute Error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y\)</span>が連続値の時に利用できる。</p></li>
 </ul>
@@ -519,13 +529,13 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
 \]</div>
 </div>
 <div class="section" id="the-confusion-matrix">
-<h3><span class="section-number">5.3.3. </span>混合行列, The Confusion Matrix<a class="headerlink" href="#the-confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<h3>混合行列, The Confusion Matrix<a class="headerlink" href="#the-confusion-matrix" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y\)</span>がカテゴリ値の時に利用できる。</p></li>
 </ul>
 <div class="figure align-default" id="confusion-matrix">
 <img alt="The Confusion Matrix" src="../../_images/stat_03.png" />
-<p class="caption"><span class="caption-number">Fig. 5.2 </span><span class="caption-text">The Confusion Matrix</span><a class="headerlink" href="#confusion-matrix" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The Confusion Matrix</span><a class="headerlink" href="#confusion-matrix" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>Matrixの内容</p>
@@ -568,11 +578,11 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">5.4. </span>（参考）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（参考）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>２つの事象に相関関係が見られたからといって、そこに因果関係があるとは限らない。</p>
 <div class="figure align-default" id="tylervigen">
 <img alt="モッツァレラチーズの消費量と土木工学博士号の授与数" src="../../_images/stat_04.png" />
-<p class="caption"><span class="caption-number">Fig. 5.3 </span><span class="caption-text">モッツァレラチーズの消費量と土木工学博士号の授与数 (<a class="reference external" href="http://www.tylervigen.com/spurious-correlations">http://www.tylervigen.com/spurious-correlations</a>)</span><a class="headerlink" href="#tylervigen" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">モッツァレラチーズの消費量と土木工学博士号の授与数 (<a class="reference external" href="http://www.tylervigen.com/spurious-correlations">http://www.tylervigen.com/spurious-correlations</a>)</span><a class="headerlink" href="#tylervigen" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>疑似相関に注意し、考えながら分析を行う必要がある。</p></li>
@@ -612,10 +622,10 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
             <p class="prev-next-title"><span class="section-number">4. </span>個人の性格・特性</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../references.html" title="next page">
+    <a class='right-next' id="next-link" href="visualization.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">References</p>
+        <p class="prev-next-title">グラフの表示 (visualization)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
