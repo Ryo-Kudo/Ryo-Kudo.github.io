@@ -1,0 +1,1603 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>回帰分析 (regression analysis) &#8212; Tech×MBA -ryok</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/gtag.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stats Overview" href="stats_overview.html" />
+    <link rel="prev" title="相関係数 (correlation coefficient)" href="correlation_coefficient.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/me.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Tech×MBA -ryok</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Tech×MBA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_overview.html">
+   Stats Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0101_team_development.html">
+   チームビルディング
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_leadership.html">
+   リーダーシップ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_motivation.html">
+   モチベーション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_personality.html">
+   個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/regression_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/regression_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   用語の整理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   データの構造式と最小二乗法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-regression-analysis">
+   単回帰分析 (simple regression analysis)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     回帰方程式の評価
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     回帰係数の標本分布
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     回帰係数の検定
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error">
+     標準誤差 (standard error)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-regression-analysis">
+   重回帰分析 (multiple regression analysis)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     回帰方程式の評価
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   回帰方程式による区間予測
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>回帰分析 (regression analysis)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   用語の整理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   データの構造式と最小二乗法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-regression-analysis">
+   単回帰分析 (simple regression analysis)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     回帰方程式の評価
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     回帰係数の標本分布
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     回帰係数の検定
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standard-error">
+     標準誤差 (standard error)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-regression-analysis">
+   重回帰分析 (multiple regression analysis)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     回帰方程式の評価
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   回帰方程式による区間予測
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="regression-analysis">
+<h1>回帰分析 (regression analysis)<a class="headerlink" href="#regression-analysis" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>1つの変数 <span class="math notranslate nohighlight">\(Y\)</span> を他の変数 <span class="math notranslate nohighlight">\(X\)</span> で説明しようとする分析である。</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> が1変数だけの場合を<strong>単回帰</strong>分析、2変数以上の場合を<strong>重回帰</strong>分析という。</p></li>
+<li><p>線形回帰: <span class="math notranslate nohighlight">\(y=a+b_{1}x_{1}+\dots+b_{k}x_{k}\)</span> ( <span class="math notranslate nohighlight">\(k\)</span> は変数の数) を扱う。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>用語の整理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<table class="text-center border">
+    <tr class="background-dark">
+        <th class="border-right-bold" rowspan="2"></th>
+        <th rowspan="2">概要</th>
+        <th rowspan="2">$Y$</th>
+        <th class="border-right-none" rowspan="2">$X$</th>
+        <th class="border-bottom border-left-none" colspan="2"></th>
+    </tr>
+    <tr class="background-dark">
+        <th>変数の数</th>
+        <th>分析の名称</th>
+    </tr>
+    <tr class="background-bright">
+        <th class="background-dark border-right-bold border-bottom" rowspan="2">回帰分析</th>
+        <td class="text-left" rowspan="2">1つの変数を他の変数で説明する</td>
+        <td rowspan="2">従属変数<br />目的変数</td>
+        <td rowspan="2">独立変数<br />説明変数</td>
+        <td>1つ</td>
+        <td>単回帰分析</td>
+    </tr>
+    <tr class="background-bright">
+        <td>複数</td>
+        <td>重回帰分析</td>
+    </tr>
+    <tr class="background-bright">
+        <th class="background-dark border-right-bold border-bottom">相関分析</th>
+        <td class="text-left">変数間の関係の有無を調べる</td>
+    </tr>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>データの構造式と最小二乗法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>データの構造式(重回帰モデル)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    Y_{i}=a+b_{1}X_{1i}+\dots+b_{k}X_{ki}+\epsilon_{i} \, (i=1,\ 2,\dots,\ n) \\
+\end{split}\]</div>
+<ul class="simple">
+<li><p>独立変数: <span class="math notranslate nohighlight">\(X\ (X_{1},\ X_{2},\dots,\ X_{n})\)</span></p>
+<ul>
+<li><p>ここで、<span class="math notranslate nohighlight">\(i\)</span>が<span class="math notranslate nohighlight">\(1\)</span>のみであれば、単回帰モデルとなる。</p></li>
+</ul>
+</li>
+<li><p>従属変数: <span class="math notranslate nohighlight">\(Y\ (Y_{1},\ Y_{2},\dots,\ Y_{n})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon_{i}\)</span> は回帰方程式では説明しきれない誤差であり、互いに独立に <span class="math notranslate nohighlight">\(N (0, \sigma^2)\)</span>に従う。</p>
+<ul>
+<li><p>誤差が小さくなるように、<span class="math notranslate nohighlight">\(a,\ b_1,\dots,\ b_k\)</span>を定めることができれば、独立変数で従属変数をうまく説明できていると言える。</p></li>
+<li><p>誤差<span class="math notranslate nohighlight">\(\epsilon\)</span>の二乗をの合計を最小化するように回帰係数を最適化する。（最小二乗法）<a class="footnote-reference brackets" href="#id9" id="id3">1</a> <br> <span class="math notranslate nohighlight">\({\displaystyle S=\sum ^{n}_{i=1} \epsilon ^{2}_{i} =\sum ^{n}_{i=1}\{Y_{i} -( a+b_{1i} X_{1i} +\dots +b_{ki} X_{ki})\}^{2}}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="simple-regression-analysis">
+<h2>単回帰分析 (simple regression analysis)<a class="headerlink" href="#simple-regression-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>回帰方程式の評価<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>観測値 <span class="math notranslate nohighlight">\(Y_i\)</span> と予測 <span class="math notranslate nohighlight">\(\hat{Y}\)</span> との差 (残差 residual) を <span class="math notranslate nohighlight">\(e_i=Y_i-\hat{Y}_i\)</span> とすると、以下で定義される<strong>決定係数</strong> <span class="math notranslate nohighlight">\(R^2\)</span>で回帰方程式が上手く当てはまっているかを評価する。</p></li>
+<li><p><span class="math notranslate nohighlight">\( R ^{2} =1-\frac{{\displaystyle \sum ^{n}_{i=1} e ^{2}_{i}} }{{\displaystyle \sum ^{n}_{i=1}\left( Y_{i} -\overline{Y}\right)^{2}} } \)</span></p></li>
+<li><p>決定係数は、<strong>最小二乗法を使って求められた単回帰方程式の場合</strong>には <span class="math notranslate nohighlight">\(X, Y\)</span> 間の相関係数 <span class="math notranslate nohighlight">\(r\)</span> との間に <span class="math notranslate nohighlight">\(R^2=r^2\)</span> という関係が成り立つ。</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>回帰係数の標本分布<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>誤差項<span class="math notranslate nohighlight">\(\epsilon\)</span>が正規分布に従う</strong>とき、回帰係数の推定量 <span class="math notranslate nohighlight">\(\hat{b}\)</span> も正規分布に従う。</p></li>
+<li><p>より正確には、誤差項 <span class="math notranslate nohighlight">\(\epsilon_1,\ \epsilon_2,\dots,\ \epsilon_n\)</span> が独立で共通の正規分布 <span class="math notranslate nohighlight">\(N(0, \sigma^2)\)</span> に従うとすると、<br>回帰係数の推定量 <span class="math notranslate nohighlight">\(\hat{b}\)</span> の分布は平均 <span class="math notranslate nohighlight">\(b\)</span> 、分散 <span class="math notranslate nohighlight">\(
+{\displaystyle \frac
+  {\sigma ^{2}}
+  {{\displaystyle \sum ^{n}_{i=1}\left( X_{i} -\overline{X}\right)^{2}} }
+}
+\)</span> の正規分布 <span class="math notranslate nohighlight">\(
+N\left(b,\ {\displaystyle \frac
+  {\sigma ^{2}}
+  {{\displaystyle \sum ^{n}_{i=1}\left( X_{i} -\overline{X}\right)^{2}} }
+} \right)
+\)</span> に従う。</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>回帰係数の検定<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>各独立変数が、従属変数を説明できているかを確かめるために、回帰係数を検定する必要がある。</p>
+<ul>
+<li><p>検定結果が統計的に優位でない場合、変数を変形することや、取り除くことが必要である。</p></li>
+</ul>
+</li>
+<li><p>回帰係数 <span class="math notranslate nohighlight">\(b\)</span> の推定量 <span class="math notranslate nohighlight">\(\hat{b}\)</span> についての検定は、次の<span class="math notranslate nohighlight">\(t\)</span>値を利用して行う。</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(
+t={\displaystyle
+\frac
+  {\hat{b} -b}
+  {\frac
+      {{\displaystyle
+          \sqrt{s^{2}}
+      } }
+      {\sqrt{{\displaystyle
+          \sum ^{n}_{i=1}\left( X_{i} -\overline{X}\right)^{2}
+      } }}
+  }
+}
+\)</span>
+, ただし
+<span class="math notranslate nohighlight">\(
+s^{2} ={\displaystyle
+\frac
+  {{\displaystyle
+      \sum ^{n}_{i=1} e^{2}_{i}
+  } }
+  {n-2}
+}
+\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{b}\)</span>は自由度 <span class="math notranslate nohighlight">\(n-2\)</span> の <span class="math notranslate nohighlight">\(t\)</span> 分布 <span class="math notranslate nohighlight">\(t(n-2)\)</span> に従う。</p></li>
+<li><p><span class="math notranslate nohighlight">\(s^2\)</span> は誤差項 <span class="math notranslate nohighlight">\(\epsilon\)</span> の分散 <span class="math notranslate nohighlight">\(\sigma^2\)</span> の不偏推定量である。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="standard-error">
+<h3>標準誤差 (standard error)<a class="headerlink" href="#standard-error" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>回帰係数 (の推定量) <span class="math notranslate nohighlight">\(\hat{b}\)</span> の標準偏差 (の推定量) は以下の通りである。
+$<span class="math notranslate nohighlight">\(
+SE =
+\frac
+  {{\displaystyle
+      \sqrt{s^{2}}
+  } }
+  {\sqrt{{\displaystyle
+      \sum ^{n}_{i=1}\left( X_{i} -\overline{X}\right)^{2}
+  } }}
+\)</span>$</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="multiple-regression-analysis">
+<h2>重回帰分析 (multiple regression analysis)<a class="headerlink" href="#multiple-regression-analysis" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>基本的には単回帰分析と同じだが、回帰方程式の評価では<strong>自由度調整済み決定係数</strong>(Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>)を用いる。</p></li>
+</ul>
+<div class="section" id="id7">
+<h3>回帰方程式の評価<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>自由度調整済み決定係数<span class="math notranslate nohighlight">\(R_a^2\)</span> <br> <span class="math notranslate nohighlight">\( R_a^2 = {\displaystyle
+  1-\frac
+      {n-1}
+      {n-k-1}
+  \left( 1-R ^{2}\right)
+} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2\)</span>は単回帰と同様の決定係数である。<br> <span class="math notranslate nohighlight">\(
+R ^{2} =1-\frac
+  {{\displaystyle
+      \sum ^{n}_{i=1} e ^{2}_{i}
+  } }
+  {{\displaystyle
+      \sum ^{n}_{i=1}\left( Y_{i} -\overline{Y}\right)^{2}
+  } }
+\)</span></p></li>
+<li><p>決定係数<span class="math notranslate nohighlight">\(R^2\)</span>は説明変数の数 <span class="math notranslate nohighlight">\(k\)</span> が増えるだけで数値が上昇してしまうため、 自由度調整済み決定係数を用いる。</p></li>
+<li><p>単回帰と同様に、決定係数は、最小二乗法を使って求められた回帰方程式の場合には <span class="math notranslate nohighlight">\(X, Y\)</span> 間の重相関係数 <span class="math notranslate nohighlight">\(R\)</span> との間に <span class="math notranslate nohighlight">\(R^2=R^2\)</span>(決定係数=重相関係数の二乗) という関係が成り立つ。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers.regression_analysis</span> <span class="kn">import</span> <span class="n">r2</span>
+<span class="n">r2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "cec8939fbe6c474a95985eef07237599", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>回帰方程式による区間予測<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>標本分布が正規分布なので、正規分布の区間推定と同様に行えば良い。</p></li>
+<li><p>パッケージを使う場合は信頼区間 (confidence interval) と予測区間 (prediction interval) の違いに気をつける。</p></li>
+</ul>
+<table class="border">
+    <tr class="text-center background-dark">
+        <th class="border-right-bold"></th>
+        <th>概要</th>
+        <th>回帰分析での例</th>
+    </tr>
+    <tr class="text-left background-bright">
+        <th class="text-center background-dark border-right-bold border-bottom">信頼区間</th>
+        <td>標本抽出を繰り返して母数 (母平均や母回帰係数など) を推定すると一定割合 (95%など) の予測値が収まると考えられる区間</td>
+        <td>回帰係数 $a,\ b$ の推定量 $\hat{a},\ \hat{b}$ の推定区間</td>
+    </tr>
+    <tr class="text-left background-bright">
+        <th class="text-center background-dark border-right-bold border-bottom">予測区間</th>
+        <td>標本抽出を繰り返すと一定割合 (95%など) の標本が入ると考えられる区間</td>
+        <td>$\epsilon$ の分散 $\sigma ^2$ の推定量 $s^2$ の推定区間</td>
+    </tr>
+</table><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers.regression_analysis</span> <span class="kn">import</span> <span class="n">interval</span>
+<span class="n">interval</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "dda1346367884d6ea399a9d97afa69ac", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</div>
+<div class="section" id="python">
+<h2>Pythonでの実行方法<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>statsmodels.regression.linear_model.OLS を用いる。</p></li>
+<li><p><span class="math notranslate nohighlight">\(F\)</span> 統計量 (F-statistic) は全ての係数が0であるかどうか（回帰が成立しているかどうか）の検定統計量であり、まず確認するべき項目である。</p>
+<ul>
+<li><p>Prob (F-statistic)は<span class="math notranslate nohighlight">\(F\)</span> 統計量の<span class="math notranslate nohighlight">\(p\)</span> 値であり、それが有意水準以下であれば、回帰は成立している。</p></li>
+</ul>
+</li>
+<li><p>summary にあるそれぞれの変数の P&gt;|t| が <span class="math notranslate nohighlight">\(t\)</span> 検定の <span class="math notranslate nohighlight">\(p\)</span> 値である。</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> 値が有意水準以下であれば、その<span class="math notranslate nohighlight">\(\hat{b}\)</span>は統計的に優位である。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class OLS in module statsmodels.regression.linear_model:
+
+class OLS(WLS)
+ |  A simple ordinary least squares model.
+ |  
+ |  
+ |  Parameters
+ |  ----------
+ |  endog : array-like
+ |      1-d endogenous response variable. The dependent variable.
+ |  exog : array-like
+ |      A nobs x k array where `nobs` is the number of observations and `k`
+ |      is the number of regressors. An intercept is not included by default
+ |      and should be added by the user. See
+ |      :func:`statsmodels.tools.add_constant`.
+ |  missing : str
+ |      Available options are &#39;none&#39;, &#39;drop&#39;, and &#39;raise&#39;. If &#39;none&#39;, no nan
+ |      checking is done. If &#39;drop&#39;, any observations with nans are dropped.
+ |      If &#39;raise&#39;, an error is raised. Default is &#39;none.&#39;
+ |  hasconst : None or bool
+ |      Indicates whether the RHS includes a user-supplied constant. If True,
+ |      a constant is not checked for and k_constant is set to 1 and all
+ |      result statistics are calculated as if a constant is present. If
+ |      False, a constant is not checked for and k_constant is set to 0.
+ |  
+ |  
+ |  Attributes
+ |  ----------
+ |  weights : scalar
+ |      Has an attribute weights = array(1.0) due to inheritance from WLS.
+ |  
+ |  See Also
+ |  --------
+ |  GLS
+ |  
+ |  Examples
+ |  --------
+ |  &gt;&gt;&gt; import numpy as np
+ |  &gt;&gt;&gt;
+ |  &gt;&gt;&gt; import statsmodels.api as sm
+ |  &gt;&gt;&gt;
+ |  &gt;&gt;&gt; Y = [1,3,4,5,2,3,4]
+ |  &gt;&gt;&gt; X = range(1,8)
+ |  &gt;&gt;&gt; X = sm.add_constant(X)
+ |  &gt;&gt;&gt;
+ |  &gt;&gt;&gt; model = sm.OLS(Y,X)
+ |  &gt;&gt;&gt; results = model.fit()
+ |  &gt;&gt;&gt; results.params
+ |  array([ 2.14285714,  0.25      ])
+ |  &gt;&gt;&gt; results.tvalues
+ |  array([ 1.87867287,  0.98019606])
+ |  &gt;&gt;&gt; print(results.t_test([1, 0]))
+ |  &lt;T test: effect=array([ 2.14285714]), sd=array([[ 1.14062282]]), t=array([[ 1.87867287]]), p=array([[ 0.05953974]]), df_denom=5&gt;
+ |  &gt;&gt;&gt; print(results.f_test(np.identity(2)))
+ |  &lt;F test: F=array([[ 19.46078431]]), p=[[ 0.00437251]], df_denom=5, df_num=2&gt;
+ |  
+ |  Notes
+ |  -----
+ |  No constant is added by the model unless you are using formulas.
+ |  
+ |  Method resolution order:
+ |      OLS
+ |      WLS
+ |      RegressionModel
+ |      statsmodels.base.model.LikelihoodModel
+ |      statsmodels.base.model.Model
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, endog, exog=None, missing=&#39;none&#39;, hasconst=None, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  fit_regularized(self, method=&#39;elastic_net&#39;, alpha=0.0, L1_wt=1.0, start_params=None, profile_scale=False, refit=False, **kwargs)
+ |      Return a regularized fit to a linear regression model.
+ |      
+ |      Parameters
+ |      ----------
+ |      method : string
+ |          Only the &#39;elastic_net&#39; approach is currently implemented.
+ |      alpha : scalar or array-like
+ |          The penalty weight.  If a scalar, the same penalty weight
+ |          applies to all variables in the model.  If a vector, it
+ |          must have the same length as `params`, and contains a
+ |          penalty weight for each coefficient.
+ |      L1_wt: scalar
+ |          The fraction of the penalty given to the L1 penalty term.
+ |          Must be between 0 and 1 (inclusive).  If 0, the fit is a
+ |          ridge fit, if 1 it is a lasso fit.
+ |      start_params : array-like
+ |          Starting values for ``params``.
+ |      profile_scale : bool
+ |          If True the penalized fit is computed using the profile
+ |          (concentrated) log-likelihood for the Gaussian model.
+ |          Otherwise the fit uses the residual sum of squares.
+ |      refit : bool
+ |          If True, the model is refit using only the variables that
+ |          have non-zero coefficients in the regularized fit.  The
+ |          refitted model is not regularized.
+ |      
+ |      Returns
+ |      -------
+ |      An array of coefficients, or a RegressionResults object of the
+ |      same type returned by ``fit``.
+ |      
+ |      Notes
+ |      -----
+ |      
+ |      The elastic net approach closely follows that implemented in
+ |      the glmnet package in R.  The penalty is a combination of L1
+ |      and L2 penalties.
+ |      
+ |      The function that is minimized is: ..math::
+ |      
+ |          0.5*RSS/n + alpha*((1-L1_wt)*|params|_2^2/2 + L1_wt*|params|_1)
+ |      
+ |      where RSS is the usual regression sum of squares, n is the
+ |      sample size, and :math:`|*|_1` and :math:`|*|_2` are the L1 and L2
+ |      norms.
+ |      
+ |      Post-estimation results are based on the same data used to
+ |      select variables, hence may be subject to overfitting biases.
+ |      
+ |      The elastic_net method uses the following keyword arguments:
+ |      
+ |      maxiter : int
+ |          Maximum number of iterations
+ |      cnvrg_tol : float
+ |          Convergence threshold for line searches
+ |      zero_tol : float
+ |          Coefficients below this threshold are treated as zero.
+ |      
+ |      References
+ |      ----------
+ |      Friedman, Hastie, Tibshirani (2008).  Regularization paths for
+ |      generalized linear models via coordinate descent.  Journal of
+ |      Statistical Software 33(1), 1-22 Feb 2010.
+ |  
+ |  hessian(self, params, scale=None)
+ |      Evaluate the Hessian function at a given point.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array-like
+ |          The parameter vector at which the Hessian is computed.
+ |      scale : float or None
+ |          If None, return the profile (concentrated) log likelihood
+ |          (profiled over the scale parameter), else return the
+ |          log-likelihood using the given scale value.
+ |      
+ |      Returns
+ |      -------
+ |      The Hessian matrix.
+ |  
+ |  loglike(self, params, scale=None)
+ |      The likelihood function for the OLS model.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array-like
+ |          The coefficients with which to estimate the log-likelihood.
+ |      scale : float or None
+ |          If None, return the profile (concentrated) log likelihood
+ |          (profiled over the scale parameter), else return the
+ |          log-likelihood using the given scale value.
+ |      
+ |      Returns
+ |      -------
+ |      The likelihood function evaluated at params.
+ |  
+ |  score(self, params, scale=None)
+ |      Evaluate the score function at a given point.
+ |      
+ |      The score corresponds to the profile (concentrated)
+ |      log-likelihood in which the scale parameter has been profiled
+ |      out.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array-like
+ |          The parameter vector at which the score function is
+ |          computed.
+ |      scale : float or None
+ |          If None, return the profile (concentrated) log likelihood
+ |          (profiled over the scale parameter), else return the
+ |          log-likelihood using the given scale value.
+ |      
+ |      Returns
+ |      -------
+ |      The score vector.
+ |  
+ |  whiten(self, Y)
+ |      OLS model whitener does nothing: returns Y.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from RegressionModel:
+ |  
+ |  fit(self, method=&#39;pinv&#39;, cov_type=&#39;nonrobust&#39;, cov_kwds=None, use_t=None, **kwargs)
+ |      Full fit of the model.
+ |      
+ |      The results include an estimate of covariance matrix, (whitened)
+ |      residuals and an estimate of scale.
+ |      
+ |      Parameters
+ |      ----------
+ |      method : str, optional
+ |          Can be &quot;pinv&quot;, &quot;qr&quot;.  &quot;pinv&quot; uses the Moore-Penrose pseudoinverse
+ |          to solve the least squares problem. &quot;qr&quot; uses the QR
+ |          factorization.
+ |      cov_type : str, optional
+ |          See `regression.linear_model.RegressionResults` for a description
+ |          of the available covariance estimators
+ |      cov_kwds : list or None, optional
+ |          See `linear_model.RegressionResults.get_robustcov_results` for a
+ |          description required keywords for alternative covariance estimators
+ |      use_t : bool, optional
+ |          Flag indicating to use the Student&#39;s t distribution when computing
+ |          p-values.  Default behavior depends on cov_type. See
+ |          `linear_model.RegressionResults.get_robustcov_results` for
+ |          implementation details.
+ |      
+ |      Returns
+ |      -------
+ |      A RegressionResults class instance.
+ |      
+ |      See Also
+ |      ---------
+ |      regression.linear_model.RegressionResults
+ |      regression.linear_model.RegressionResults.get_robustcov_results
+ |      
+ |      Notes
+ |      -----
+ |      The fit method uses the pseudoinverse of the design/exogenous variables
+ |      to solve the least squares minimization.
+ |  
+ |  get_distribution(self, params, scale, exog=None, dist_class=None)
+ |      Returns a random number generator for the predictive distribution.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array-like
+ |          The model parameters (regression coefficients).
+ |      scale : scalar
+ |          The variance parameter.
+ |      exog : array-like
+ |          The predictor variable matrix.
+ |      dist_class : class
+ |          A random number generator class.  Must take &#39;loc&#39; and
+ |          &#39;scale&#39; as arguments and return a random number generator
+ |          implementing an `rvs` method for simulating random values.
+ |          Defaults to Gaussian.
+ |      
+ |      Returns a frozen random number generator object with mean and
+ |      variance determined by the fitted linear model.  Use the
+ |      ``rvs`` method to generate random values.
+ |      
+ |      Notes
+ |      -----
+ |      Due to the behavior of ``scipy.stats.distributions objects``,
+ |      the returned random number generator must be called with
+ |      ``gen.rvs(n)`` where ``n`` is the number of observations in
+ |      the data set used to fit the model.  If any other value is
+ |      used for ``n``, misleading results will be produced.
+ |  
+ |  initialize(self)
+ |      Initialize (possibly re-initialize) a Model instance. For
+ |      instance, the design matrix of a linear model may change
+ |      and some things must be recomputed.
+ |  
+ |  predict(self, params, exog=None)
+ |      Return linear predicted values from a design matrix.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array-like
+ |          Parameters of a linear model
+ |      exog : array-like, optional.
+ |          Design / exogenous data. Model exog is used if None.
+ |      
+ |      Returns
+ |      -------
+ |      An array of fitted values
+ |      
+ |      Notes
+ |      -----
+ |      If the model has not yet been fit, params is not optional.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from RegressionModel:
+ |  
+ |  df_model
+ |      The model degree of freedom, defined as the rank of the regressor
+ |      matrix minus 1 if a constant is included.
+ |  
+ |  df_resid
+ |      The residual degree of freedom, defined as the number of observations
+ |      minus the rank of the regressor matrix.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from statsmodels.base.model.LikelihoodModel:
+ |  
+ |  information(self, params)
+ |      Fisher information matrix of model
+ |      
+ |      Returns -Hessian of loglike evaluated at params.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from statsmodels.base.model.Model:
+ |  
+ |  from_formula(formula, data, subset=None, drop_cols=None, *args, **kwargs) from builtins.type
+ |      Create a Model from a formula and dataframe.
+ |      
+ |      Parameters
+ |      ----------
+ |      formula : str or generic Formula object
+ |          The formula specifying the model
+ |      data : array-like
+ |          The data for the model. See Notes.
+ |      subset : array-like
+ |          An array-like object of booleans, integers, or index values that
+ |          indicate the subset of df to use in the model. Assumes df is a
+ |          `pandas.DataFrame`
+ |      drop_cols : array-like
+ |          Columns to drop from the design matrix.  Cannot be used to
+ |          drop terms involving categoricals.
+ |      args : extra arguments
+ |          These are passed to the model
+ |      kwargs : extra keyword arguments
+ |          These are passed to the model with one exception. The
+ |          ``eval_env`` keyword is passed to patsy. It can be either a
+ |          :class:`patsy:patsy.EvalEnvironment` object or an integer
+ |          indicating the depth of the namespace to use. For example, the
+ |          default ``eval_env=0`` uses the calling namespace. If you wish
+ |          to use a &quot;clean&quot; environment set ``eval_env=-1``.
+ |      
+ |      Returns
+ |      -------
+ |      model : Model instance
+ |      
+ |      Notes
+ |      ------
+ |      data must define __getitem__ with the keys in the formula terms
+ |      args and kwargs are passed on to the model instantiation. E.g.,
+ |      a numpy structured or rec array, a dictionary, or a pandas DataFrame.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from statsmodels.base.model.Model:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  endog_names
+ |      Names of endogenous variables
+ |  
+ |  exog_names
+ |      Names of exogenous variables
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/boston.csv&#39;</span><span class="p">)</span>
+<span class="n">boston</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>犯罪率</th>
+      <th>住宅地割合</th>
+      <th>非小売業種割合</th>
+      <th>河川への隣接</th>
+      <th>窒素酸化物濃度</th>
+      <th>平均部屋数</th>
+      <th>古い持ち家割合</th>
+      <th>雇用センターまでの距離</th>
+      <th>高速道路へのアクセス</th>
+      <th>固定資産税率</th>
+      <th>生徒と教師の比率</th>
+      <th>黒人比率</th>
+      <th>低所得層割合</th>
+      <th>中央価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>501</th>
+      <td>0.06263</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.593</td>
+      <td>69.1</td>
+      <td>2.4786</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>391.99</td>
+      <td>9.67</td>
+      <td>22.4</td>
+    </tr>
+    <tr>
+      <th>502</th>
+      <td>0.04527</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.120</td>
+      <td>76.7</td>
+      <td>2.2875</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>9.08</td>
+      <td>20.6</td>
+    </tr>
+    <tr>
+      <th>503</th>
+      <td>0.06076</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.976</td>
+      <td>91.0</td>
+      <td>2.1675</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>5.64</td>
+      <td>23.9</td>
+    </tr>
+    <tr>
+      <th>504</th>
+      <td>0.10959</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.794</td>
+      <td>89.3</td>
+      <td>2.3889</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>393.45</td>
+      <td>6.48</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>0.04741</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.030</td>
+      <td>80.8</td>
+      <td>2.5050</td>
+      <td>1</td>
+      <td>273</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>7.88</td>
+      <td>11.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>回帰モデルが<span class="math notranslate nohighlight">\(a=0\)</span>となるような特別な制約がない場合は、まず切片を考慮した回帰分析を行う。</p>
+<ul>
+<li><p>以下で、<span class="math notranslate nohighlight">\(a \neq 0\)</span>と仮定して回帰を行なった結果、constは統計的に優位であったため、<span class="math notranslate nohighlight">\(a \neq 0\)</span>の仮定は正しかったと言える。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">boston</span><span class="p">[</span><span class="s1">&#39;中央価格&#39;</span><span class="p">]</span> <span class="c1"># 従属変数</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;犯罪率&#39;</span><span class="p">:</span><span class="s1">&#39;低所得層割合&#39;</span><span class="p">]</span> <span class="c1"># 独立変数</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1"># a=0の場合、この行は不要</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>中央価格</td>       <th>  R-squared:         </th> <td>   0.741</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.734</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   108.1</td> 
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 17 Jan 2022</td> <th>  Prob (F-statistic):</th> <td>6.72e-135</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:09:56</td>     <th>  Log-Likelihood:    </th> <td> -1498.8</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3026.</td> 
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   492</td>      <th>  BIC:               </th> <td>   3085.</td> 
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    13</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+       <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th>       <td>   36.4595</td> <td>    5.103</td> <td>    7.144</td> <td> 0.000</td> <td>   26.432</td> <td>   46.487</td>
+</tr>
+<tr>
+  <th>犯罪率</th>         <td>   -0.1080</td> <td>    0.033</td> <td>   -3.287</td> <td> 0.001</td> <td>   -0.173</td> <td>   -0.043</td>
+</tr>
+<tr>
+  <th>住宅地割合</th>       <td>    0.0464</td> <td>    0.014</td> <td>    3.382</td> <td> 0.001</td> <td>    0.019</td> <td>    0.073</td>
+</tr>
+<tr>
+  <th>非小売業種割合</th>     <td>    0.0206</td> <td>    0.061</td> <td>    0.334</td> <td> 0.738</td> <td>   -0.100</td> <td>    0.141</td>
+</tr>
+<tr>
+  <th>河川への隣接</th>      <td>    2.6867</td> <td>    0.862</td> <td>    3.118</td> <td> 0.002</td> <td>    0.994</td> <td>    4.380</td>
+</tr>
+<tr>
+  <th>窒素酸化物濃度</th>     <td>  -17.7666</td> <td>    3.820</td> <td>   -4.651</td> <td> 0.000</td> <td>  -25.272</td> <td>  -10.262</td>
+</tr>
+<tr>
+  <th>平均部屋数</th>       <td>    3.8099</td> <td>    0.418</td> <td>    9.116</td> <td> 0.000</td> <td>    2.989</td> <td>    4.631</td>
+</tr>
+<tr>
+  <th>古い持ち家割合</th>     <td>    0.0007</td> <td>    0.013</td> <td>    0.052</td> <td> 0.958</td> <td>   -0.025</td> <td>    0.027</td>
+</tr>
+<tr>
+  <th>雇用センターまでの距離</th> <td>   -1.4756</td> <td>    0.199</td> <td>   -7.398</td> <td> 0.000</td> <td>   -1.867</td> <td>   -1.084</td>
+</tr>
+<tr>
+  <th>高速道路へのアクセス</th>  <td>    0.3060</td> <td>    0.066</td> <td>    4.613</td> <td> 0.000</td> <td>    0.176</td> <td>    0.436</td>
+</tr>
+<tr>
+  <th>固定資産税率</th>      <td>   -0.0123</td> <td>    0.004</td> <td>   -3.280</td> <td> 0.001</td> <td>   -0.020</td> <td>   -0.005</td>
+</tr>
+<tr>
+  <th>生徒と教師の比率</th>    <td>   -0.9527</td> <td>    0.131</td> <td>   -7.283</td> <td> 0.000</td> <td>   -1.210</td> <td>   -0.696</td>
+</tr>
+<tr>
+  <th>黒人比率</th>        <td>    0.0093</td> <td>    0.003</td> <td>    3.467</td> <td> 0.001</td> <td>    0.004</td> <td>    0.015</td>
+</tr>
+<tr>
+  <th>低所得層割合</th>      <td>   -0.5248</td> <td>    0.051</td> <td>  -10.347</td> <td> 0.000</td> <td>   -0.624</td> <td>   -0.425</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>178.041</td> <th>  Durbin-Watson:     </th> <td>   1.078</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 783.126</td> 
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.521</td>  <th>  Prob(JB):          </th> <td>8.84e-171</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 8.281</td>  <th>  Cond. No.          </th> <td>1.51e+04</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 1.51e+04. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （参考: 切片が不要の場合）</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">boston</span><span class="p">[</span><span class="s1">&#39;中央価格&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;犯罪率&#39;</span><span class="p">:</span><span class="s1">&#39;低所得層割合&#39;</span><span class="p">]</span>
+<span class="c1"># X = sm.add_constant(X) # a=0の場合、この行は不要</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>中央価格</td>       <th>  R-squared (uncentered):</th>      <td>   0.959</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.958</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>   891.3</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 17 Jan 2022</td> <th>  Prob (F-statistic):</th>           <td>  0.00</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>14:10:35</td>     <th>  Log-Likelihood:    </th>          <td> -1523.8</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th>          <td>   3074.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   493</td>      <th>  BIC:               </th>          <td>   3128.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    13</td>      <th>                     </th>              <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>              <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+       <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>犯罪率</th>         <td>   -0.0929</td> <td>    0.034</td> <td>   -2.699</td> <td> 0.007</td> <td>   -0.161</td> <td>   -0.025</td>
+</tr>
+<tr>
+  <th>住宅地割合</th>       <td>    0.0487</td> <td>    0.014</td> <td>    3.382</td> <td> 0.001</td> <td>    0.020</td> <td>    0.077</td>
+</tr>
+<tr>
+  <th>非小売業種割合</th>     <td>   -0.0041</td> <td>    0.064</td> <td>   -0.063</td> <td> 0.950</td> <td>   -0.131</td> <td>    0.123</td>
+</tr>
+<tr>
+  <th>河川への隣接</th>      <td>    2.8540</td> <td>    0.904</td> <td>    3.157</td> <td> 0.002</td> <td>    1.078</td> <td>    4.630</td>
+</tr>
+<tr>
+  <th>窒素酸化物濃度</th>     <td>   -2.8684</td> <td>    3.359</td> <td>   -0.854</td> <td> 0.394</td> <td>   -9.468</td> <td>    3.731</td>
+</tr>
+<tr>
+  <th>平均部屋数</th>       <td>    5.9281</td> <td>    0.309</td> <td>   19.178</td> <td> 0.000</td> <td>    5.321</td> <td>    6.535</td>
+</tr>
+<tr>
+  <th>古い持ち家割合</th>     <td>   -0.0073</td> <td>    0.014</td> <td>   -0.526</td> <td> 0.599</td> <td>   -0.034</td> <td>    0.020</td>
+</tr>
+<tr>
+  <th>雇用センターまでの距離</th> <td>   -0.9685</td> <td>    0.196</td> <td>   -4.951</td> <td> 0.000</td> <td>   -1.353</td> <td>   -0.584</td>
+</tr>
+<tr>
+  <th>高速道路へのアクセス</th>  <td>    0.1712</td> <td>    0.067</td> <td>    2.564</td> <td> 0.011</td> <td>    0.040</td> <td>    0.302</td>
+</tr>
+<tr>
+  <th>固定資産税率</th>      <td>   -0.0094</td> <td>    0.004</td> <td>   -2.395</td> <td> 0.017</td> <td>   -0.017</td> <td>   -0.002</td>
+</tr>
+<tr>
+  <th>生徒と教師の比率</th>    <td>   -0.3922</td> <td>    0.110</td> <td>   -3.570</td> <td> 0.000</td> <td>   -0.608</td> <td>   -0.176</td>
+</tr>
+<tr>
+  <th>黒人比率</th>        <td>    0.0149</td> <td>    0.003</td> <td>    5.528</td> <td> 0.000</td> <td>    0.010</td> <td>    0.020</td>
+</tr>
+<tr>
+  <th>低所得層割合</th>      <td>   -0.4163</td> <td>    0.051</td> <td>   -8.197</td> <td> 0.000</td> <td>   -0.516</td> <td>   -0.317</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>204.082</td> <th>  Durbin-Watson:     </th> <td>   0.999</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>1374.225</td> 
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.609</td>  <th>  Prob(JB):          </th> <td>3.90e-299</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td>10.404</td>  <th>  Cond. No.          </th> <td>8.50e+03</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] R² is computed without centering (uncentered) since the model does not contain a constant.<br/>[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[3] The condition number is large, 8.5e+03. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<ul class="simple">
+<li><p>R と似たような記述ができる formula 形式を使うこともできる。</p>
+<ul>
+<li><p>R との違いは <a class="reference external" href="https://patsy.readthedocs.io/en/latest/R-comparison.html">patsyのドキュメント</a></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method from_formula in module statsmodels.base.model:
+
+from_formula(formula, data, subset=None, drop_cols=None, *args, **kwargs) method of builtins.type instance
+    Create a Model from a formula and dataframe.
+    
+    Parameters
+    ----------
+    formula : str or generic Formula object
+        The formula specifying the model.
+    data : array_like
+        The data for the model. See Notes.
+    subset : array_like
+        An array-like object of booleans, integers, or index values that
+        indicate the subset of df to use in the model. Assumes df is a
+        `pandas.DataFrame`.
+    drop_cols : array_like
+        Columns to drop from the design matrix.  Cannot be used to
+        drop terms involving categoricals.
+    *args
+        Additional positional argument that are passed to the model.
+    **kwargs
+        These are passed to the model with one exception. The
+        ``eval_env`` keyword is passed to patsy. It can be either a
+        :class:`patsy:patsy.EvalEnvironment` object or an integer
+        indicating the depth of the namespace to use. For example, the
+        default ``eval_env=0`` uses the calling namespace. If you wish
+        to use a &quot;clean&quot; environment set ``eval_env=-1``.
+    
+    Returns
+    -------
+    model
+        The model instance.
+    
+    Notes
+    -----
+    data must define __getitem__ with the keys in the formula terms
+    args and kwargs are passed on to the model instantiation. E.g.,
+    a numpy structured or rec array, a dictionary, or a pandas DataFrame.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （参考： formula形式）</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;中央価格~</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])),</span> <span class="n">data</span><span class="o">=</span><span class="n">boston</span><span class="p">)</span>
+<span class="n">fit2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit2</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>中央価格</td>       <th>  R-squared:         </th> <td>   0.741</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.734</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   108.1</td> 
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 17 Jan 2022</td> <th>  Prob (F-statistic):</th> <td>6.72e-135</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>13:56:42</td>     <th>  Log-Likelihood:    </th> <td> -1498.8</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   506</td>      <th>  AIC:               </th> <td>   3026.</td> 
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   492</td>      <th>  BIC:               </th> <td>   3085.</td> 
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    13</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+       <td></td>          <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>   <td>   36.4595</td> <td>    5.103</td> <td>    7.144</td> <td> 0.000</td> <td>   26.432</td> <td>   46.487</td>
+</tr>
+<tr>
+  <th>犯罪率</th>         <td>   -0.1080</td> <td>    0.033</td> <td>   -3.287</td> <td> 0.001</td> <td>   -0.173</td> <td>   -0.043</td>
+</tr>
+<tr>
+  <th>住宅地割合</th>       <td>    0.0464</td> <td>    0.014</td> <td>    3.382</td> <td> 0.001</td> <td>    0.019</td> <td>    0.073</td>
+</tr>
+<tr>
+  <th>非小売業種割合</th>     <td>    0.0206</td> <td>    0.061</td> <td>    0.334</td> <td> 0.738</td> <td>   -0.100</td> <td>    0.141</td>
+</tr>
+<tr>
+  <th>河川への隣接</th>      <td>    2.6867</td> <td>    0.862</td> <td>    3.118</td> <td> 0.002</td> <td>    0.994</td> <td>    4.380</td>
+</tr>
+<tr>
+  <th>窒素酸化物濃度</th>     <td>  -17.7666</td> <td>    3.820</td> <td>   -4.651</td> <td> 0.000</td> <td>  -25.272</td> <td>  -10.262</td>
+</tr>
+<tr>
+  <th>平均部屋数</th>       <td>    3.8099</td> <td>    0.418</td> <td>    9.116</td> <td> 0.000</td> <td>    2.989</td> <td>    4.631</td>
+</tr>
+<tr>
+  <th>古い持ち家割合</th>     <td>    0.0007</td> <td>    0.013</td> <td>    0.052</td> <td> 0.958</td> <td>   -0.025</td> <td>    0.027</td>
+</tr>
+<tr>
+  <th>雇用センターまでの距離</th> <td>   -1.4756</td> <td>    0.199</td> <td>   -7.398</td> <td> 0.000</td> <td>   -1.867</td> <td>   -1.084</td>
+</tr>
+<tr>
+  <th>高速道路へのアクセス</th>  <td>    0.3060</td> <td>    0.066</td> <td>    4.613</td> <td> 0.000</td> <td>    0.176</td> <td>    0.436</td>
+</tr>
+<tr>
+  <th>固定資産税率</th>      <td>   -0.0123</td> <td>    0.004</td> <td>   -3.280</td> <td> 0.001</td> <td>   -0.020</td> <td>   -0.005</td>
+</tr>
+<tr>
+  <th>生徒と教師の比率</th>    <td>   -0.9527</td> <td>    0.131</td> <td>   -7.283</td> <td> 0.000</td> <td>   -1.210</td> <td>   -0.696</td>
+</tr>
+<tr>
+  <th>黒人比率</th>        <td>    0.0093</td> <td>    0.003</td> <td>    3.467</td> <td> 0.001</td> <td>    0.004</td> <td>    0.015</td>
+</tr>
+<tr>
+  <th>低所得層割合</th>      <td>   -0.5248</td> <td>    0.051</td> <td>  -10.347</td> <td> 0.000</td> <td>   -0.624</td> <td>   -0.425</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>178.041</td> <th>  Durbin-Watson:     </th> <td>   1.078</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 783.126</td> 
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.521</td>  <th>  Prob(JB):          </th> <td>8.84e-171</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 8.281</td>  <th>  Cond. No.          </th> <td>1.51e+04</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 1.51e+04. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>最小二乗法にも複数の種類がある。今回は、Ordinary Least Squares(OLS)を取り上げた。</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="correlation_coefficient.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">相関係数 (correlation coefficient)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="stats_overview.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stats Overview</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By ryok<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
