@@ -54,7 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Stats Overview" href="stats_overview.html" />
+    <link rel="next" title="ロジットモデル (logit model)" href="logit_model.html" />
     <link rel="prev" title="相関係数 (correlation coefficient)" href="correlation_coefficient.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,6 +118,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logit_model.html">
+   ロジットモデル (logit model)
   </a>
  </li>
  <li class="toctree-l1">
@@ -419,35 +424,30 @@
 <div class="section" id="id1">
 <h2>用語の整理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<table class="text-center border">
-    <tr class="background-dark">
-        <th class="border-right-bold" rowspan="2"></th>
-        <th rowspan="2">概要</th>
-        <th rowspan="2">$Y$</th>
-        <th class="border-right-none" rowspan="2">$X$</th>
-        <th class="border-bottom border-left-none" colspan="2"></th>
-    </tr>
-    <tr class="background-dark">
-        <th>変数の数</th>
-        <th>分析の名称</th>
-    </tr>
-    <tr class="background-bright">
-        <th class="background-dark border-right-bold border-bottom" rowspan="2">回帰分析</th>
-        <td class="text-left" rowspan="2">1つの変数を他の変数で説明する</td>
-        <td rowspan="2">従属変数<br />目的変数</td>
-        <td rowspan="2">独立変数<br />説明変数</td>
-        <td>1つ</td>
-        <td>単回帰分析</td>
-    </tr>
-    <tr class="background-bright">
-        <td>複数</td>
-        <td>重回帰分析</td>
-    </tr>
-    <tr class="background-bright">
-        <th class="background-dark border-right-bold border-bottom">相関分析</th>
-        <td class="text-left">変数間の関係の有無を調べる</td>
-    </tr>
-</table>
+<ul class="simple">
+<li><p>相関分析</p>
+<ul>
+<li><p>変数間の関係の有無を調べる</p></li>
+</ul>
+</li>
+<li><p>回帰分析</p>
+<ul>
+<li><p>ひとつの変数を他の変数で説明する</p></li>
+<li><p>変数 <span class="math notranslate nohighlight">\(Y\)</span> : 従属変数（または目的変数）</p></li>
+<li><p>変数 <span class="math notranslate nohighlight">\(X\)</span> : 独立変数（または説明変数）</p></li>
+</ul>
+</li>
+<li><p><strong>単回帰分析</strong></p>
+<ul>
+<li><p>回帰分析のうち、独立変数<span class="math notranslate nohighlight">\(X\)</span> がひとつのもの</p></li>
+</ul>
+</li>
+<li><p><strong>重回帰分析</strong></p>
+<ul>
+<li><p>回帰分析のうち、独立変数<span class="math notranslate nohighlight">\(X\)</span> が二つ以上のもの</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id2">
 <h2>データの構造式と最小二乗法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -607,25 +607,24 @@ R ^{2} =1-\frac
 <hr class="docutils" />
 <ul class="simple">
 <li><p>標本分布が正規分布なので、正規分布の区間推定と同様に行えば良い。</p></li>
-<li><p>パッケージを使う場合は信頼区間 (confidence interval) と予測区間 (prediction interval) の違いに気をつける。</p></li>
+<li><p>パッケージを使う場合は信頼区間 (confidence interval) と予測区間 (prediction interval) の違いに気をつける。</p>
+<ul>
+<li><p>信頼区間</p>
+<ul>
+<li><p>標本抽出を繰り返して母数 (母平均や母回帰係数など) を推定すると一定割合 (95%など) の予測値が収まると考えられる区間</p></li>
+<li><p>例： 回帰係数 <span class="math notranslate nohighlight">\(a,\ b\)</span> の推定量 <span class="math notranslate nohighlight">\(\hat{a},\ \hat{b}\)</span> の推定区間</p></li>
 </ul>
-<table class="border">
-    <tr class="text-center background-dark">
-        <th class="border-right-bold"></th>
-        <th>概要</th>
-        <th>回帰分析での例</th>
-    </tr>
-    <tr class="text-left background-bright">
-        <th class="text-center background-dark border-right-bold border-bottom">信頼区間</th>
-        <td>標本抽出を繰り返して母数 (母平均や母回帰係数など) を推定すると一定割合 (95%など) の予測値が収まると考えられる区間</td>
-        <td>回帰係数 $a,\ b$ の推定量 $\hat{a},\ \hat{b}$ の推定区間</td>
-    </tr>
-    <tr class="text-left background-bright">
-        <th class="text-center background-dark border-right-bold border-bottom">予測区間</th>
-        <td>標本抽出を繰り返すと一定割合 (95%など) の標本が入ると考えられる区間</td>
-        <td>$\epsilon$ の分散 $\sigma ^2$ の推定量 $s^2$ の推定区間</td>
-    </tr>
-</table><div class="cell docutils container">
+</li>
+<li><p>予測区間</p>
+<ul>
+<li><p>標本抽出を繰り返すと一定割合 (95%など) の標本が入ると考えられる区間</p></li>
+<li><p>例: <span class="math notranslate nohighlight">\(\epsilon\)</span> の分散 <span class="math notranslate nohighlight">\(\sigma ^2\)</span> の推定量 <span class="math notranslate nohighlight">\(s^2\)</span> の推定区間</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers.regression_analysis</span> <span class="kn">import</span> <span class="n">interval</span>
 <span class="n">interval</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1569,10 +1568,10 @@ from_formula(formula, data, subset=None, drop_cols=None, *args, **kwargs) method
             <p class="prev-next-title">相関係数 (correlation coefficient)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="stats_overview.html" title="next page">
+    <a class='right-next' id="next-link" href="logit_model.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Stats Overview</p>
+        <p class="prev-next-title">ロジットモデル (logit model)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
