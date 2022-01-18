@@ -126,8 +126,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="stats_overview.html">
-   Stats Overview
+  <a class="reference internal" href="decision_tree.html">
+   決定木 (decision tree)
   </a>
  </li>
 </ul>
@@ -597,7 +597,7 @@ R ^{2} =1-\frac
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "cec8939fbe6c474a95985eef07237599", "version_major": 2, "version_minor": 0}
+{"model_id": "e7ef52e2c5ee41fb9350d011c2f6a8b8", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
@@ -633,7 +633,7 @@ R ^{2} =1-\frac
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dda1346367884d6ea399a9d97afa69ac", "version_major": 2, "version_minor": 0}
+{"model_id": "0e786c99d652420c81cb54afc5b6d2cf", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
@@ -1368,13 +1368,6 @@ class OLS(WLS)
 </tr>
 </table><br/><br/>Notes:<br/>[1] R² is computed without centering (uncentered) since the model does not contain a constant.<br/>[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[3] The condition number is large, 8.5e+03. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</div></div>
 </div>
-<ul class="simple">
-<li><p>R と似たような記述ができる formula 形式を使うこともできる。</p>
-<ul>
-<li><p>R との違いは <a class="reference external" href="https://patsy.readthedocs.io/en/latest/R-comparison.html">patsyのドキュメント</a></p></li>
-</ul>
-</li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">)</span>

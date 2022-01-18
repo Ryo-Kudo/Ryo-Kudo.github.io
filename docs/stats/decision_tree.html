@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>決定木 (decision tree) &#8212; Tech×MBA -ryok</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/gtag.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="チームビルディング" href="../0101_team_development.html" />
+    <link rel="prev" title="ロジットモデル (logit model)" href="logit_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/me.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Tech×MBA -ryok</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Tech×MBA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0101_team_development.html">
+   チームビルディング
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_leadership.html">
+   リーダーシップ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_motivation.html">
+   モチベーション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_personality.html">
+   個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/decision_tree.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/decision_tree.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   決定木モデルの例
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   分岐の基準（不純度）
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   予測
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>決定木 (decision tree)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   決定木モデルの例
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   分岐の基準（不純度）
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   予測
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="decision-tree">
+<h1>決定木 (decision tree)<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>IF文の連続で結果を予測するモデルである。</p>
+<ul>
+<li><p>精度は低いが、結果に対する説明力 (理由の理解しやすさ) が高い。説明力が重要なプロジェクトでよく用いられる。</p></li>
+<li><p>説明力が高いため、説明力の低い他のモデル（深層学習など）と併用して使われることがある。</p></li>
+<li><p>数値データとカテゴリデータが混在していても、使うことができる。</p></li>
+<li><p>回帰モデルと分類モデルの両方に使うことができる。</p></li>
+</ul>
+</li>
+<li><p>元のデータを根 (root) ・分類の最終点を葉 (leaf) ・根から葉に至る途中を枝 (branch) と呼ぶ。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">import</span> <span class="nn">pydotplus</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>PyDotPlusは決定木などの可視化に便利なPythonライブラリである。<a class="reference external" href="https://pypi.org/project/pydotplus/">pydotplus-PyPI</a></p></li>
+<li><p>Graphvizと合わせてインストールすることで、可視化が可能になるので、余力のある人は両方インストールした方が良い。<a class="reference external" href="https://graphviz.org/download/">Graphviz公式</a></p></li>
+</ul>
+<div class="section" id="id1">
+<h2>決定木モデルの例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>推骨の手術後の猫背の有無（present, absent）を、月齢や関連する推骨の数から予測する、決定木モデルを例として取り上げる。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの読み込みと確認</span>
+<span class="n">kyphosis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/kyphosis.csv&#39;</span><span class="p">)</span>
+<span class="n">kyphosis</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">kyphosis</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">kyphosis</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>術後の猫背の有無</th>
+      <th>月齢</th>
+      <th>関係する椎骨の数</th>
+      <th>手術した椎骨の最初の番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>76</th>
+      <td>present</td>
+      <td>157</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>absent</td>
+      <td>26</td>
+      <td>7</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>absent</td>
+      <td>120</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>present</td>
+      <td>42</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>absent</td>
+      <td>36</td>
+      <td>4</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 変数の格納</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">kyphosis</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">kyphosis</span><span class="p">[</span><span class="s1">&#39;術後の猫背の有無&#39;</span><span class="p">]</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">kyphosis</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">kyphosis</span><span class="p">[</span><span class="s1">&#39;術後の猫背の有無&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+
+<span class="c1"># 可視化</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span>
+                           <span class="n">class_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">create_png</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/decision_tree_5_0.png" src="../../_images/decision_tree_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>分岐の基準（不純度）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>情報の不純度が最も下がるように、枝が分岐している。</p>
+<ul>
+<li><p>分類の場合、1つのクラスだけで葉が構築されていれば不純度は低く、様々なクラスが混じっていると不純度は高くなる。</p></li>
+<li><p>不純度の指標としては<strong>ジニ不純度</strong>や<strong>エントロピー</strong>が用いられる。</p>
+<ul>
+<li><p>サンプルに含まれるクラスの数を <span class="math notranslate nohighlight">\(c\)</span>、クラス <span class="math notranslate nohighlight">\(i\)</span> に属するサンプルの割合を <span class="math notranslate nohighlight">\(P_i\)</span> とすると、以下のように表すことができる。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ジニ不純度： <span class="math notranslate nohighlight">\({\displaystyle I_{G} =1-\sum ^{c}_{i=1} p^{2}_{i}}\)</span><br />
+エントロピー： <span class="math notranslate nohighlight">\({\displaystyle I_{H} =-\sum ^{c}_{i=1} p_{i} \cdot log( p_{i})}\)</span></p>
+<p><img alt="ジニ不純度とエントロピー" src="../../_images/decision_tree_01.png" /></p>
+</div>
+<div class="section" id="python">
+<h2>Pythonでの実行方法<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>sklearn.tree.DecisionTreeClassifier を用いる。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 関数の情報を確認</span>
+<span class="n">help</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class DecisionTreeClassifier in module sklearn.tree._classes:
+
+class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
+ |  DecisionTreeClassifier(*, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, class_weight=None, ccp_alpha=0.0)
+ |  
+ |  A decision tree classifier.
+ |  
+ |  Read more in the :ref:`User Guide &lt;tree&gt;`.
+ |  
+ |  Parameters
+ |  ----------
+ |  criterion : {&quot;gini&quot;, &quot;entropy&quot;}, default=&quot;gini&quot;
+ |      The function to measure the quality of a split. Supported criteria are
+ |      &quot;gini&quot; for the Gini impurity and &quot;entropy&quot; for the information gain.
+ |  
+ |  splitter : {&quot;best&quot;, &quot;random&quot;}, default=&quot;best&quot;
+ |      The strategy used to choose the split at each node. Supported
+ |      strategies are &quot;best&quot; to choose the best split and &quot;random&quot; to choose
+ |      the best random split.
+ |  
+ |  max_depth : int, default=None
+ |      The maximum depth of the tree. If None, then nodes are expanded until
+ |      all leaves are pure or until all leaves contain less than
+ |      min_samples_split samples.
+ |  
+ |  min_samples_split : int or float, default=2
+ |      The minimum number of samples required to split an internal node:
+ |  
+ |      - If int, then consider `min_samples_split` as the minimum number.
+ |      - If float, then `min_samples_split` is a fraction and
+ |        `ceil(min_samples_split * n_samples)` are the minimum
+ |        number of samples for each split.
+ |  
+ |      .. versionchanged:: 0.18
+ |         Added float values for fractions.
+ |  
+ |  min_samples_leaf : int or float, default=1
+ |      The minimum number of samples required to be at a leaf node.
+ |      A split point at any depth will only be considered if it leaves at
+ |      least ``min_samples_leaf`` training samples in each of the left and
+ |      right branches.  This may have the effect of smoothing the model,
+ |      especially in regression.
+ |  
+ |      - If int, then consider `min_samples_leaf` as the minimum number.
+ |      - If float, then `min_samples_leaf` is a fraction and
+ |        `ceil(min_samples_leaf * n_samples)` are the minimum
+ |        number of samples for each node.
+ |  
+ |      .. versionchanged:: 0.18
+ |         Added float values for fractions.
+ |  
+ |  min_weight_fraction_leaf : float, default=0.0
+ |      The minimum weighted fraction of the sum total of weights (of all
+ |      the input samples) required to be at a leaf node. Samples have
+ |      equal weight when sample_weight is not provided.
+ |  
+ |  max_features : int, float or {&quot;auto&quot;, &quot;sqrt&quot;, &quot;log2&quot;}, default=None
+ |      The number of features to consider when looking for the best split:
+ |  
+ |          - If int, then consider `max_features` features at each split.
+ |          - If float, then `max_features` is a fraction and
+ |            `int(max_features * n_features)` features are considered at each
+ |            split.
+ |          - If &quot;auto&quot;, then `max_features=sqrt(n_features)`.
+ |          - If &quot;sqrt&quot;, then `max_features=sqrt(n_features)`.
+ |          - If &quot;log2&quot;, then `max_features=log2(n_features)`.
+ |          - If None, then `max_features=n_features`.
+ |  
+ |      Note: the search for a split does not stop until at least one
+ |      valid partition of the node samples is found, even if it requires to
+ |      effectively inspect more than ``max_features`` features.
+ |  
+ |  random_state : int, RandomState instance or None, default=None
+ |      Controls the randomness of the estimator. The features are always
+ |      randomly permuted at each split, even if ``splitter`` is set to
+ |      ``&quot;best&quot;``. When ``max_features &lt; n_features``, the algorithm will
+ |      select ``max_features`` at random at each split before finding the best
+ |      split among them. But the best found split may vary across different
+ |      runs, even if ``max_features=n_features``. That is the case, if the
+ |      improvement of the criterion is identical for several splits and one
+ |      split has to be selected at random. To obtain a deterministic behaviour
+ |      during fitting, ``random_state`` has to be fixed to an integer.
+ |      See :term:`Glossary &lt;random_state&gt;` for details.
+ |  
+ |  max_leaf_nodes : int, default=None
+ |      Grow a tree with ``max_leaf_nodes`` in best-first fashion.
+ |      Best nodes are defined as relative reduction in impurity.
+ |      If None then unlimited number of leaf nodes.
+ |  
+ |  min_impurity_decrease : float, default=0.0
+ |      A node will be split if this split induces a decrease of the impurity
+ |      greater than or equal to this value.
+ |  
+ |      The weighted impurity decrease equation is the following::
+ |  
+ |          N_t / N * (impurity - N_t_R / N_t * right_impurity
+ |                              - N_t_L / N_t * left_impurity)
+ |  
+ |      where ``N`` is the total number of samples, ``N_t`` is the number of
+ |      samples at the current node, ``N_t_L`` is the number of samples in the
+ |      left child, and ``N_t_R`` is the number of samples in the right child.
+ |  
+ |      ``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum,
+ |      if ``sample_weight`` is passed.
+ |  
+ |      .. versionadded:: 0.19
+ |  
+ |  min_impurity_split : float, default=0
+ |      Threshold for early stopping in tree growth. A node will split
+ |      if its impurity is above the threshold, otherwise it is a leaf.
+ |  
+ |      .. deprecated:: 0.19
+ |         ``min_impurity_split`` has been deprecated in favor of
+ |         ``min_impurity_decrease`` in 0.19. The default value of
+ |         ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it
+ |         will be removed in 1.0 (renaming of 0.25).
+ |         Use ``min_impurity_decrease`` instead.
+ |  
+ |  class_weight : dict, list of dict or &quot;balanced&quot;, default=None
+ |      Weights associated with classes in the form ``{class_label: weight}``.
+ |      If None, all classes are supposed to have weight one. For
+ |      multi-output problems, a list of dicts can be provided in the same
+ |      order as the columns of y.
+ |  
+ |      Note that for multioutput (including multilabel) weights should be
+ |      defined for each class of every column in its own dict. For example,
+ |      for four-class multilabel classification weights should be
+ |      [{0: 1, 1: 1}, {0: 1, 1: 5}, {0: 1, 1: 1}, {0: 1, 1: 1}] instead of
+ |      [{1:1}, {2:5}, {3:1}, {4:1}].
+ |  
+ |      The &quot;balanced&quot; mode uses the values of y to automatically adjust
+ |      weights inversely proportional to class frequencies in the input data
+ |      as ``n_samples / (n_classes * np.bincount(y))``
+ |  
+ |      For multi-output, the weights of each column of y will be multiplied.
+ |  
+ |      Note that these weights will be multiplied with sample_weight (passed
+ |      through the fit method) if sample_weight is specified.
+ |  
+ |  ccp_alpha : non-negative float, default=0.0
+ |      Complexity parameter used for Minimal Cost-Complexity Pruning. The
+ |      subtree with the largest cost complexity that is smaller than
+ |      ``ccp_alpha`` will be chosen. By default, no pruning is performed. See
+ |      :ref:`minimal_cost_complexity_pruning` for details.
+ |  
+ |      .. versionadded:: 0.22
+ |  
+ |  Attributes
+ |  ----------
+ |  classes_ : ndarray of shape (n_classes,) or list of ndarray
+ |      The classes labels (single output problem),
+ |      or a list of arrays of class labels (multi-output problem).
+ |  
+ |  feature_importances_ : ndarray of shape (n_features,)
+ |      The impurity-based feature importances.
+ |      The higher, the more important the feature.
+ |      The importance of a feature is computed as the (normalized)
+ |      total reduction of the criterion brought by that feature.  It is also
+ |      known as the Gini importance [4]_.
+ |  
+ |      Warning: impurity-based feature importances can be misleading for
+ |      high cardinality features (many unique values). See
+ |      :func:`sklearn.inspection.permutation_importance` as an alternative.
+ |  
+ |  max_features_ : int
+ |      The inferred value of max_features.
+ |  
+ |  n_classes_ : int or list of int
+ |      The number of classes (for single output problems),
+ |      or a list containing the number of classes for each
+ |      output (for multi-output problems).
+ |  
+ |  n_features_ : int
+ |      The number of features when ``fit`` is performed.
+ |  
+ |  n_outputs_ : int
+ |      The number of outputs when ``fit`` is performed.
+ |  
+ |  tree_ : Tree instance
+ |      The underlying Tree object. Please refer to
+ |      ``help(sklearn.tree._tree.Tree)`` for attributes of Tree object and
+ |      :ref:`sphx_glr_auto_examples_tree_plot_unveil_tree_structure.py`
+ |      for basic usage of these attributes.
+ |  
+ |  See Also
+ |  --------
+ |  DecisionTreeRegressor : A decision tree regressor.
+ |  
+ |  Notes
+ |  -----
+ |  The default values for the parameters controlling the size of the trees
+ |  (e.g. ``max_depth``, ``min_samples_leaf``, etc.) lead to fully grown and
+ |  unpruned trees which can potentially be very large on some data sets. To
+ |  reduce memory consumption, the complexity and size of the trees should be
+ |  controlled by setting those parameter values.
+ |  
+ |  The :meth:`predict` method operates using the :func:`numpy.argmax`
+ |  function on the outputs of :meth:`predict_proba`. This means that in
+ |  case the highest predicted probabilities are tied, the classifier will
+ |  predict the tied class with the lowest index in :term:`classes_`.
+ |  
+ |  References
+ |  ----------
+ |  
+ |  .. [1] https://en.wikipedia.org/wiki/Decision_tree_learning
+ |  
+ |  .. [2] L. Breiman, J. Friedman, R. Olshen, and C. Stone, &quot;Classification
+ |         and Regression Trees&quot;, Wadsworth, Belmont, CA, 1984.
+ |  
+ |  .. [3] T. Hastie, R. Tibshirani and J. Friedman. &quot;Elements of Statistical
+ |         Learning&quot;, Springer, 2009.
+ |  
+ |  .. [4] L. Breiman, and A. Cutler, &quot;Random Forests&quot;,
+ |         https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
+ |  
+ |  Examples
+ |  --------
+ |  &gt;&gt;&gt; from sklearn.datasets import load_iris
+ |  &gt;&gt;&gt; from sklearn.model_selection import cross_val_score
+ |  &gt;&gt;&gt; from sklearn.tree import DecisionTreeClassifier
+ |  &gt;&gt;&gt; clf = DecisionTreeClassifier(random_state=0)
+ |  &gt;&gt;&gt; iris = load_iris()
+ |  &gt;&gt;&gt; cross_val_score(clf, iris.data, iris.target, cv=10)
+ |  ...                             # doctest: +SKIP
+ |  ...
+ |  array([ 1.     ,  0.93...,  0.86...,  0.93...,  0.93...,
+ |          0.93...,  0.93...,  1.     ,  0.93...,  1.      ])
+ |  
+ |  Method resolution order:
+ |      DecisionTreeClassifier
+ |      sklearn.base.ClassifierMixin
+ |      BaseDecisionTree
+ |      sklearn.base.MultiOutputMixin
+ |      sklearn.base.BaseEstimator
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, *, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, class_weight=None, ccp_alpha=0.0)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  fit(self, X, y, sample_weight=None, check_input=True, X_idx_sorted=&#39;deprecated&#39;)
+ |      Build a decision tree classifier from the training set (X, y).
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The training input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csc_matrix``.
+ |      
+ |      y : array-like of shape (n_samples,) or (n_samples, n_outputs)
+ |          The target values (class labels) as integers or strings.
+ |      
+ |      sample_weight : array-like of shape (n_samples,), default=None
+ |          Sample weights. If None, then samples are equally weighted. Splits
+ |          that would create child nodes with net zero or negative weight are
+ |          ignored while searching for a split in each node. Splits are also
+ |          ignored if they would result in any single class carrying a
+ |          negative weight in either child node.
+ |      
+ |      check_input : bool, default=True
+ |          Allow to bypass several input checking.
+ |          Don&#39;t use this parameter unless you know what you do.
+ |      
+ |      X_idx_sorted : deprecated, default=&quot;deprecated&quot;
+ |          This parameter is deprecated and has no effect.
+ |          It will be removed in 1.1 (renaming of 0.26).
+ |      
+ |          .. deprecated :: 0.24
+ |      
+ |      Returns
+ |      -------
+ |      self : DecisionTreeClassifier
+ |          Fitted estimator.
+ |  
+ |  predict_log_proba(self, X)
+ |      Predict class log-probabilities of the input samples X.
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csr_matrix``.
+ |      
+ |      Returns
+ |      -------
+ |      proba : ndarray of shape (n_samples, n_classes) or list of n_outputs             such arrays if n_outputs &gt; 1
+ |          The class log-probabilities of the input samples. The order of the
+ |          classes corresponds to that in the attribute :term:`classes_`.
+ |  
+ |  predict_proba(self, X, check_input=True)
+ |      Predict class probabilities of the input samples X.
+ |      
+ |      The predicted class probability is the fraction of samples of the same
+ |      class in a leaf.
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csr_matrix``.
+ |      
+ |      check_input : bool, default=True
+ |          Allow to bypass several input checking.
+ |          Don&#39;t use this parameter unless you know what you do.
+ |      
+ |      Returns
+ |      -------
+ |      proba : ndarray of shape (n_samples, n_classes) or list of n_outputs             such arrays if n_outputs &gt; 1
+ |          The class probabilities of the input samples. The order of the
+ |          classes corresponds to that in the attribute :term:`classes_`.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __abstractmethods__ = frozenset()
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from sklearn.base.ClassifierMixin:
+ |  
+ |  score(self, X, y, sample_weight=None)
+ |      Return the mean accuracy on the given test data and labels.
+ |      
+ |      In multi-label classification, this is the subset accuracy
+ |      which is a harsh metric since you require for each sample that
+ |      each label set be correctly predicted.
+ |      
+ |      Parameters
+ |      ----------
+ |      X : array-like of shape (n_samples, n_features)
+ |          Test samples.
+ |      
+ |      y : array-like of shape (n_samples,) or (n_samples, n_outputs)
+ |          True labels for `X`.
+ |      
+ |      sample_weight : array-like of shape (n_samples,), default=None
+ |          Sample weights.
+ |      
+ |      Returns
+ |      -------
+ |      score : float
+ |          Mean accuracy of ``self.predict(X)`` wrt. `y`.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from sklearn.base.ClassifierMixin:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from BaseDecisionTree:
+ |  
+ |  apply(self, X, check_input=True)
+ |      Return the index of the leaf that each sample is predicted as.
+ |      
+ |      .. versionadded:: 0.17
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csr_matrix``.
+ |      
+ |      check_input : bool, default=True
+ |          Allow to bypass several input checking.
+ |          Don&#39;t use this parameter unless you know what you do.
+ |      
+ |      Returns
+ |      -------
+ |      X_leaves : array-like of shape (n_samples,)
+ |          For each datapoint x in X, return the index of the leaf x
+ |          ends up in. Leaves are numbered within
+ |          ``[0; self.tree_.node_count)``, possibly with gaps in the
+ |          numbering.
+ |  
+ |  cost_complexity_pruning_path(self, X, y, sample_weight=None)
+ |      Compute the pruning path during Minimal Cost-Complexity Pruning.
+ |      
+ |      See :ref:`minimal_cost_complexity_pruning` for details on the pruning
+ |      process.
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The training input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csc_matrix``.
+ |      
+ |      y : array-like of shape (n_samples,) or (n_samples, n_outputs)
+ |          The target values (class labels) as integers or strings.
+ |      
+ |      sample_weight : array-like of shape (n_samples,), default=None
+ |          Sample weights. If None, then samples are equally weighted. Splits
+ |          that would create child nodes with net zero or negative weight are
+ |          ignored while searching for a split in each node. Splits are also
+ |          ignored if they would result in any single class carrying a
+ |          negative weight in either child node.
+ |      
+ |      Returns
+ |      -------
+ |      ccp_path : :class:`~sklearn.utils.Bunch`
+ |          Dictionary-like object, with the following attributes.
+ |      
+ |          ccp_alphas : ndarray
+ |              Effective alphas of subtree during pruning.
+ |      
+ |          impurities : ndarray
+ |              Sum of the impurities of the subtree leaves for the
+ |              corresponding alpha value in ``ccp_alphas``.
+ |  
+ |  decision_path(self, X, check_input=True)
+ |      Return the decision path in the tree.
+ |      
+ |      .. versionadded:: 0.18
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csr_matrix``.
+ |      
+ |      check_input : bool, default=True
+ |          Allow to bypass several input checking.
+ |          Don&#39;t use this parameter unless you know what you do.
+ |      
+ |      Returns
+ |      -------
+ |      indicator : sparse matrix of shape (n_samples, n_nodes)
+ |          Return a node indicator CSR matrix where non zero elements
+ |          indicates that the samples goes through the nodes.
+ |  
+ |  get_depth(self)
+ |      Return the depth of the decision tree.
+ |      
+ |      The depth of a tree is the maximum distance between the root
+ |      and any leaf.
+ |      
+ |      Returns
+ |      -------
+ |      self.tree_.max_depth : int
+ |          The maximum depth of the tree.
+ |  
+ |  get_n_leaves(self)
+ |      Return the number of leaves of the decision tree.
+ |      
+ |      Returns
+ |      -------
+ |      self.tree_.n_leaves : int
+ |          Number of leaves.
+ |  
+ |  predict(self, X, check_input=True)
+ |      Predict class or regression value for X.
+ |      
+ |      For a classification model, the predicted class for each sample in X is
+ |      returned. For a regression model, the predicted value based on X is
+ |      returned.
+ |      
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix} of shape (n_samples, n_features)
+ |          The input samples. Internally, it will be converted to
+ |          ``dtype=np.float32`` and if a sparse matrix is provided
+ |          to a sparse ``csr_matrix``.
+ |      
+ |      check_input : bool, default=True
+ |          Allow to bypass several input checking.
+ |          Don&#39;t use this parameter unless you know what you do.
+ |      
+ |      Returns
+ |      -------
+ |      y : array-like of shape (n_samples,) or (n_samples, n_outputs)
+ |          The predicted classes, or the predict values.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from BaseDecisionTree:
+ |  
+ |  feature_importances_
+ |      Return the feature importances.
+ |      
+ |      The importance of a feature is computed as the (normalized) total
+ |      reduction of the criterion brought by that feature.
+ |      It is also known as the Gini importance.
+ |      
+ |      Warning: impurity-based feature importances can be misleading for
+ |      high cardinality features (many unique values). See
+ |      :func:`sklearn.inspection.permutation_importance` as an alternative.
+ |      
+ |      Returns
+ |      -------
+ |      feature_importances_ : ndarray of shape (n_features,)
+ |          Normalized total reduction of criteria by feature
+ |          (Gini importance).
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from sklearn.base.BaseEstimator:
+ |  
+ |  __getstate__(self)
+ |  
+ |  __repr__(self, N_CHAR_MAX=700)
+ |      Return repr(self).
+ |  
+ |  __setstate__(self, state)
+ |  
+ |  get_params(self, deep=True)
+ |      Get parameters for this estimator.
+ |      
+ |      Parameters
+ |      ----------
+ |      deep : bool, default=True
+ |          If True, will return the parameters for this estimator and
+ |          contained subobjects that are estimators.
+ |      
+ |      Returns
+ |      -------
+ |      params : dict
+ |          Parameter names mapped to their values.
+ |  
+ |  set_params(self, **params)
+ |      Set the parameters of this estimator.
+ |      
+ |      The method works on simple estimators as well as on nested objects
+ |      (such as :class:`~sklearn.pipeline.Pipeline`). The latter have
+ |      parameters of the form ``&lt;component&gt;__&lt;parameter&gt;`` so that it&#39;s
+ |      possible to update each component of a nested object.
+ |      
+ |      Parameters
+ |      ----------
+ |      **params : dict
+ |          Estimator parameters.
+ |      
+ |      Returns
+ |      -------
+ |      self : estimator instance
+ |          Estimator instance.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの読み込みと確認</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">categories</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>virginica</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 変数の格納</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span>
+
+<span class="c1"># モデルの構築</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 可視化</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span>
+                           <span class="n">class_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">create_png</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/decision_tree_11_0.png" src="../../_images/decision_tree_11_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>予測<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>新たなデータの予測には predict メソッドを用いる。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特徴ラベルの確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sepal length (cm)&#39;, &#39;sepal width (cm)&#39;, &#39;petal length (cm)&#39;, &#39;petal width (cm)&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 試しに、sepal length=5.1cm, sepal width=3.5cm, petal length=1.4cm, petal width=0.2cm のデータを入力し、結果を見る。</span>
+<span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">5.1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 出力[0]がどのクラスであったかを確認</span>
+<span class="n">class_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;setosa&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="logit_model.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">ロジットモデル (logit model)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../0101_team_development.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">チームビルディング</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By ryok<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

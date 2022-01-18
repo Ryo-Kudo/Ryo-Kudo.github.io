@@ -54,8 +54,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="チームビルディング" href="../0101_team_development.html" />
-    <link rel="prev" title="ロジットモデル (logit model)" href="logit_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +102,7 @@
   統計 with Python
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization.html">
    グラフの表示 (visualization)
@@ -125,9 +123,9 @@
    ロジットモデル (logit model)
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Stats Overview
+ <li class="toctree-l1">
+  <a class="reference internal" href="decision_tree.html">
+   決定木 (decision tree)
   </a>
  </li>
 </ul>
@@ -513,7 +511,7 @@ where \cdots  f(z) = \dfrac{1}{1+e^{-z}}
 <h3>ランダムフォレスト, Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="stat-random-forest">
 <img alt="Random Forest" src="../../_images/stat_02.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Random Forest</span><a class="headerlink" href="#stat-random-forest" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Random Forest</span><a class="headerlink" href="#stat-random-forest" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -546,7 +544,7 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
 </ul>
 <div class="figure align-default" id="confusion-matrix">
 <img alt="The Confusion Matrix" src="../../_images/stat_03.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The Confusion Matrix</span><a class="headerlink" href="#confusion-matrix" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The Confusion Matrix</span><a class="headerlink" href="#confusion-matrix" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>Matrixの内容</p>
@@ -593,7 +591,7 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
 <p>２つの事象に相関関係が見られたからといって、そこに因果関係があるとは限らない。</p>
 <div class="figure align-default" id="tylervigen">
 <img alt="モッツァレラチーズの消費量と土木工学博士号の授与数" src="../../_images/stat_04.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">モッツァレラチーズの消費量と土木工学博士号の授与数 (<a class="reference external" href="http://www.tylervigen.com/spurious-correlations">http://www.tylervigen.com/spurious-correlations</a>)</span><a class="headerlink" href="#tylervigen" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">モッツァレラチーズの消費量と土木工学博士号の授与数 (<a class="reference external" href="http://www.tylervigen.com/spurious-correlations">http://www.tylervigen.com/spurious-correlations</a>)</span><a class="headerlink" href="#tylervigen" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>疑似相関に注意し、考えながら分析を行う必要がある。</p></li>
@@ -625,21 +623,7 @@ MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="logit_model.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ロジットモデル (logit model)</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../0101_team_development.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">チームビルディング</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
