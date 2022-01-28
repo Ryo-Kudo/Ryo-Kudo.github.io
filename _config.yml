@@ -39,8 +39,3 @@ html:
 html:
   extra_navbar : <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   extra_footer : <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-# Additional Config
-# sphinx:
-#   config:
-#     html_extra_path: ['docs/stats/helper']
