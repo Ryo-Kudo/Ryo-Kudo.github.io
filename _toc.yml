@@ -2,13 +2,28 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: docs/0000_intro
-chapters:
+root: index
+# chapters:
 # - file: markdown
 # - file: notebooks
 # - file: docs/2022-01-10-OB
-- file: docs/0101_team_development
-- file: docs/0201_leadership
-- file: docs/0201_motivation
-- file: docs/0201_personality
-- file: references
+parts:
+  - caption: 統計 with Python
+    numbered: false
+    chapters:
+    - file: docs/stats/visualization
+    - file: docs/stats/correlation_coefficient
+    - file: docs/stats/regression_analysis
+    - file: docs/stats/logit_model
+    - file: docs/stats/decision_tree
+#    - file: docs/stats/stats_overview
+  - caption: 組織行動学
+    numbered: false
+    chapters:
+    - file: docs/0101_team_development
+    - file: docs/0201_leadership
+    - file: docs/0201_motivation
+    - file: docs/0201_personality
+  - caption: 　
+    chapters:
+    - file: references

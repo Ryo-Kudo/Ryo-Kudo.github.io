@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>チームの成果を最大化するためにできること &#8212; Tech×MBA -ryok</title>
+    <title>チームビルディング &#8212; Tech×MBA -ryok</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -40,6 +40,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/gtag.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -52,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="リーダーシップ" href="0201_leadership.html" />
-    <link rel="prev" title="はじめに" href="0000_intro.html" />
+    <link rel="prev" title="決定木 (decision tree)" href="stats/decision_tree.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,15 +92,52 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0000_intro.html">
-   はじめに
+  <a class="reference internal" href="../index.html">
+   Tech×MBA
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   チームの成果を最大化するためにできること
+   チームビルディング
   </a>
  </li>
  <li class="toctree-l1">
@@ -117,6 +155,12 @@
    個人の性格・特性
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../references.html">
    References
@@ -128,7 +172,7 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 </div>
@@ -174,22 +218,6 @@
 
             <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/Ryo-Kudo/tech-mba"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/Ryo-Kudo/tech-mba/issues/new?title=Issue%20on%20page%20%2Fdocs/0101_team_development.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -229,6 +257,11 @@
      GirsickのPunctuated Equilibrium Model
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     多様性のあるチームは高いポテンシャルを持つ
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -237,14 +270,14 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
+    <a class="reference internal nav-link" href="#id8">
      チームが潜在的なパフォーマンスを下回る5つの要因
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id9">
    （参考）その他
   </a>
  </li>
@@ -258,7 +291,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>チームの成果を最大化するためにできること</h1>
+                <h1>チームビルディング</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -288,6 +321,11 @@
      GirsickのPunctuated Equilibrium Model
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     多様性のあるチームは高いポテンシャルを持つ
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -296,14 +334,14 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
+    <a class="reference internal nav-link" href="#id8">
      チームが潜在的なパフォーマンスを下回る5つの要因
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id9">
    （参考）その他
   </a>
  </li>
@@ -317,16 +355,17 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>チームの成果を最大化するためにできること<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>チームビルディング<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>チームの成果を最大化するために、リーダーが意識するべき大事なポイントを紹介する。</p>
 <div class="section" id="group-team">
-<span id="section-label"></span><h2>Group ではなく、Team を目指す。<a class="headerlink" href="#group-team" title="Permalink to this headline">¶</a></h2>
+<h2>Group ではなく、Team を目指す。<a class="headerlink" href="#group-team" title="Permalink to this headline">¶</a></h2>
 <p>「複数人が集まって仕事をすれば、それはチームだ。」という人が多いかもしれない。しかし、それだけでは本質的な意味ではチームとは言えない。</p>
 <div class="figure align-default" id="team-group">
 <img alt="TeamとGroup" src="../_images/teamwork_01.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Team と Group の違い</span><a class="headerlink" href="#team-group" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
-<li><p>Groupは単に共通の目的のために複数人で取り組んでいるだけ。Groupの主目的は、あくまで、情報共有である。</p>
+<li><p>Groupは、共通の目的のために複数人で取り組んでいるだけである。Groupの主目的は、あくまで、情報共有である。</p>
 <ul>
 <li><p><em>過去に私が所属した組織の中にも、今思えば「あれはTeamではなく、”Group”だった…」と感じるグループがある…。そういう”Group”のリーダーやメンバーは組織行動学を知らない。まずは知って、意識することが大切である。</em></p></li>
 </ul>
@@ -381,28 +420,41 @@
 <img alt="TuchmanのFive stages model" src="../_images/teamwork_02.png" />
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Five Stages Model, Tuchman</span><a class="headerlink" href="#five-stages-model" title="Permalink to this image">¶</a></p>
 </div>
-<p>※ 上記は、<span id="id3">[<a class="reference internal" href="../references.html#id8">Tuc65</a>]</span>の4 stagesにAdjurningを加えた、より一般的に認知されているモデルである。</p>
+<p>※ 上記は、<span id="id3">[<a class="reference internal" href="../references.html#id3">Tuc65</a>]</span>の4 stagesにAdjurningを加えた、より一般的に認知されているモデルである。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="girsickpunctuated-equilibrium-model">
 <h3>GirsickのPunctuated Equilibrium Model<a class="headerlink" href="#girsickpunctuated-equilibrium-model" title="Permalink to this headline">¶</a></h3>
-<p>チーム結成から締め切りまでのチーム効率の上がり方を実験から導いたモデルである。チーム結成から締め切りまで時間のうち、半分程度を過ぎると、やっとチームでの効率向上を実感できるようになる。  下図は、<span id="id4">[<a class="reference internal" href="../references.html#id7">Ger88</a>]</span>を元に作成した。</p>
+<p>チーム結成から締め切りまでのチーム効率の上がり方を実験から導いたモデルである。チーム結成から締め切りまで時間のうち、半分程度を過ぎると、やっとチームでの効率向上を実感できるようになる。  下図は、<span id="id4">[<a class="reference internal" href="../references.html#id2">Ger88</a>]</span>を元に作成した。</p>
 <div class="figure align-default" id="punctuated">
 <img alt="Punctuated Equilibrium Model, Gersick(1988)" src="../_images/teamwork_04.png" />
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Punctuated Equilibrium Model, Gersick(1988)</span><a class="headerlink" href="#punctuated" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>これはあくまでモデルだが、チーム結成初期にうまくいかないのは当たり前だと知ることが重要である。</p></li>
-<li><p>「バネは縮めるほどに高く遠くへ飛ぶ」という比喩と言っていることが近い。これを、実験的にも正しいことをGersickは示している。</p></li>
+<li><p>「バネが高く遠くへ飛ぶには、縮む期間が必要だ」という比喩と言っていることが近い。これを、実験的にも正しいことをGersickは示している。</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h3>多様性のあるチームは高いポテンシャルを持つ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>同質的（Homogeneous）なチームは、同じ意見を持ち、非常に早くスタートできるので、ビジネスの成長も早い。しかし、同質的なチームは、スタートは速いものの、時間が経つとイノベーションが起こらずに停滞する。<br />
+逆に、多様性(Diverse)のあるチームは、まとまるまでに時間がかかるが、一旦仕事がうまく進み始めると、長期的にはイノベーションを起こす可能性が高い。その成長は指数関数的である。<span id="id6">[<a class="reference internal" href="../references.html#id4">Hal18</a>]</span></p>
+<div class="figure align-default" id="diverse-teams">
+<img alt="Impact of diversity on team performance" src="../_images/Diverse-Teams-Chart.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Impact of diversity on team performance</span><a class="headerlink" href="#diverse-teams" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>多様性のあるチームほど、まとまるまでが難しい。難しいチームだな、と感じた時こそ、このグラフを思い出すし、根気強く取り組むべきである。</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="team">
 <h2>Teamがうまくいかない主要因を知り、対策をする。<a class="headerlink" href="#team" title="Permalink to this headline">¶</a></h2>
-<p>チームで仕事をすることは”良いこと”だと教わったことがあるだろう<a class="footnote-reference brackets" href="#id9" id="id5">1</a>。しかし、メリットばかりではない。リーダーはチームワークのデメリットを知り、それを解消するように努めなければならない。</p>
-<div class="section" id="id6">
-<h3>チームが潜在的なパフォーマンスを下回る5つの要因<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>チームで仕事をすることは”良いこと”だと教わったことがあるだろう<a class="footnote-reference brackets" href="#id11" id="id7">1</a>。しかし、メリットばかりではない。リーダーはチームワークのデメリットを知り、それを解消するように努めなければならない。</p>
+<div class="section" id="id8">
+<h3>チームが潜在的なパフォーマンスを下回る5つの要因<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>特に「Groupthink」「Cognitive biases」は重要かつ難しいため、別で項目を立て、説明する予定である。</p>
 <ul class="simple">
 <li><p>Information and interest asymmetries （情報や関心の非対称）</p>
@@ -434,15 +486,14 @@
 </ul>
 <div class="figure align-default" id="groupthink">
 <img alt="Groupthinkのイメージ" src="../_images/groupthink.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Groupthinkのイメージ</span><a class="headerlink" href="#groupthink" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Groupthinkのイメージ</span><a class="headerlink" href="#groupthink" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id7">
-<h2>（参考）その他<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>（参考）その他<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>その他のチームシナジーを妨げる要因について、参考に情報を載せる。</p>
-<div class="toggle docutils container">
 <ul class="simple">
 <li><p>Common Information Effect</p>
 <ul>
@@ -471,20 +522,20 @@
 <ul>
 <li><p>グループの目標設定をする。</p></li>
 <li><p>グループ間競争を促進する。</p></li>
-<li><p><strong>Peer Evaluationを導入する。</strong><a class="footnote-reference brackets" href="#id10" id="id8">2</a></p></li>
+<li><p><strong>Peer Evaluationを導入する。</strong><a class="footnote-reference brackets" href="#id12" id="id10">2</a></p></li>
 <li><p>個人の貢献度に応じて、グループ報酬の配分を変える。</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</div>
+<hr class="docutils" />
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id7">1</a></span></dt>
 <dd><p>留学中に話したサウジアラビア人は、「チームで仕事をする必要はない。成果の大きさは圧倒的な才能を持った個人の有無に依存する。」と言っていて驚いた。もしかしたら、チームでやることに囚われているのは日本人だけなのかも？</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id8">2</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id10">2</a></span></dt>
 <dd><p>日本の大きな企業ではPeer Evaluationをもっと導入すべきだと感じる。売り上げ以外にも貢献している人はいるので、周囲のメンバーへ協力的になることへのインセンティブが働くようになるだろう。</p>
 </dd>
 </dl>
@@ -516,11 +567,11 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="0000_intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="stats/decision_tree.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">はじめに</p>
+            <p class="prev-next-title">決定木 (decision tree)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="0201_leadership.html" title="next page">
@@ -540,6 +591,9 @@
       By ryok<br/>
     
         &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
   </p>
 </footer>
 </main>

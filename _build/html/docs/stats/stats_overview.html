@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stats Overview &#8212; Tech×MBA -ryok</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/gtag.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/me.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Tech×MBA -ryok</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Tech×MBA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0101_team_development.html">
+   チームビルディング
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_leadership.html">
+   リーダーシップ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_motivation.html">
+   モチベーション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_personality.html">
+   個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/stats_overview.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-mining">
+   Data Mining とは？
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression">
+     線形回帰, Linear Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression">
+     ロジスティック回帰, Logistic Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-tree">
+     回帰木, Regression Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-tree">
+     分類木, Classification Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-forest">
+     ランダムフォレスト, Random Forest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   モデル評価方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#osr-2-out-of-sample-r-2">
+     OSR
+     <span class="math notranslate nohighlight">
+      \(^2\)
+     </span>
+     , Out of Sample R
+     <span class="math notranslate nohighlight">
+      \(^2\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-absolute-error">
+     Mean Absolute Error
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-confusion-matrix">
+     混合行列, The Confusion Matrix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （参考）
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Stats Overview</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-mining">
+   Data Mining とは？
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regression">
+     線形回帰, Linear Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression">
+     ロジスティック回帰, Logistic Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-tree">
+     回帰木, Regression Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-tree">
+     分類木, Classification Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-forest">
+     ランダムフォレスト, Random Forest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   モデル評価方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#osr-2-out-of-sample-r-2">
+     OSR
+     <span class="math notranslate nohighlight">
+      \(^2\)
+     </span>
+     , Out of Sample R
+     <span class="math notranslate nohighlight">
+      \(^2\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-absolute-error">
+     Mean Absolute Error
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-confusion-matrix">
+     混合行列, The Confusion Matrix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （参考）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="stats-overview">
+<h1>Stats Overview<a class="headerlink" href="#stats-overview" title="Permalink to this headline">¶</a></h1>
+<p>（2022.Jan 日々、追記中…）</p>
+<p>ビジネスデータからデータマイニングをする機会や、初めての人にやり方を教える機会が多い。データ分析には数多くの手法があるが、その内の基本的なものについて、<strong>重要な点を短時間で復習するための情報</strong>を、本ページに記述する。</p>
+<p><em>（例えば、正規分布、中心極限定理、信頼区間、検定などの話はここでは触れない。統計学の基礎については、良い書籍やwebがたくさんあるのでそちらを見た方が良い。）</em></p>
+<div class="section" id="data-mining">
+<h2>Data Mining とは？<a class="headerlink" href="#data-mining" title="Permalink to this headline">¶</a></h2>
+<p>“データマイニングとは、変数間の一貫した規則性や関係性を求め、データを探索するための分析プロセスである。さらに、その発見した規則性を新しいデータセットに適用することで、その発見の正確さを検証する。データマイニングの最終的な目的は、予測である。” (<a class="reference external" href="https://www.tibco.com/reference-center/what-is-data-mining">https://www.tibco.com/reference-center/what-is-data-mining</a>)</p>
+<p>具体的には、データマイニングで作成した予測モデルは、企業や個人の意思決定に活用される。特に、マーケティングの課題解決でのニーズが高い。</p>
+<p>統計学やデータマイニングは、MBAでも必修科目に入るほど、有効なビジネス課題解決手法として認識されている。学ばない手はない。</p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<!--
+:::{figure-md} stat_methods
+![Methods](/assets/media/stat_01.png)
+
+Methods / toolkit
+:::
+-->
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Regression (従属変数が連続)</p></th>
+<th class="head"><p>Classification (従属変数がカテゴリー)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Linear Regression</p></td>
+<td><p>Logistic Regression</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>Multinominal Logistic Regression</p></td>
+</tr>
+<tr class="row-even"><td><p>Regression Tree</p></td>
+<td><p>Classification Tree</p></td>
+</tr>
+<tr class="row-odd"><td><p>Random Forest</p></td>
+<td><p>Random Forest</p></td>
+</tr>
+<tr class="row-even"><td><p>Artificial Neural Network</p></td>
+<td><p>Artificial Neural Network</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lasso Regression</p></td>
+<td><p>Linear Discriminant Analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="linear-regression">
+<h3>線形回帰, Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \cdots + \beta_k x_{ki} + \epsilon = \hat{y_i} + \epsilon_i
+\]</div>
+<ul class="simple">
+<li><p>従属連続変数 (Dependent continuous variable): <span class="math notranslate nohighlight">\(y\)</span></p></li>
+<li><p>独立変数 (Independent / explanatory variables): <span class="math notranslate nohighlight">\(x_1, x_2, \cdots , x_k\)</span></p></li>
+<li><p>Goal: 以下のSSEを最小にするような<span class="math notranslate nohighlight">\(\beta_0, \beta_1, \cdots , \beta_k\)</span> のセットを見つける。</p>
+<ul>
+<li><p>SSE: <span class="math notranslate nohighlight">\(\Sigma ^n _{i=1} \epsilon ^2 _i = \Sigma ^n _{i=1} (y_i - \hat{y_i})^2 \)</span></p></li>
+</ul>
+</li>
+<li><p>Example: <span class="math notranslate nohighlight">\(\hat{y} = 10 + 2x_1 + 5x_2\)</span></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python コードを追記予定</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>注意点</p>
+<ul>
+<li><p>多重共線性, Multicolinerarity</p></li>
+<li><p>内生性・同時性, Endogeneity / Simultaneity</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="logistic-regression">
+<h3>ロジスティック回帰, Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+P(Y=1) = f(\beta_0 + \beta_1 x_{1} + \beta_2 x_{2} + \cdots + \beta_k x_{k})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+where \cdots  f(z) = \dfrac{1}{1+e^{-z}}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(z)\)</span> はロジスティック関数</p></li>
+<li><p>Goal: （大雑把に言えば）良い予測を実現する <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \cdots , \beta_k\)</span> のセットを見つける。</p></li>
+</ul>
+</div>
+<div class="section" id="regression-tree">
+<h3>回帰木, Regression Tree<a class="headerlink" href="#regression-tree" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="classification-tree">
+<h3>分類木, Classification Tree<a class="headerlink" href="#classification-tree" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="random-forest">
+<h3>ランダムフォレスト, Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="stat-random-forest">
+<img alt="Random Forest" src="../../_images/stat_02.png" />
+<p class="caption"><span class="caption-text">Random Forest</span><a class="headerlink" href="#stat-random-forest" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>モデル評価方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="osr-2-out-of-sample-r-2">
+<h3>OSR<span class="math notranslate nohighlight">\(^2\)</span>, Out of Sample R<span class="math notranslate nohighlight">\(^2\)</span><a class="headerlink" href="#osr-2-out-of-sample-r-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span>が連続値の時に利用できる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+OSR^2 = 1- \dfrac{\Sigma ^n _{i=1} ( y_{test, i} - \hat{y}_{test, i} )^2 }{\Sigma ^n _{i=1} ( y_{test, i} - \bar{y}_{training} )^2}
+\]</div>
+</div>
+<div class="section" id="mean-absolute-error">
+<h3>Mean Absolute Error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span>が連続値の時に利用できる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+MAE = 1- \dfrac{\Sigma ^n _{i=1} | y_{test, i} - \hat{y}_{test, i} | }{n}
+\]</div>
+</div>
+<div class="section" id="the-confusion-matrix">
+<h3>混合行列, The Confusion Matrix<a class="headerlink" href="#the-confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span>がカテゴリ値の時に利用できる。</p></li>
+</ul>
+<div class="figure align-default" id="confusion-matrix">
+<img alt="The Confusion Matrix" src="../../_images/stat_03.png" />
+<p class="caption"><span class="caption-text">The Confusion Matrix</span><a class="headerlink" href="#confusion-matrix" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Matrixの内容</p>
+<ul>
+<li><p>True Positives</p>
+<ul>
+<li><p>予測値<span class="math notranslate nohighlight">\(\hat{Y}=1\)</span>、実測値<span class="math notranslate nohighlight">\(Y=1\)</span></p></li>
+</ul>
+</li>
+<li><p>True Negatives</p>
+<ul>
+<li><p>予測値<span class="math notranslate nohighlight">\(\hat{Y}=0\)</span>、実測値<span class="math notranslate nohighlight">\(Y=0\)</span></p></li>
+</ul>
+</li>
+<li><p>False Positives (Type I error)</p>
+<ul>
+<li><p>予測値<span class="math notranslate nohighlight">\(\hat{Y}=1\)</span>、実測値<span class="math notranslate nohighlight">\(Y=0\)</span></p></li>
+</ul>
+</li>
+<li><p>False Negatives (Type II error)</p>
+<ul>
+<li><p>予測値<span class="math notranslate nohighlight">\(\hat{Y}=1\)</span>、実測値<span class="math notranslate nohighlight">\(Y=0\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Matrix評価のための重要な3指標</p>
+<ul>
+<li><p>Accuracy: <span class="math notranslate nohighlight">\(\dfrac{TN + TP}{TOTAL}\)</span></p></li>
+<li><p>Sensitivity: <span class="math notranslate nohighlight">\(\dfrac{TP}{TP + FN} = \dfrac{TP}{Actual \, Positives}\)</span></p></li>
+<li><p>Specificity: <span class="math notranslate nohighlight">\(\dfrac{TN}{TN + FP} = \dfrac{TN}{Actual \, Negatives}\)</span></p></li>
+</ul>
+</li>
+<li><p>Goal: 基本的には <span class="math notranslate nohighlight">\(TP\)</span>, <span class="math notranslate nohighlight">\(TN\)</span> を可能な限り増やし、<span class="math notranslate nohighlight">\(FP\)</span>, <span class="math notranslate nohighlight">\(FN\)</span> を可能な限り減らす。</p>
+<ul>
+<li><p>実際には、<span class="math notranslate nohighlight">\(FP\)</span>, <span class="math notranslate nohighlight">\(FN\)</span>がビジネスに及ぼす影響を理解し、どちらかの増大を許容することもある。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>（参考）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>２つの事象に相関関係が見られたからといって、そこに因果関係があるとは限らない。</p>
+<div class="figure align-default" id="tylervigen">
+<img alt="モッツァレラチーズの消費量と土木工学博士号の授与数" src="../../_images/stat_04.png" />
+<p class="caption"><span class="caption-text">モッツァレラチーズの消費量と土木工学博士号の授与数 (<a class="reference external" href="http://www.tylervigen.com/spurious-correlations">http://www.tylervigen.com/spurious-correlations</a>)</span><a class="headerlink" href="#tylervigen" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>疑似相関に注意し、考えながら分析を行う必要がある。</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By ryok<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

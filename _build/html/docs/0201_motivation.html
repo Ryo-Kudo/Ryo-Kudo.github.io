@@ -40,8 +40,11 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/gtag.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -91,15 +94,52 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0000_intro.html">
-   はじめに
+  <a class="reference internal" href="../index.html">
+   Tech×MBA
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0101_team_development.html">
-   チームの成果を最大化するためにできること
+   チームビルディング
   </a>
  </li>
  <li class="toctree-l1">
@@ -117,6 +157,12 @@
    個人の性格・特性
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../references.html">
    References
@@ -128,7 +174,7 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 </div>
@@ -174,22 +220,6 @@
 
             <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/Ryo-Kudo/tech-mba"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/Ryo-Kudo/tech-mba/issues/new?title=Issue%20on%20page%20%2Fdocs/0201_motivation.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -204,6 +234,68 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   モチベーションを維持するために本当に大切なこと
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   リーダーシップを用いて、どうやってモチベーションを向上させるか
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   モチベーションの理論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equity-theory">
+     Equity Theory, 公平性理論
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectancy-theory">
+     Expectancy Theory, 期待理論
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （参考）その他の補足的理論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     不満足を減らし、満足を増やすべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     基本的な欲求から順に満たすべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     本質的な報酬を与えるべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     自ら行動を選択させるべきである
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -216,6 +308,68 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   モチベーションを維持するために本当に大切なこと
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   リーダーシップを用いて、どうやってモチベーションを向上させるか
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   モチベーションの理論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equity-theory">
+     Equity Theory, 公平性理論
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectancy-theory">
+     Expectancy Theory, 期待理論
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （参考）その他の補足的理論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     不満足を減らし、満足を増やすべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     基本的な欲求から順に満たすべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     本質的な報酬を与えるべきである
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     自ら行動を選択させるべきである
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -224,6 +378,200 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>モチベーション<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>モチベーションが生じる原理を知ることで、自分や他者のモチベーションを意図的に上げ、高いチームパフォーマンスを維持できるようになる。</p>
+<p>モチベーションに関する研究やモデルはとても多い。先にまとめを述べ、それ以降に理論を紹介する。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>モチベーションを維持するために本当に大切なこと<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>報酬と期待値のバランスを取る。</p></li>
+<li><p>仕事の要素と、個人が本当に得たいもの・やりたいことのバランスを取る。<br />
+（keywords: 多様性、自律性、意味、アイデンティティ、挑戦、創造性）</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>リーダーシップを用いて、どうやってモチベーションを向上させるか<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>適切な仕事を与え、裁量と責任を与える。</p></li>
+<li><p>職場での公平性を確保する。</p></li>
+<li><p>自律性、達成感、目的意識を管理・促進する。</p></li>
+<li><p>仕事の意味や、関連性の理解を手伝う。</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h2>モチベーションの理論<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>特に、公平性理論と期待理論は、モチベーションを高く保つ仕組みづくりに重要である。</p>
+<div class="section" id="equity-theory">
+<h3>Equity Theory, 公平性理論<a class="headerlink" href="#equity-theory" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>人は、自分と他人の、<strong>”仕事量：報酬”の比率</strong>を比べ、公平になるように行動を変更する。
+例えば、仕事量を減らしたり、横領などで不当に報酬を得ようとする。
+（Equity Theory, 公平性理論）</p>
+</div>
+<p><strong>不公平と感じたとき、公平性を得るために人が取り得る５つの行動</strong></p>
+<ol class="simple">
+<li><p>仕事の量を減らす。</p></li>
+<li><p>報酬の量を増やす。<br />
+（報酬交渉などの正攻法を取りにくい場合、横領などに結びつく）</p></li>
+<li><p>仕事量、報酬の認識を自分の中で変える。<br />
+例えば、仕事量に負荷や難しさを考慮したり、報酬として給料以外の利得（福利厚生など）を考慮したりする。</p></li>
+<li><p>比較対象となる他人を変える。<br />
+例えば、もっと待遇の悪い他社の人と比べ、公平感を得る。</p></li>
+<li><p>現在の仕事をやめ、別のことを始める。</p></li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>本質的には、公平な”仕事量／報酬”比率を実現するべきである。
+不公平と感じ取られてしまった場合、こちらから”2. 報酬の量を増やす。”を提案することは可能である。また、上記の”3. 仕事量、報酬の認識を自分の中で変える。”を促し、実は公平であることに気づいてもらうことはできる。他の選択をこちらから押し付けることは悪い結果しか産まないだろう。</p>
+</div>
+<p><strong>人が公平だと感じる組織／職場に必要な３つの正義。</strong><br />
+以下を実現することで、メンバーに公平を感じてもらうことができる。
+（Justice and Equity Theory）</p>
+<ul class="simple">
+<li><p>Procedure Justice, 手続的正義<br />
+結果に至る過程が正しければ、評価される。</p></li>
+<li><p>Distributive Justice, 配分的正義<br />
+たくさん働けば、より多くの報酬が得られる。</p></li>
+<li><p>Interactional Justice, 相互作用的正義<br />
+敬意と尊厳をもって接してもらうことができる。</p></li>
+</ul>
+<div class="figure align-default" id="justice-equity">
+<img alt="Justice and Equity Theory" src="../_images/motivation_03.png" />
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Justice and Equity Theory</span><a class="headerlink" href="#justice-equity" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="expectancy-theory">
+<h3>Expectancy Theory, 期待理論<a class="headerlink" href="#expectancy-theory" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>人が実際に行動に移すかどうかは、結果が得られる期待値の高さと、
+その結果がその人にとって魅力的かどうかに依存する。（Expectancy Theory） <em>(Vroom, 1964)</em></p>
+</div>
+<p>最終的なモチベーション<span class="math notranslate nohighlight">\(M\)</span>は、以下のように表すことができる。</p>
+<div class="math notranslate nohighlight">
+\[
+M = (E \rightarrow P) \times (P \rightarrow O) \times I
+\]</div>
+<p>ただし、<span class="math notranslate nohighlight">\(E \rightarrow P\)</span> は努力が結果につながる確率、<span class="math notranslate nohighlight">\(P \rightarrow O\)</span> は結果が出た時に報酬がもらえる確率、<span class="math notranslate nohighlight">\(I\)</span> は報酬量である。努力したら、確実に成果がでて、確実に多くの報酬がもらえるのであれば、人のモチベーションは上がる。モチベーション量は上記の”積”でモデル化されているので、どれか一つでも <span class="math notranslate nohighlight">\(0\)</span> になるのであれば、モチベーションは <span class="math notranslate nohighlight">\(0\)</span> になる。</p>
+<p>メンバーのモチベーションを上げたいのであれば、<span class="math notranslate nohighlight">\(E \rightarrow P, P \rightarrow O, I\)</span> の全てが高水準の環境を作ることが効果的である。</p>
+<p>また、<strong>その人にとってはどんな報酬が魅力的であるのか</strong>を日頃のコミュニケーションで理解することが大切である。</p>
+<div class="figure align-default" id="id5">
+<img alt="Expectancy Theory" src="../_images/motivation_04.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Expectancy Theory</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>（参考）その他の補足的理論<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>今回の結論に直接関係はないが重要な理論をいくつか紹介する。</p>
+<div class="section" id="id7">
+<h3>不満足を減らし、満足を増やすべきである<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><strong>人には、「不満足を減らしたい」、「満足を増やしたい」という２種類のニーズがある。両方が満たされた時、人は高いモチベーションを持つ。</strong> <em>(Herzberg, 1959)</em></p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><strong>Hygiene factors: 不満要因</strong><br />
+痛みを避けたい、嫌なことを回避したいと言うニーズに直結する要素。不満要因を解消することで、初めてモチベーションは向上する。</p>
+<p class="card-text">例：</p>
+<ul class="simple">
+<li><p class="card-text">労働条件</p></li>
+<li><p class="card-text">給料</p></li>
+<li><p class="card-text">会社の方針</p></li>
+<li><p class="card-text">ステータス</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><strong>Motivators: 満足要因</strong><br />
+精神的に成長したいという欲求を満たすためのもの。Motivatorsを整えることで、より高い業績へと人を動機づけることができる。</p>
+<p class="card-text">例：</p>
+<ul class="simple">
+<li><p class="card-text">満足感</p></li>
+<li><p class="card-text">達成感</p></li>
+<li><p class="card-text">責任／仕事そのものの楽しさ</p></li>
+<li><p class="card-text">昇格／成長</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="herzberg">
+<img alt="Two-Factor Theory, Herzberg" src="../_images/motivation_02.png" />
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Two-Factor Theory, Herzberg</span><a class="headerlink" href="#herzberg" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>基本的な欲求から順に満たすべきである<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><strong>基本的な欲求が満たされていない場合、それよりも高次な欲求に対するモチベーションは働かない</strong>（マズローの欲求5段階説）。このモデルは何事にも適用することができるが、仕事においての例を以下に示す。より、低い階層の欲求が満たされていないと、それより上の階層の欲求に対して働きかけてもモチベーションは向上しない。</p>
+<p>（階層の高い順）</p>
+<ul class="simple">
+<li><p>Self-Actualization, 自己実現欲求</p>
+<ul>
+<li><p>仕事を通じて社会貢献をしたい。憧れの上司のようになりたい。</p></li>
+</ul>
+</li>
+<li><p>Self-Esteem, 承認欲求</p>
+<ul>
+<li><p>仕事の成果を認められたい。出世したい。</p></li>
+</ul>
+</li>
+<li><p>Social, 社会的欲求</p>
+<ul>
+<li><p>同僚や上司と良好な人間関係を築きたい。</p></li>
+</ul>
+</li>
+<li><p>Safety, 安全的欲求</p>
+<ul>
+<li><p>過重労働やハラスメントのない職場環境で働きたい。</p></li>
+</ul>
+</li>
+<li><p>Physiological, 生理的欲求</p>
+<ul>
+<li><p>生活のためにお金を稼ぎたい。</p></li>
+</ul>
+</li>
+</ul>
+<div class="figure align-default" id="maslow">
+<img alt="マズローの欲求5段階説, Maslow" src="../_images/motivation_01.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">マズローの欲求5段階説, Maslow</span><a class="headerlink" href="#maslow" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>本質的な報酬を与えるべきである<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>本質的に評価されていた行動に対して、非本質的な（表面的な）報酬を与えると、
+モチベーションのレベルが減ってしまう。（Cognitive Evaluation Theory）</p>
+</div>
+<p>例：自発的に勉強し、テストで良い結果を出した子供に対して……</p>
+<ul class="simple">
+<li><p>その行動とテスト結果の因果関係を誉める（＝本質的な報酬）<br />
+「あんなに毎日たくさん勉強をしたから、良い結果になったんだね。すごいね！」<br />
+⇒ モチベーションが向上する。</p></li>
+<li><p>お金を与えることで誉める（＝非本質的な報酬）<br />
+⇒ 自発的な勉強は減る。</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>仕事においても同様であり、メンバーの本質的な成果を理解・評価し、報酬を与えなければならない。</strong></p>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>自ら行動を選択させるべきである<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>人は行動を自分でコントロールしていると感じることを好む。（Self-Determination Theory, 自己決定理論）</p>
+<p>例えば、お金稼ぎのために働いている人は、やりたいという気持ちよりも、やらなければならないという気持ちが強いため、モチベーションが続きにくい。<strong>最終的に行動（タスク）をするかしないかの判断を、メンバーに自由に選択させる</strong>ことが理想的である。</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -275,6 +623,9 @@
       By ryok<br/>
     
         &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
   </p>
 </footer>
 </main>

@@ -1,0 +1,979 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>相関係数 (correlation coefficient) &#8212; Tech×MBA -ryok</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/gtag.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="回帰分析 (regression analysis)" href="regression_analysis.html" />
+    <link rel="prev" title="グラフの表示 (visualization)" href="visualization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/me.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Tech×MBA -ryok</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Tech×MBA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0101_team_development.html">
+   チームビルディング
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_leadership.html">
+   リーダーシップ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_motivation.html">
+   モチベーション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_personality.html">
+   個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/correlation_coefficient.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/correlation_coefficient.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   相関係数
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   相関行列
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   散布図行列と相関行列
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>相関係数 (correlation coefficient)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   相関係数
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   相関行列
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   散布図行列と相関行列
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="correlation-coefficient">
+<h1>相関係数 (correlation coefficient)<a class="headerlink" href="#correlation-coefficient" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>変数同士の線形な関係の度合いを数値化したものである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>相関係数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>相関係数は、 <span class="math notranslate nohighlight">\(-1\leqq r_{xy}\leqq 1\)</span> を満たし、<span class="math notranslate nohighlight">\(1\)</span>に近いほど正の相関が強く、<span class="math notranslate nohighlight">\(-1\)</span>に近いほど負の相関が強いことを意味する。</p></li>
+<li><p>通常、<span class="math notranslate nohighlight">\(|r_{xy}|&lt;0.2\)</span>のときは無相関と見なす。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers.correlation_coefficient</span> <span class="kn">import</span> <span class="n">correlation</span>
+<span class="n">correlation</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "25a060f92da348358763c24e4b2f49b3", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p><span class="math notranslate nohighlight">\(n\)</span> 組のデータ<span class="math notranslate nohighlight">\((x_1,\ y_1), (x_2,\ y_2),\dots,\ (x_n,\ y_n)\)</span>の相関係数<span class="math notranslate nohighlight">\(r_{xy}\)</span>を以下のように計算する。</p>
+<div class="math notranslate nohighlight">
+\[
+    \begin{align*}
+        r_{xy} = \dfrac{S_{xy}}{\sqrt{S_{xx} S_{yy}}}
+    \end{align*}
+\]</div>
+<p>ここで</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{align*}
+        S_{xy} &amp;= \Sigma ^n _{i=1} (x_i-\bar{x})(y_i-\bar{y}) = \Sigma x_i y_i - \dfrac{(\Sigma x_i)(\Sigma y_i)}{n} \\
+        S_{xx} &amp;= \Sigma ^n _{i=1} (x_i-\bar{x})^2 = \Sigma {x_i}^2 - \dfrac{(\Sigma x_i)^2}{n} \\
+        S_{yy} &amp;= \Sigma ^n _{i=1} (y_i-\bar{y})^2 = \Sigma {y_i}^2 - \dfrac{(\Sigma y_i)^2}{n} 
+    \end{align*}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>相関係数はあくまで<strong>線形な関係のみを捉える</strong>ため、変数同士に関係があっても、その関係が<strong>非線形な場合は捉えられない</strong>。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">helpers.correlation_coefficient</span> <span class="kn">import</span> <span class="n">non_linear</span>
+<span class="n">non_linear</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/correlation_coefficient_6_0.png" src="../../_images/correlation_coefficient_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>相関行列<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>変数が多く全ての変数の散布図行列を表示しにくい場合には、代わりに相関係数を用いた相関行列を利用することがある。</p></li>
+<li><p>Python: pandas.DataFrame.corr を用いる。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swiss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/swiss.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">swiss</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fertility</th>
+      <th>Agriculture</th>
+      <th>Examination</th>
+      <th>Education</th>
+      <th>Catholic</th>
+      <th>Infant.Mortality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Val de Ruz</th>
+      <td>77.6</td>
+      <td>37.6</td>
+      <td>15</td>
+      <td>7</td>
+      <td>4.97</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>ValdeTravers</th>
+      <td>67.6</td>
+      <td>18.7</td>
+      <td>25</td>
+      <td>7</td>
+      <td>8.65</td>
+      <td>19.5</td>
+    </tr>
+    <tr>
+      <th>V. De Geneve</th>
+      <td>35.0</td>
+      <td>1.2</td>
+      <td>37</td>
+      <td>53</td>
+      <td>42.34</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>Rive Droite</th>
+      <td>44.7</td>
+      <td>46.6</td>
+      <td>16</td>
+      <td>29</td>
+      <td>50.43</td>
+      <td>18.2</td>
+    </tr>
+    <tr>
+      <th>Rive Gauche</th>
+      <td>42.8</td>
+      <td>27.7</td>
+      <td>22</td>
+      <td>29</td>
+      <td>58.33</td>
+      <td>19.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#関数の説明を表示</span>
+<span class="n">help</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function corr in module pandas.core.frame:
+
+corr(self, method=&#39;pearson&#39;, min_periods=1) -&gt; &#39;DataFrame&#39;
+    Compute pairwise correlation of columns, excluding NA/null values.
+    
+    Parameters
+    ----------
+    method : {&#39;pearson&#39;, &#39;kendall&#39;, &#39;spearman&#39;} or callable
+        Method of correlation:
+    
+        * pearson : standard correlation coefficient
+        * kendall : Kendall Tau correlation coefficient
+        * spearman : Spearman rank correlation
+        * callable: callable with input two 1d ndarrays
+            and returning a float. Note that the returned matrix from corr
+            will have 1 along the diagonals and will be symmetric
+            regardless of the callable&#39;s behavior.
+    
+            .. versionadded:: 0.24.0
+    
+    min_periods : int, optional
+        Minimum number of observations required per pair of columns
+        to have a valid result. Currently only available for Pearson
+        and Spearman correlation.
+    
+    Returns
+    -------
+    DataFrame
+        Correlation matrix.
+    
+    See Also
+    --------
+    DataFrame.corrwith : Compute pairwise correlation with another
+        DataFrame or Series.
+    Series.corr : Compute the correlation between two Series.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; def histogram_intersection(a, b):
+    ...     v = np.minimum(a, b).sum().round(decimals=1)
+    ...     return v
+    &gt;&gt;&gt; df = pd.DataFrame([(.2, .3), (.0, .6), (.6, .0), (.2, .1)],
+    ...                   columns=[&#39;dogs&#39;, &#39;cats&#39;])
+    &gt;&gt;&gt; df.corr(method=histogram_intersection)
+          dogs  cats
+    dogs   1.0   0.3
+    cats   0.3   1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cor</span> <span class="o">=</span> <span class="n">swiss</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">cor</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fertility</th>
+      <th>Agriculture</th>
+      <th>Examination</th>
+      <th>Education</th>
+      <th>Catholic</th>
+      <th>Infant.Mortality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fertility</th>
+      <td>1.000000</td>
+      <td>0.353079</td>
+      <td>-0.645883</td>
+      <td>-0.663789</td>
+      <td>0.463685</td>
+      <td>0.416556</td>
+    </tr>
+    <tr>
+      <th>Agriculture</th>
+      <td>0.353079</td>
+      <td>1.000000</td>
+      <td>-0.686542</td>
+      <td>-0.639523</td>
+      <td>0.401095</td>
+      <td>-0.060859</td>
+    </tr>
+    <tr>
+      <th>Examination</th>
+      <td>-0.645883</td>
+      <td>-0.686542</td>
+      <td>1.000000</td>
+      <td>0.698415</td>
+      <td>-0.572742</td>
+      <td>-0.114022</td>
+    </tr>
+    <tr>
+      <th>Education</th>
+      <td>-0.663789</td>
+      <td>-0.639523</td>
+      <td>0.698415</td>
+      <td>1.000000</td>
+      <td>-0.153859</td>
+      <td>-0.099322</td>
+    </tr>
+    <tr>
+      <th>Catholic</th>
+      <td>0.463685</td>
+      <td>0.401095</td>
+      <td>-0.572742</td>
+      <td>-0.153859</td>
+      <td>1.000000</td>
+      <td>0.175496</td>
+    </tr>
+    <tr>
+      <th>Infant.Mortality</th>
+      <td>0.416556</td>
+      <td>-0.060859</td>
+      <td>-0.114022</td>
+      <td>-0.099322</td>
+      <td>0.175496</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>多くの場合、数値だけで表にするより、ヒートマップにした方が見やすい。</p>
+<ul>
+<li><p>seaborn.heatmap を用いる。</p></li>
+<li><p>vmin, vmax は設定しなければならない。設定しない場合、データ中の最小値・最大値を自動で使用してしまうので誤解を生む。</p></li>
+<li><p>cmap は中央が薄く、最小や最大に近づくほど色が濃いものを使用するとわかりやすい。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 関数の説明を表示</span>
+<span class="n">help</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function heatmap in module seaborn.matrix:
+
+heatmap(data, *, vmin=None, vmax=None, cmap=None, center=None, robust=False, annot=None, fmt=&#39;.2g&#39;, annot_kws=None, linewidths=0, linecolor=&#39;white&#39;, cbar=True, cbar_kws=None, cbar_ax=None, square=False, xticklabels=&#39;auto&#39;, yticklabels=&#39;auto&#39;, mask=None, ax=None, **kwargs)
+    Plot rectangular data as a color-encoded matrix.
+    
+    This is an Axes-level function and will draw the heatmap into the
+    currently-active Axes if none is provided to the ``ax`` argument.  Part of
+    this Axes space will be taken and used to plot a colormap, unless ``cbar``
+    is False or a separate Axes is provided to ``cbar_ax``.
+    
+    Parameters
+    ----------
+    data : rectangular dataset
+        2D dataset that can be coerced into an ndarray. If a Pandas DataFrame
+        is provided, the index/column information will be used to label the
+        columns and rows.
+    vmin, vmax : floats, optional
+        Values to anchor the colormap, otherwise they are inferred from the
+        data and other keyword arguments.
+    cmap : matplotlib colormap name or object, or list of colors, optional
+        The mapping from data values to color space. If not provided, the
+        default will depend on whether ``center`` is set.
+    center : float, optional
+        The value at which to center the colormap when plotting divergant data.
+        Using this parameter will change the default ``cmap`` if none is
+        specified.
+    robust : bool, optional
+        If True and ``vmin`` or ``vmax`` are absent, the colormap range is
+        computed with robust quantiles instead of the extreme values.
+    annot : bool or rectangular dataset, optional
+        If True, write the data value in each cell. If an array-like with the
+        same shape as ``data``, then use this to annotate the heatmap instead
+        of the data. Note that DataFrames will match on position, not index.
+    fmt : str, optional
+        String formatting code to use when adding annotations.
+    annot_kws : dict of key, value mappings, optional
+        Keyword arguments for :meth:`matplotlib.axes.Axes.text` when ``annot``
+        is True.
+    linewidths : float, optional
+        Width of the lines that will divide each cell.
+    linecolor : color, optional
+        Color of the lines that will divide each cell.
+    cbar : bool, optional
+        Whether to draw a colorbar.
+    cbar_kws : dict of key, value mappings, optional
+        Keyword arguments for :meth:`matplotlib.figure.Figure.colorbar`.
+    cbar_ax : matplotlib Axes, optional
+        Axes in which to draw the colorbar, otherwise take space from the
+        main Axes.
+    square : bool, optional
+        If True, set the Axes aspect to &quot;equal&quot; so each cell will be
+        square-shaped.
+    xticklabels, yticklabels : &quot;auto&quot;, bool, list-like, or int, optional
+        If True, plot the column names of the dataframe. If False, don&#39;t plot
+        the column names. If list-like, plot these alternate labels as the
+        xticklabels. If an integer, use the column names but plot only every
+        n label. If &quot;auto&quot;, try to densely plot non-overlapping labels.
+    mask : bool array or DataFrame, optional
+        If passed, data will not be shown in cells where ``mask`` is True.
+        Cells with missing values are automatically masked.
+    ax : matplotlib Axes, optional
+        Axes in which to draw the plot, otherwise use the currently-active
+        Axes.
+    kwargs : other keyword arguments
+        All other keyword arguments are passed to
+        :meth:`matplotlib.axes.Axes.pcolormesh`.
+    
+    Returns
+    -------
+    ax : matplotlib Axes
+        Axes object with the heatmap.
+    
+    See Also
+    --------
+    clustermap : Plot a matrix using hierachical clustering to arrange the
+                 rows and columns.
+    
+    Examples
+    --------
+    
+    Plot a heatmap for a numpy array:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; import numpy as np; np.random.seed(0)
+        &gt;&gt;&gt; import seaborn as sns; sns.set_theme()
+        &gt;&gt;&gt; uniform_data = np.random.rand(10, 12)
+        &gt;&gt;&gt; ax = sns.heatmap(uniform_data)
+    
+    Change the limits of the colormap:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(uniform_data, vmin=0, vmax=1)
+    
+    Plot a heatmap for data centered on 0 with a diverging colormap:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; normal_data = np.random.randn(10, 12)
+        &gt;&gt;&gt; ax = sns.heatmap(normal_data, center=0)
+    
+    Plot a dataframe with meaningful row and column labels:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; flights = sns.load_dataset(&quot;flights&quot;)
+        &gt;&gt;&gt; flights = flights.pivot(&quot;month&quot;, &quot;year&quot;, &quot;passengers&quot;)
+        &gt;&gt;&gt; ax = sns.heatmap(flights)
+    
+    Annotate each cell with the numeric value using integer formatting:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(flights, annot=True, fmt=&quot;d&quot;)
+    
+    Add lines between each cell:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(flights, linewidths=.5)
+    
+    Use a different colormap:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(flights, cmap=&quot;YlGnBu&quot;)
+    
+    Center the colormap at a specific value:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(flights, center=flights.loc[&quot;Jan&quot;, 1955])
+    
+    Plot every other column label and don&#39;t plot row labels:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; data = np.random.randn(50, 20)
+        &gt;&gt;&gt; ax = sns.heatmap(data, xticklabels=2, yticklabels=False)
+    
+    Don&#39;t draw a colorbar:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; ax = sns.heatmap(flights, cbar=False)
+    
+    Use different axes for the colorbar:
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; grid_kws = {&quot;height_ratios&quot;: (.9, .05), &quot;hspace&quot;: .3}
+        &gt;&gt;&gt; f, (ax, cbar_ax) = plt.subplots(2, gridspec_kw=grid_kws)
+        &gt;&gt;&gt; ax = sns.heatmap(flights, ax=ax,
+        ...                  cbar_ax=cbar_ax,
+        ...                  cbar_kws={&quot;orientation&quot;: &quot;horizontal&quot;})
+    
+    Use a mask to plot only part of a matrix
+    
+    .. plot::
+        :context: close-figs
+    
+        &gt;&gt;&gt; corr = np.corrcoef(np.random.randn(10, 200))
+        &gt;&gt;&gt; mask = np.zeros_like(corr)
+        &gt;&gt;&gt; mask[np.triu_indices_from(mask)] = True
+        &gt;&gt;&gt; with sns.axes_style(&quot;white&quot;):
+        ...     f, ax = plt.subplots(figsize=(7, 5))
+        ...     ax = sns.heatmap(corr, mask=mask, vmax=.3, square=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cor</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/correlation_coefficient_13_0.png" src="../../_images/correlation_coefficient_13_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>変数が多い場合、相関関係が強い順にソートし、不要な変数を除外することで見やすくなることもある。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Firtilityと相関が強い3個に絞る</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">cor</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;Fertility&#39;</span><span class="p">)[</span><span class="s1">&#39;Fertility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">swiss</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+<span class="n">hm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">,</span> 
+                <span class="n">yticklabels</span><span class="o">=</span><span class="n">cols</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                <span class="n">xticklabels</span><span class="o">=</span><span class="n">cols</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/correlation_coefficient_15_0.png" src="../../_images/correlation_coefficient_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>散布図行列と相関行列<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>散布図行列も相関行列も対角を挟んで半分は重複して情報を含んでいる。</p></li>
+<li><p>半分を散布図行列に、残り半分を相関行列にすることで、限られたスペースに無駄なく情報を詰めることができる。</p></li>
+<li><p>多変数データを可視化するとき、まず最初にこのグラフを作成するべきだが、Pythonの主なパッケージには該当するものがないので、以下のような処理を自作しておき、使いたい時にコピペできるようにしておくと便利である。</p>
+<ul>
+<li><p><em>Rにはデータの可視化パッケージがたくさんあるので、この点はRが有利である……。</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">corr_scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">ScalarMappable</span>
+    <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+    <span class="k">def</span> <span class="nf">corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">cor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vmin&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;vmin&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                         <span class="n">vmax</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vmax&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;vmax&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;cmap&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;cmap&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sm</span> <span class="o">=</span> <span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cor</span><span class="p">),</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">cor</span><span class="p">))</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">matrix</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">matrix</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">)</span>
+    <span class="n">matrix</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_scatter_matrix</span><span class="p">(</span><span class="n">swiss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/correlation_coefficient_18_0.png" src="../../_images/correlation_coefficient_18_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="visualization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">グラフの表示 (visualization)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="regression_analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">回帰分析 (regression analysis)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By ryok<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

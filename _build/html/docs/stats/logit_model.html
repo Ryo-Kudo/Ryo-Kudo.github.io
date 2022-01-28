@@ -1,0 +1,1597 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ロジットモデル (logit model) &#8212; Tech×MBA -ryok</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/gtag.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="決定木 (decision tree)" href="decision_tree.html" />
+    <link rel="prev" title="回帰分析 (regression analysis)" href="regression_analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/me.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Tech×MBA -ryok</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Tech×MBA
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0101_team_development.html">
+   チームビルディング
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_leadership.html">
+   リーダーシップ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_motivation.html">
+   モチベーション
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0201_personality.html">
+   個人の性格・特性
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/logit_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/logit_model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   線形回帰との関係
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   背景 (読み飛ばし可)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     回帰式の意味
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     誤差の分布
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   パラメーターの求め方
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   パラメーターの標本分布
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   パラメーターの検定
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     （参考）その他の記述方法
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ロジットモデル (logit model)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   線形回帰との関係
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   背景 (読み飛ばし可)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     回帰式の意味
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     誤差の分布
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   パラメーターの求め方
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   パラメーターの標本分布
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   パラメーターの検定
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Pythonでの実行方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     （参考）その他の記述方法
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="logit-model">
+<h1>ロジットモデル (logit model)<a class="headerlink" href="#logit-model" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>ロジットモデルは、<strong>ダミー変数などの2値変数 (0, 1の値をとる) を目的変数</strong>として、回帰分析を適用する手法のひとつである。</p>
+<ul>
+<li><p>ロジスティック回帰（Logistic Regression）やロジット回帰（Logit　Regression）とも言われる。</p></li>
+</ul>
+</li>
+<li><p>モデルの出力値をどちらかのカテゴリに所属する確率と見なすことで、<strong>カテゴリ予測</strong>を可能にする。</p>
+<ul>
+<li><p>以下の例のように、各データがカテゴリA, Bのどちらに所属するかを<span class="math notranslate nohighlight">\(A=0, B=1\)</span>の2値で表し、予測を行う。</p></li>
+</ul>
+</li>
+</ul>
+<!--
+<table class="background-bright border text-center" style="text-align: center">
+    <tr class="background-dark">
+        <th></th>
+        <th>$x_1$</th>
+        <th>$x_2$</th>
+        <th>$\dots$</th>
+        <th>$x_k$</th>
+        <th class="border-right-double" style="min-width: 11em;">$y\ (A=1,\ B=0)$</th>
+        <th>$\hat{y}$</th>
+        <th>予測結果</th>
+    </tr>
+    <tr>
+        <td>$1$</td>
+        <td class="text-right">1.0</td>
+        <td class="text-right">-2.0</td>
+        <td>$\dots$</td>
+        <td class="text-right">3.0</td>
+        <td class="border-right-double">1</td>
+        <td>0.98 (A:98%, B: 2%)</td>
+        <td>A</td>
+    </tr>
+    <tr>
+        <td>$2$</td>
+        <td class="text-right">-2.5</td>
+        <td class="text-right">1.3</td>
+        <td>$\dots$</td>
+        <td class="text-right">1.1</td>
+        <td class="border-right-double">0</td>
+        <td>0.52 (A:52%, B:48%)</td>
+        <td>A</td>
+    </tr>
+    <tr>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1"></td>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1">$\vdots$</td>
+        <td colspan="1">$\vdots$</td>
+    </tr>
+    <tr>
+        <td>$n$</td>
+        <td class="text-right">3.3</td>
+        <td class="text-right">0.9</td>
+        <td>$\dots$</td>
+        <td class="text-right">-0.5</td>
+        <td class="border-right-double">0</td>
+        <td>0.36 (A:36%, B:64%)</td>
+        <td>B</td>
+    </tr>
+</table>
+--><p><img alt="ロジットモデルの例" src="../../_images/logit_01.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>線形回帰との関係<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>ロジットモデルでは、 <span class="math notranslate nohighlight">\(z=a+b_{1}x_{1}+b_{2}x_{2}+\dots+b_{k}x_{k}\)</span> とすると 出力（予測結果）<span class="math notranslate nohighlight">\(\hat{y}\)</span> は以下の式から求める。</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(z\)</span>は、線形回帰 (単回帰・重回帰) の出力である。</p></li>
+<li><p>線形回帰の出力にロジスティック関数 <span class="math notranslate nohighlight">\(\Lambda (x)={\displaystyle \frac{e^{x}}{1+e^{x}}}\)</span> を適用したものが<span class="math notranslate nohighlight">\(\hat{y}\)</span>である。</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} ={\displaystyle \frac{e^{z}}{1+e^{z}}} \left( ={\displaystyle \frac{1}{1+e^{-z}}} \right)
+\]</div>
+<ul class="simple">
+<li><p>ロジスティック関数は、以下を満たす累積分布関数である。</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(-\infty&lt;x&lt;\infty\)</span> の区間で <span class="math notranslate nohighlight">\(0&lt;\Lambda(x)&lt;1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Lambda (x)\)</span> を微分した導関数 <span class="math notranslate nohighlight">\(\Lambda '(x)=\Lambda(x)\left(1-\Lambda(x)\right)\)</span> は、 <span class="math notranslate nohighlight">\(\Lambda'(x)&gt;0\)</span> (確率密度の条件)</p></li>
+</ul>
+</li>
+<li><p>ロジスティック関数が表す確率分布はロジスティック分布と呼ばれる。</p></li>
+</ul>
+<p><img alt="ロジスティック分布" src="../../_images/logit_02.png" /></p>
+<ul class="simple">
+<li><p>線形回帰の出力を確率分布に変換する累積分布関数は、あらゆる実数の入力 ( <span class="math notranslate nohighlight">\(-\infty&lt;x&lt;\infty\)</span> ) に対応する確率を出力すれば何でも良い。</p></li>
+<li><p>しかし、一般的にはロジスティック分布 (ロジットモデル) か標準正規分布 (プロビットモデル) が使われる。</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>背景 (読み飛ばし可)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>※数学好きな人向け</p>
+<div class="section" id="id3">
+<h3>回帰式の意味<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(y_{i}=1\)</span> となる確率 <span class="math notranslate nohighlight">\(p_{i}( X_{i})\)</span> とそれ以外の確率 <span class="math notranslate nohighlight">\(1-p_{i}( X_{i})\)</span> の比 (オッズ比) <span class="math notranslate nohighlight">\(O_{i}( X_{i})\)</span> を</p>
+<div class="math notranslate nohighlight">
+\[
+O_{i}( X_{i})={\displaystyle \frac{p_{i}( X_{i})}{1-p_{i}( X_{i})}}
+\]</div>
+<p>として、これを <span class="math notranslate nohighlight">\(p_{i}( X_{i})\)</span> について整理すると</p>
+<div class="math notranslate nohighlight">
+\[
+p_{i}( X_{i}) ={\displaystyle \frac{O_{i}( X_{i})}{1+O_{i}( X_{i})}} 
+\]</div>
+<p>となり、 <span class="math notranslate nohighlight">\(p_{i}( X_{i})\)</span> の予測 <span class="math notranslate nohighlight">\(\hat{y_{i}}={\displaystyle \frac{e^{z_{i}}}{1+e^{z_{i}}}}\)</span> と一致する。</p>
+<p>つまり、 <span class="math notranslate nohighlight">\(e^{z_{i}}\)</span> は <span class="math notranslate nohighlight">\(y_{i}=1\)</span> となる確率のオッズ比であり、ロジスティック回帰で求めた <span class="math notranslate nohighlight">\(z_{i}\)</span> は対数オッズ比 <span class="math notranslate nohighlight">\(logO_{i}( X_{i})\)</span> と解釈できる。</p>
+<!--
+<table class="border text-center background-bright">
+    <tr class="background-dark">
+        <th></th>
+        <th>誤差項の分布</th>
+        <th>特徴</th>
+    </tr>
+    <tr>
+        <th class="background-dark border-bottom">ロジットモデル<br />(ロジスティック回帰)</th>
+        <td>ロジスティック分布</td>
+        <td class="text-left">累積分布関数が計算しやすい<br />回帰式の係数の意味が解釈しやすい (オッズ比)</td>
+    </tr>
+    <tr>
+        <th class="background-dark border-bottom">プロビットモデル</th>
+        <td>標準正規分布</td>
+        <td class="text-left">回帰分析の考え方と親和的である</td>
+    </tr>
+</table>
+--><p><img alt="ロジットモデルとプロピットモデルの比較" src="../../_images/logit_03.png" /></p>
+</div>
+<div class="section" id="id4">
+<h3>誤差の分布<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p>線形回帰と同じように誤差項 <span class="math notranslate nohighlight">\(\epsilon\)</span> を使って、 <span class="math notranslate nohighlight">\(A_{i} =a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik} +\epsilon _{i}\)</span> とすると、</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y_{i} =\left\{\begin{aligned}
+    1 &amp;  &amp; A_{i} +\epsilon _{i} =a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik} +\epsilon _{i}  &gt;0 &amp; , &amp; F( A_{i} +\epsilon _{i})  &gt;0.5\\
+    0 &amp;  &amp; A_{i} +\epsilon _{i} =a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik} +\epsilon _{i} \leqq 0 &amp; , &amp; F( A_{i} +\epsilon _{i}) \leqq 0.5
+\end{aligned}\right.
+\end{split}\]</div>
+<p>このとき、ロジットモデルは誤差項 <span class="math notranslate nohighlight">\(\epsilon\)</span> の分布にロジスティック分布を仮定している。 (プロビットモデルは正規分布)</p>
+<p>ロジットモデルやプロビットモデルのように誤差項の分布とそれに対応する関数を用いて <span class="math notranslate nohighlight">\(y\)</span> を <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(\epsilon \)</span> の線型結合に分解して分析する手法を一般化線形モデル (generalized linear model) と呼ぶ。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>パラメーターの求め方<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>通常、最尤法 (maximum likelihood method)、最尤推定 (maximum likelihood estimation, MLE) を用いる。</p></li>
+<li><p>最尤法とは、関数 <span class="math notranslate nohighlight">\(F(x)\)</span> から元のデータ <span class="math notranslate nohighlight">\((X_i,\ y_i)\ (i=1,\ 2,\dots,\ n)\)</span> が再現される確率 (尤度) を最大化するようにパラメーターを決める方法である。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle 尤度=p( y_{1} |x_{1}) \cdot p( y_{2} |x_{2}) \dotsc p( y_{n} |x_{n}) =\prod ^{n}_{i=1} p( y_{i} |x_{i})}
+\]</div>
+<ul class="simple">
+<li><p>累積分布関数を <span class="math notranslate nohighlight">\(F(x)\)</span> とし、あるデータ <span class="math notranslate nohighlight">\(X_{i}\ (x_{1} ,\ x_{2} ,\dots,\ x_{n} )\)</span> が与えられたときに <span class="math notranslate nohighlight">\(y_{i} =1\)</span> となる確率を <span class="math notranslate nohighlight">\(P(y_{i} =1\ |\ X_{i} )=F(a+b_{1} x_{i1} +b_{2} x_{i2}+\dots +b_{k} x_{ik})\)</span> と表すと、 <span class="math notranslate nohighlight">\(P(y_{i} =0\ |\ X_{i})=1-P(y_{i} =1\ |\ X_{i} )\)</span> なので、尤度は以下の尤度関数 <span class="math notranslate nohighlight">\(L\)</span> で表わすことができる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+L( a,\ b_{1} ,\ b_{2} ,\dots ,\ b_{k}) ={\displaystyle \prod _{\{i\ |\ y_{i} =1\}} F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik}) \cdot \prod _{\{i\ |\ y_{i} =0\}}[ 1-F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik})]} 
+\]</div>
+<ul class="simple">
+<li><p>確率の積の形は、値が小さすぎて、コンピュータで計算しにくいため、対数をとる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+log\ L( a,\ b_{1} ,\ b_{2} ,\dots ,\ b_{k}) ={\displaystyle \sum _{\{i\ |\ y_{i} =1\}} log\ F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik}) +\sum _{\{i\ |\ y_{i} =0\}}[ 1-F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik})]} 
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_{i} =1\)</span> のとき、 <span class="math notranslate nohighlight">\(1-y_{i} =0\)</span>、 <span class="math notranslate nohighlight">\(y_{i} =0\)</span> のとき、 <span class="math notranslate nohighlight">\(1-y_{i} =1\)</span> であるため、上式は下式のようにまとめられる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+log\ L( a,\ b_{1} ,\ b_{2} ,\dots ,\ b_{k}) ={\displaystyle \sum ^{n}_{i=1}\{y_{i} \ log\ F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik}) +( 1-y_{i}) log\ [ 1-F( a+b_{1} x_{i1} +b_{2} x_{i2} +\dots +b_{k} x_{ik})]\}} 
+\]</div>
+<ul class="simple">
+<li><p>この対数尤度 <span class="math notranslate nohighlight">\(log\ L\)</span> を最大化するパラメーター <span class="math notranslate nohighlight">\(a,\ b_{1} ,\ b_{2} ,\dots ,\ b_{k}\)</span> を母数の推定値とするのが最尤法。</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>パラメーターの標本分布<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>パラメーターの標本分布を求めるのは困難なので、通常は中心極限定理によって標準分布に近似する。</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>パラメーターの検定<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>自由度 <span class="math notranslate nohighlight">\(n-(k+1)\)</span> の <span class="math notranslate nohighlight">\(t\)</span> 分布を利用して <span class="math notranslate nohighlight">\(t\)</span> 検定を行う。</p></li>
+</ul>
+</div>
+<div class="section" id="python">
+<h2>Pythonでの実行方法<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>statsmodels.discrete.discrete_model.Logitを用いる。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 関数の情報を確認</span>
+<span class="n">help</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class Logit in module statsmodels.discrete.discrete_model:
+
+class Logit(BinaryModel)
+ |  Logit(endog, exog, check_rank=True, **kwargs)
+ |  
+ |  Logit Model
+ |  
+ |  Parameters
+ |  ----------
+ |  endog : array_like
+ |      A 1-d endogenous response variable. The dependent variable.
+ |  exog : array_like
+ |      A nobs x k array where `nobs` is the number of observations and `k`
+ |      is the number of regressors. An intercept is not included by default
+ |      and should be added by the user. See
+ |      :func:`statsmodels.tools.add_constant`.
+ |  missing : str
+ |      Available options are &#39;none&#39;, &#39;drop&#39;, and &#39;raise&#39;. If &#39;none&#39;, no nan
+ |      checking is done. If &#39;drop&#39;, any observations with nans are dropped.
+ |      If &#39;raise&#39;, an error is raised. Default is &#39;none&#39;.
+ |  check_rank : bool
+ |      Check exog rank to determine model degrees of freedom. Default is
+ |      True. Setting to False reduces model initialization time when
+ |      exog.shape[1] is large.
+ |  
+ |  
+ |  Attributes
+ |  ----------
+ |  endog : ndarray
+ |      A reference to the endogenous response variable
+ |  exog : ndarray
+ |      A reference to the exogenous design.
+ |  
+ |  Method resolution order:
+ |      Logit
+ |      BinaryModel
+ |      DiscreteModel
+ |      statsmodels.base.model.LikelihoodModel
+ |      statsmodels.base.model.Model
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  cdf(self, X)
+ |      The logistic cumulative distribution function
+ |      
+ |      Parameters
+ |      ----------
+ |      X : array_like
+ |          `X` is the linear predictor of the logit model.  See notes.
+ |      
+ |      Returns
+ |      -------
+ |      1/(1 + exp(-X))
+ |      
+ |      Notes
+ |      -----
+ |      In the logit model,
+ |      
+ |      .. math:: \Lambda\left(x^{\prime}\beta\right)=
+ |                \text{Prob}\left(Y=1|x\right)=
+ |                \frac{e^{x^{\prime}\beta}}{1+e^{x^{\prime}\beta}}
+ |  
+ |  fit(self, start_params=None, method=&#39;newton&#39;, maxiter=35, full_output=1, disp=1, callback=None, **kwargs)
+ |      Fit the model using maximum likelihood.
+ |      
+ |      The rest of the docstring is from
+ |      statsmodels.base.model.LikelihoodModel.fit
+ |      
+ |      Fit method for likelihood based models
+ |      
+ |      Parameters
+ |      ----------
+ |      start_params : array_like, optional
+ |          Initial guess of the solution for the loglikelihood maximization.
+ |          The default is an array of zeros.
+ |      method : str, optional
+ |          The `method` determines which solver from `scipy.optimize`
+ |          is used, and it can be chosen from among the following strings:
+ |      
+ |          - &#39;newton&#39; for Newton-Raphson, &#39;nm&#39; for Nelder-Mead
+ |          - &#39;bfgs&#39; for Broyden-Fletcher-Goldfarb-Shanno (BFGS)
+ |          - &#39;lbfgs&#39; for limited-memory BFGS with optional box constraints
+ |          - &#39;powell&#39; for modified Powell&#39;s method
+ |          - &#39;cg&#39; for conjugate gradient
+ |          - &#39;ncg&#39; for Newton-conjugate gradient
+ |          - &#39;basinhopping&#39; for global basin-hopping solver
+ |          - &#39;minimize&#39; for generic wrapper of scipy minimize (BFGS by default)
+ |      
+ |          The explicit arguments in `fit` are passed to the solver,
+ |          with the exception of the basin-hopping solver. Each
+ |          solver has several optional arguments that are not the same across
+ |          solvers. See the notes section below (or scipy.optimize) for the
+ |          available arguments and for the list of explicit arguments that the
+ |          basin-hopping solver supports.
+ |      maxiter : int, optional
+ |          The maximum number of iterations to perform.
+ |      full_output : bool, optional
+ |          Set to True to have all available output in the Results object&#39;s
+ |          mle_retvals attribute. The output is dependent on the solver.
+ |          See LikelihoodModelResults notes section for more information.
+ |      disp : bool, optional
+ |          Set to True to print convergence messages.
+ |      fargs : tuple, optional
+ |          Extra arguments passed to the likelihood function, i.e.,
+ |          loglike(x,*args)
+ |      callback : callable callback(xk), optional
+ |          Called after each iteration, as callback(xk), where xk is the
+ |          current parameter vector.
+ |      retall : bool, optional
+ |          Set to True to return list of solutions at each iteration.
+ |          Available in Results object&#39;s mle_retvals attribute.
+ |      skip_hessian : bool, optional
+ |          If False (default), then the negative inverse hessian is calculated
+ |          after the optimization. If True, then the hessian will not be
+ |          calculated. However, it will be available in methods that use the
+ |          hessian in the optimization (currently only with `&quot;newton&quot;`).
+ |      kwargs : keywords
+ |          All kwargs are passed to the chosen solver with one exception. The
+ |          following keyword controls what happens after the fit::
+ |      
+ |              warn_convergence : bool, optional
+ |                  If True, checks the model for the converged flag. If the
+ |                  converged flag is False, a ConvergenceWarning is issued.
+ |      
+ |      Notes
+ |      -----
+ |      The &#39;basinhopping&#39; solver ignores `maxiter`, `retall`, `full_output`
+ |      explicit arguments.
+ |      
+ |      Optional arguments for solvers (see returned Results.mle_settings)::
+ |      
+ |          &#39;newton&#39;
+ |              tol : float
+ |                  Relative error in params acceptable for convergence.
+ |          &#39;nm&#39; -- Nelder Mead
+ |              xtol : float
+ |                  Relative error in params acceptable for convergence
+ |              ftol : float
+ |                  Relative error in loglike(params) acceptable for
+ |                  convergence
+ |              maxfun : int
+ |                  Maximum number of function evaluations to make.
+ |          &#39;bfgs&#39;
+ |              gtol : float
+ |                  Stop when norm of gradient is less than gtol.
+ |              norm : float
+ |                  Order of norm (np.Inf is max, -np.Inf is min)
+ |              epsilon
+ |                  If fprime is approximated, use this value for the step
+ |                  size. Only relevant if LikelihoodModel.score is None.
+ |          &#39;lbfgs&#39;
+ |              m : int
+ |                  This many terms are used for the Hessian approximation.
+ |              factr : float
+ |                  A stop condition that is a variant of relative error.
+ |              pgtol : float
+ |                  A stop condition that uses the projected gradient.
+ |              epsilon
+ |                  If fprime is approximated, use this value for the step
+ |                  size. Only relevant if LikelihoodModel.score is None.
+ |              maxfun : int
+ |                  Maximum number of function evaluations to make.
+ |              bounds : sequence
+ |                  (min, max) pairs for each element in x,
+ |                  defining the bounds on that parameter.
+ |                  Use None for one of min or max when there is no bound
+ |                  in that direction.
+ |          &#39;cg&#39;
+ |              gtol : float
+ |                  Stop when norm of gradient is less than gtol.
+ |              norm : float
+ |                  Order of norm (np.Inf is max, -np.Inf is min)
+ |              epsilon : float
+ |                  If fprime is approximated, use this value for the step
+ |                  size. Can be scalar or vector.  Only relevant if
+ |                  Likelihoodmodel.score is None.
+ |          &#39;ncg&#39;
+ |              fhess_p : callable f&#39;(x,*args)
+ |                  Function which computes the Hessian of f times an arbitrary
+ |                  vector, p.  Should only be supplied if
+ |                  LikelihoodModel.hessian is None.
+ |              avextol : float
+ |                  Stop when the average relative error in the minimizer
+ |                  falls below this amount.
+ |              epsilon : float or ndarray
+ |                  If fhess is approximated, use this value for the step size.
+ |                  Only relevant if Likelihoodmodel.hessian is None.
+ |          &#39;powell&#39;
+ |              xtol : float
+ |                  Line-search error tolerance
+ |              ftol : float
+ |                  Relative error in loglike(params) for acceptable for
+ |                  convergence.
+ |              maxfun : int
+ |                  Maximum number of function evaluations to make.
+ |              start_direc : ndarray
+ |                  Initial direction set.
+ |          &#39;basinhopping&#39;
+ |              niter : int
+ |                  The number of basin hopping iterations.
+ |              niter_success : int
+ |                  Stop the run if the global minimum candidate remains the
+ |                  same for this number of iterations.
+ |              T : float
+ |                  The &quot;temperature&quot; parameter for the accept or reject
+ |                  criterion. Higher &quot;temperatures&quot; mean that larger jumps
+ |                  in function value will be accepted. For best results
+ |                  `T` should be comparable to the separation (in function
+ |                  value) between local minima.
+ |              stepsize : float
+ |                  Initial step size for use in the random displacement.
+ |              interval : int
+ |                  The interval for how often to update the `stepsize`.
+ |              minimizer : dict
+ |                  Extra keyword arguments to be passed to the minimizer
+ |                  `scipy.optimize.minimize()`, for example &#39;method&#39; - the
+ |                  minimization method (e.g. &#39;L-BFGS-B&#39;), or &#39;tol&#39; - the
+ |                  tolerance for termination. Other arguments are mapped from
+ |                  explicit argument of `fit`:
+ |                    - `args` &lt;- `fargs`
+ |                    - `jac` &lt;- `score`
+ |                    - `hess` &lt;- `hess`
+ |          &#39;minimize&#39;
+ |              min_method : str, optional
+ |                  Name of minimization method to use.
+ |                  Any method specific arguments can be passed directly.
+ |                  For a list of methods and their arguments, see
+ |                  documentation of `scipy.optimize.minimize`.
+ |                  If no method is specified, then BFGS is used.
+ |  
+ |  hessian(self, params)
+ |      Logit model Hessian matrix of the log-likelihood
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          The parameters of the model
+ |      
+ |      Returns
+ |      -------
+ |      hess : ndarray, (k_vars, k_vars)
+ |          The Hessian, second derivative of loglikelihood function,
+ |          evaluated at `params`
+ |      
+ |      Notes
+ |      -----
+ |      .. math:: \frac{\partial^{2}\ln L}{\partial\beta\partial\beta^{\prime}}=-\sum_{i}\Lambda_{i}\left(1-\Lambda_{i}\right)x_{i}x_{i}^{\prime}
+ |  
+ |  loglike(self, params)
+ |      Log-likelihood of logit model.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          The parameters of the logit model.
+ |      
+ |      Returns
+ |      -------
+ |      loglike : float
+ |          The log-likelihood function of the model evaluated at `params`.
+ |          See notes.
+ |      
+ |      Notes
+ |      -----
+ |      .. math::
+ |      
+ |         \ln L=\sum_{i}\ln\Lambda
+ |         \left(q_{i}x_{i}^{\prime}\beta\right)
+ |      
+ |      Where :math:`q=2y-1`. This simplification comes from the fact that the
+ |      logistic distribution is symmetric.
+ |  
+ |  loglikeobs(self, params)
+ |      Log-likelihood of logit model for each observation.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          The parameters of the logit model.
+ |      
+ |      Returns
+ |      -------
+ |      loglike : ndarray
+ |          The log likelihood for each observation of the model evaluated
+ |          at `params`. See Notes
+ |      
+ |      Notes
+ |      -----
+ |      .. math::
+ |      
+ |         \ln L=\sum_{i}\ln\Lambda
+ |         \left(q_{i}x_{i}^{\prime}\beta\right)
+ |      
+ |      for observations :math:`i=1,...,n`
+ |      
+ |      where :math:`q=2y-1`. This simplification comes from the fact that the
+ |      logistic distribution is symmetric.
+ |  
+ |  pdf(self, X)
+ |      The logistic probability density function
+ |      
+ |      Parameters
+ |      ----------
+ |      X : array_like
+ |          `X` is the linear predictor of the logit model.  See notes.
+ |      
+ |      Returns
+ |      -------
+ |      pdf : ndarray
+ |          The value of the Logit probability mass function, PMF, for each
+ |          point of X. ``np.exp(-x)/(1+np.exp(-X))**2``
+ |      
+ |      Notes
+ |      -----
+ |      In the logit model,
+ |      
+ |      .. math:: \lambda\left(x^{\prime}\beta\right)=\frac{e^{-x^{\prime}\beta}}{\left(1+e^{-x^{\prime}\beta}\right)^{2}}
+ |  
+ |  score(self, params)
+ |      Logit model score (gradient) vector of the log-likelihood
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          The parameters of the model
+ |      
+ |      Returns
+ |      -------
+ |      score : ndarray, 1-D
+ |          The score vector of the model, i.e. the first derivative of the
+ |          loglikelihood function, evaluated at `params`
+ |      
+ |      Notes
+ |      -----
+ |      .. math:: \frac{\partial\ln L}{\partial\beta}=\sum_{i=1}^{n}\left(y_{i}-\Lambda_{i}\right)x_{i}
+ |  
+ |  score_obs(self, params)
+ |      Logit model Jacobian of the log-likelihood for each observation
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          The parameters of the model
+ |      
+ |      Returns
+ |      -------
+ |      jac : array_like
+ |          The derivative of the loglikelihood for each observation evaluated
+ |          at `params`.
+ |      
+ |      Notes
+ |      -----
+ |      .. math:: \frac{\partial\ln L_{i}}{\partial\beta}=\left(y_{i}-\Lambda_{i}\right)x_{i}
+ |      
+ |      for observations :math:`i=1,...,n`
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from BinaryModel:
+ |  
+ |  __init__(self, endog, exog, check_rank=True, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  fit_regularized(self, start_params=None, method=&#39;l1&#39;, maxiter=&#39;defined_by_method&#39;, full_output=1, disp=1, callback=None, alpha=0, trim_mode=&#39;auto&#39;, auto_trim_tol=0.01, size_trim_tol=0.0001, qc_tol=0.03, **kwargs)
+ |      Fit the model using a regularized maximum likelihood.
+ |      
+ |      The regularization method AND the solver used is determined by the
+ |      argument method.
+ |      
+ |      Parameters
+ |      ----------
+ |      start_params : array_like, optional
+ |          Initial guess of the solution for the loglikelihood maximization.
+ |          The default is an array of zeros.
+ |      method : &#39;l1&#39; or &#39;l1_cvxopt_cp&#39;
+ |          See notes for details.
+ |      maxiter : {int, &#39;defined_by_method&#39;}
+ |          Maximum number of iterations to perform.
+ |          If &#39;defined_by_method&#39;, then use method defaults (see notes).
+ |      full_output : bool
+ |          Set to True to have all available output in the Results object&#39;s
+ |          mle_retvals attribute. The output is dependent on the solver.
+ |          See LikelihoodModelResults notes section for more information.
+ |      disp : bool
+ |          Set to True to print convergence messages.
+ |      fargs : tuple
+ |          Extra arguments passed to the likelihood function, i.e.,
+ |          loglike(x,*args).
+ |      callback : callable callback(xk)
+ |          Called after each iteration, as callback(xk), where xk is the
+ |          current parameter vector.
+ |      retall : bool
+ |          Set to True to return list of solutions at each iteration.
+ |          Available in Results object&#39;s mle_retvals attribute.
+ |      alpha : non-negative scalar or numpy array (same size as parameters)
+ |          The weight multiplying the l1 penalty term.
+ |      trim_mode : &#39;auto, &#39;size&#39;, or &#39;off&#39;
+ |          If not &#39;off&#39;, trim (set to zero) parameters that would have been
+ |          zero if the solver reached the theoretical minimum.
+ |          If &#39;auto&#39;, trim params using the Theory above.
+ |          If &#39;size&#39;, trim params if they have very small absolute value.
+ |      size_trim_tol : float or &#39;auto&#39; (default = &#39;auto&#39;)
+ |          Tolerance used when trim_mode == &#39;size&#39;.
+ |      auto_trim_tol : float
+ |          Tolerance used when trim_mode == &#39;auto&#39;.
+ |      qc_tol : float
+ |          Print warning and do not allow auto trim when (ii) (above) is
+ |          violated by this much.
+ |      qc_verbose : bool
+ |          If true, print out a full QC report upon failure.
+ |      **kwargs
+ |          Additional keyword arguments used when fitting the model.
+ |      
+ |      Returns
+ |      -------
+ |      Results
+ |          A results instance.
+ |      
+ |      Notes
+ |      -----
+ |      Using &#39;l1_cvxopt_cp&#39; requires the cvxopt module.
+ |      
+ |      Extra parameters are not penalized if alpha is given as a scalar.
+ |      An example is the shape parameter in NegativeBinomial `nb1` and `nb2`.
+ |      
+ |      Optional arguments for the solvers (available in Results.mle_settings)::
+ |      
+ |          &#39;l1&#39;
+ |              acc : float (default 1e-6)
+ |                  Requested accuracy as used by slsqp
+ |          &#39;l1_cvxopt_cp&#39;
+ |              abstol : float
+ |                  absolute accuracy (default: 1e-7).
+ |              reltol : float
+ |                  relative accuracy (default: 1e-6).
+ |              feastol : float
+ |                  tolerance for feasibility conditions (default: 1e-7).
+ |              refinement : int
+ |                  number of iterative refinement steps when solving KKT
+ |                  equations (default: 1).
+ |      
+ |      Optimization methodology
+ |      
+ |      With :math:`L` the negative log likelihood, we solve the convex but
+ |      non-smooth problem
+ |      
+ |      .. math:: \min_\beta L(\beta) + \sum_k\alpha_k |\beta_k|
+ |      
+ |      via the transformation to the smooth, convex, constrained problem
+ |      in twice as many variables (adding the &quot;added variables&quot; :math:`u_k`)
+ |      
+ |      .. math:: \min_{\beta,u} L(\beta) + \sum_k\alpha_k u_k,
+ |      
+ |      subject to
+ |      
+ |      .. math:: -u_k \leq \beta_k \leq u_k.
+ |      
+ |      With :math:`\partial_k L` the derivative of :math:`L` in the
+ |      :math:`k^{th}` parameter direction, theory dictates that, at the
+ |      minimum, exactly one of two conditions holds:
+ |      
+ |      (i) :math:`|\partial_k L| = \alpha_k`  and  :math:`\beta_k \neq 0`
+ |      (ii) :math:`|\partial_k L| \leq \alpha_k`  and  :math:`\beta_k = 0`
+ |  
+ |  predict(self, params, exog=None, linear=False)
+ |      Predict response variable of a model given exogenous variables.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : array_like
+ |          Fitted parameters of the model.
+ |      exog : array_like
+ |          1d or 2d array of exogenous values.  If not supplied, the
+ |          whole exog attribute of the model is used.
+ |      linear : bool, optional
+ |          If True, returns the linear predictor dot(exog,params).  Else,
+ |          returns the value of the cdf at the linear predictor.
+ |      
+ |      Returns
+ |      -------
+ |      array
+ |          Fitted values at exog.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from DiscreteModel:
+ |  
+ |  cov_params_func_l1(self, likelihood_model, xopt, retvals)
+ |      Computes cov_params on a reduced parameter space
+ |      corresponding to the nonzero parameters resulting from the
+ |      l1 regularized fit.
+ |      
+ |      Returns a full cov_params matrix, with entries corresponding
+ |      to zero&#39;d values set to np.nan.
+ |  
+ |  initialize(self)
+ |      Initialize is called by
+ |      statsmodels.model.LikelihoodModel.__init__
+ |      and should contain any preprocessing that needs to be done for a model.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from statsmodels.base.model.LikelihoodModel:
+ |  
+ |  information(self, params)
+ |      Fisher information matrix of model.
+ |      
+ |      Returns -1 * Hessian of the log-likelihood evaluated at params.
+ |      
+ |      Parameters
+ |      ----------
+ |      params : ndarray
+ |          The model parameters.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from statsmodels.base.model.Model:
+ |  
+ |  from_formula(formula, data, subset=None, drop_cols=None, *args, **kwargs) from builtins.type
+ |      Create a Model from a formula and dataframe.
+ |      
+ |      Parameters
+ |      ----------
+ |      formula : str or generic Formula object
+ |          The formula specifying the model.
+ |      data : array_like
+ |          The data for the model. See Notes.
+ |      subset : array_like
+ |          An array-like object of booleans, integers, or index values that
+ |          indicate the subset of df to use in the model. Assumes df is a
+ |          `pandas.DataFrame`.
+ |      drop_cols : array_like
+ |          Columns to drop from the design matrix.  Cannot be used to
+ |          drop terms involving categoricals.
+ |      *args
+ |          Additional positional argument that are passed to the model.
+ |      **kwargs
+ |          These are passed to the model with one exception. The
+ |          ``eval_env`` keyword is passed to patsy. It can be either a
+ |          :class:`patsy:patsy.EvalEnvironment` object or an integer
+ |          indicating the depth of the namespace to use. For example, the
+ |          default ``eval_env=0`` uses the calling namespace. If you wish
+ |          to use a &quot;clean&quot; environment set ``eval_env=-1``.
+ |      
+ |      Returns
+ |      -------
+ |      model
+ |          The model instance.
+ |      
+ |      Notes
+ |      -----
+ |      data must define __getitem__ with the keys in the formula terms
+ |      args and kwargs are passed on to the model instantiation. E.g.,
+ |      a numpy structured or rec array, a dictionary, or a pandas DataFrame.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from statsmodels.base.model.Model:
+ |  
+ |  endog_names
+ |      Names of endogenous variables.
+ |  
+ |  exog_names
+ |      Names of exogenous variables.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from statsmodels.base.model.Model:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/spector.csv&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">spector</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">spector</span><span class="p">[</span><span class="s1">&#39;評価向上&#39;</span><span class="p">]</span>
+<span class="n">spector</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GPA</th>
+      <th>試験成績</th>
+      <th>プログラム参加</th>
+      <th>評価向上</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27</th>
+      <td>2.67</td>
+      <td>24</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>3.65</td>
+      <td>21</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>4.00</td>
+      <td>23</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>3.10</td>
+      <td>21</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2.39</td>
+      <td>19</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">fit1</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit1</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.402801
+         Iterations 7
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>評価向上</td>       <th>  No. Observations:  </th>  <td>    32</td> 
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td>    28</td> 
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     3</td> 
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 18 Jan 2022</td> <th>  Pseudo R-squ.:     </th>  <td>0.3740</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>10:08:55</td>     <th>  Log-Likelihood:    </th> <td> -12.890</td>
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -20.592</td>
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>0.001502</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>        <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th>   <td>  -13.0213</td> <td>    4.931</td> <td>   -2.641</td> <td> 0.008</td> <td>  -22.687</td> <td>   -3.356</td>
+</tr>
+<tr>
+  <th>GPA</th>     <td>    2.8261</td> <td>    1.263</td> <td>    2.238</td> <td> 0.025</td> <td>    0.351</td> <td>    5.301</td>
+</tr>
+<tr>
+  <th>試験成績</th>    <td>    0.0952</td> <td>    0.142</td> <td>    0.672</td> <td> 0.501</td> <td>   -0.182</td> <td>    0.373</td>
+</tr>
+<tr>
+  <th>プログラム参加</th> <td>    2.3787</td> <td>    1.065</td> <td>    2.234</td> <td> 0.025</td> <td>    0.292</td> <td>    4.465</td>
+</tr>
+</table></div></div>
+</div>
+<ul class="simple">
+<li><p>評価向上に値するか否かをロジスティック回帰した結果、（<span class="math notranslate nohighlight">\(p = 0.05\)</span>）</p>
+<ul>
+<li><p>定数項: 統計的に優位</p></li>
+<li><p>GPA: 統計的に優位</p></li>
+<li><p>試験成績: <strong>統計的に優位でない</strong></p></li>
+<li><p>プログラム参加: 統計的に優位</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>この場合、統計的に優位でない独立変数を減らし、再度回帰を行うことで、合理的な予測値を得る。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2列目の変数を除き、独立変数に格納する。</span>
+<span class="n">spector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/spector.csv&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">spector</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="c1"># 1, 3列のみ</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">spector</span><span class="p">[</span><span class="s1">&#39;評価向上&#39;</span><span class="p">]</span>
+<span class="n">spector</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ロジットモデルの実行</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">fit2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit2</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>今回は、このままモデルを実行すると”Perfect separation detected, results not available”のエラーとなるため、これ以上の続行は不可能である。</p>
+<ul>
+<li><p>独立変数”プログラム参加”の値と目的変数”評価向上”の値がほとんど一致してしまっているために生じたエラーである。</p></li>
+<li><p>サンプルデータのデータ数や独立変数が少なすぎるため、エラーが発生した。</p></li>
+</ul>
+</li>
+<li><p><em>後日、もっとわかりやすい別データに差し替え予定</em></p></li>
+</ul>
+<div class="section" id="id8">
+<h3>（参考）その他の記述方法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （参考） GLM (Generalized Linear Models) を使う記述方法</span>
+<span class="c1"># ロジットモデルは、リンク関数にLogit()を用いる一般化回帰モデル(GLM)の一種であるので sm.GLMを使って以下のようにも書くことができる。（当然、結果は一緒である。）</span>
+    <span class="c1"># 関数の詳細は以下のコマンドで確認できる。</span>
+    <span class="c1"># help(sm.GLM)</span>
+<span class="c1"># families.Binomial()は yの値が二項分布であるという意味である。</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Binomial</span><span class="p">())</span> 
+<span class="n">fit2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit2</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>評価向上</td>       <th>  No. Observations:  </th>  <td>    32</td> 
+</tr>
+<tr>
+  <th>Model:</th>                  <td>GLM</td>       <th>  Df Residuals:      </th>  <td>    28</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>        <td>Binomial</td>     <th>  Df Model:          </th>  <td>     3</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>         <td>Logit</td>      <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td> -12.890</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 18 Jan 2022</td> <th>  Deviance:          </th> <td>  25.779</td>
+</tr>
+<tr>
+  <th>Time:</th>                <td>10:15:26</td>     <th>  Pearson chi2:      </th>  <td>  27.3</td> 
+</tr>
+<tr>
+  <th>No. Iterations:</th>          <td>5</td>        <th>  Pseudo R-squ. (CS):</th>  <td>0.3821</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>        <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th>   <td>  -13.0213</td> <td>    4.931</td> <td>   -2.641</td> <td> 0.008</td> <td>  -22.686</td> <td>   -3.356</td>
+</tr>
+<tr>
+  <th>GPA</th>     <td>    2.8261</td> <td>    1.263</td> <td>    2.238</td> <td> 0.025</td> <td>    0.351</td> <td>    5.301</td>
+</tr>
+<tr>
+  <th>試験成績</th>    <td>    0.0952</td> <td>    0.142</td> <td>    0.672</td> <td> 0.501</td> <td>   -0.182</td> <td>    0.373</td>
+</tr>
+<tr>
+  <th>プログラム参加</th> <td>    2.3787</td> <td>    1.065</td> <td>    2.234</td> <td> 0.025</td> <td>    0.292</td> <td>    4.465</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （参考） formula 形式: Rと同じように記述できる方式</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;評価向上~</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spector</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">model3</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">spector</span><span class="p">)</span>
+<span class="n">fit3</span> <span class="o">=</span> <span class="n">model3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit3</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.402801
+         Iterations 7
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>評価向上</td>       <th>  No. Observations:  </th>  <td>    32</td> 
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td>    28</td> 
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     3</td> 
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 18 Jan 2022</td> <th>  Pseudo R-squ.:     </th>  <td>0.3740</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>10:17:19</td>     <th>  Log-Likelihood:    </th> <td> -12.890</td>
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -20.592</td>
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>0.001502</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  -13.0213</td> <td>    4.931</td> <td>   -2.641</td> <td> 0.008</td> <td>  -22.687</td> <td>   -3.356</td>
+</tr>
+<tr>
+  <th>GPA</th>       <td>    2.8261</td> <td>    1.263</td> <td>    2.238</td> <td> 0.025</td> <td>    0.351</td> <td>    5.301</td>
+</tr>
+<tr>
+  <th>試験成績</th>      <td>    0.0952</td> <td>    0.142</td> <td>    0.672</td> <td> 0.501</td> <td>   -0.182</td> <td>    0.373</td>
+</tr>
+<tr>
+  <th>プログラム参加</th>   <td>    2.3787</td> <td>    1.065</td> <td>    2.234</td> <td> 0.025</td> <td>    0.292</td> <td>    4.465</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># （参考） formula形式かつ、GLMを利用した書き方</span>
+<span class="n">model4</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">spector</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Binomial</span><span class="p">())</span>
+<span class="n">fit4</span> <span class="o">=</span> <span class="n">model4</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">fit4</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>評価向上</td>       <th>  No. Observations:  </th>  <td>    32</td> 
+</tr>
+<tr>
+  <th>Model:</th>                  <td>GLM</td>       <th>  Df Residuals:      </th>  <td>    28</td> 
+</tr>
+<tr>
+  <th>Model Family:</th>        <td>Binomial</td>     <th>  Df Model:          </th>  <td>     3</td> 
+</tr>
+<tr>
+  <th>Link Function:</th>         <td>Logit</td>      <th>  Scale:             </th> <td>  1.0000</td>
+</tr>
+<tr>
+  <th>Method:</th>                <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td> -12.890</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Tue, 18 Jan 2022</td> <th>  Deviance:          </th> <td>  25.779</td>
+</tr>
+<tr>
+  <th>Time:</th>                <td>10:17:46</td>     <th>  Pearson chi2:      </th>  <td>  27.3</td> 
+</tr>
+<tr>
+  <th>No. Iterations:</th>          <td>5</td>        <th>  Pseudo R-squ. (CS):</th>  <td>0.3821</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  -13.0213</td> <td>    4.931</td> <td>   -2.641</td> <td> 0.008</td> <td>  -22.686</td> <td>   -3.356</td>
+</tr>
+<tr>
+  <th>GPA</th>       <td>    2.8261</td> <td>    1.263</td> <td>    2.238</td> <td> 0.025</td> <td>    0.351</td> <td>    5.301</td>
+</tr>
+<tr>
+  <th>試験成績</th>      <td>    0.0952</td> <td>    0.142</td> <td>    0.672</td> <td> 0.501</td> <td>   -0.182</td> <td>    0.373</td>
+</tr>
+<tr>
+  <th>プログラム参加</th>   <td>    2.3787</td> <td>    1.065</td> <td>    2.234</td> <td> 0.025</td> <td>    0.292</td> <td>    4.465</td>
+</tr>
+</table></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="regression_analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">回帰分析 (regression analysis)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="decision_tree.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">決定木 (decision tree)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By ryok<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

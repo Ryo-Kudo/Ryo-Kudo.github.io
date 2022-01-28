@@ -8,7 +8,7 @@ logo: assets/ico/me.jpg
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: 'off'
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -20,13 +20,27 @@ bibtex_bibfiles:
   - references.bib
 
 # Information about where the book exists on the web
-repository:
-  url: https://github.com/Ryo-Kudo/tech-mba  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+# repository:
+#  url: https://github.com/Ryo-Kudo/tech-mba  # Online location of your book
+#  path_to_book: docs  # Optional path to your book, relative to the repository root
+#  branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+# html:
+#  use_issues_button: true
+#  use_repository_button: true
+
+# Google Analytics
 html:
-  use_issues_button: true
-  use_repository_button: true
+  google_analytics_id: 'UA-216928279-1'
+
+# footer
+html:
+  extra_navbar : <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  extra_footer : <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+# Additional Config
+# sphinx:
+#   config:
+#     html_extra_path: ['docs/stats/helper']

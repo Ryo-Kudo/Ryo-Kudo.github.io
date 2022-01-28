@@ -40,6 +40,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/gtag.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -52,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="モチベーション" href="0201_motivation.html" />
-    <link rel="prev" title="チームの成果を最大化するためにできること" href="0101_team_development.html" />
+    <link rel="prev" title="チームビルディング" href="0101_team_development.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,15 +92,52 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0000_intro.html">
-   はじめに
+  <a class="reference internal" href="../index.html">
+   Tech×MBA
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  統計 with Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/visualization.html">
+   グラフの表示 (visualization)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/correlation_coefficient.html">
+   相関係数 (correlation coefficient)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/regression_analysis.html">
+   回帰分析 (regression analysis)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/logit_model.html">
+   ロジットモデル (logit model)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats/decision_tree.html">
+   決定木 (decision tree)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  組織行動学
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0101_team_development.html">
-   チームの成果を最大化するためにできること
+   チームビルディング
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -117,6 +155,12 @@
    個人の性格・特性
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../references.html">
    References
@@ -128,7 +172,7 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 </div>
@@ -174,22 +218,6 @@
 
             <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/Ryo-Kudo/tech-mba"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/Ryo-Kudo/tech-mba/issues/new?title=Issue%20on%20page%20%2Fdocs/0201_leadership.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -204,6 +232,46 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   リーダーシップとマネジメントの違い
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   リーダーに求められる知性・特性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   リーダーに求められる2種類の行動
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-orientation-initiating-structure">
+     タスク志向のリーダーシップ（Task Orientation/ Initiating Structure）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relationship-orientation-consideration">
+     関係志向のリーダーシップ（Relationship Orientation / Consideration）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   リーダーシップのタイミング
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -216,6 +284,46 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   リーダーシップとマネジメントの違い
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   リーダーに求められる知性・特性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   リーダーに求められる2種類の行動
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-orientation-initiating-structure">
+     タスク志向のリーダーシップ（Task Orientation/ Initiating Structure）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relationship-orientation-consideration">
+     関係志向のリーダーシップ（Relationship Orientation / Consideration）
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   リーダーシップのタイミング
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -224,6 +332,117 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>リーダーシップ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>リーダーシップとマネジメントはよく混同される。まずはそれらの違いを認識する。</p>
+<p>結局は、状況に応じて、リーダーシップの種類や量を調節することが必要である。そのためには、まず、リーダーに求められる特性や行動の種類をたくさん知ることが重要であるため、このページで紹介する。</p>
+<div class="section" id="id2">
+<h2>リーダーシップとマネジメントの違い<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>リーダーシップとは、目標達成に向けて集団に影響を与える能力である。<a class="footnote-reference brackets" href="#id9" id="id3">1</a></p></li>
+<li><p>マネジメントとは、 地位を使い、メンバーを管理して規則を守らせることである。</p></li>
+</ul>
+<div class="figure align-default" id="leadership-management">
+<img alt="LeaderとManagerの関心の違い" src="../_images/leadership_01.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">LeaderとManagerの関心の違い</span><a class="headerlink" href="#leadership-management" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>リーダーに求められる知性・特性<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>知性</p>
+<ul>
+<li><p>認知能力が高い</p></li>
+<li><p>知識が豊富</p></li>
+<li><p>感情知性（Emotional Intelligence）がある</p></li>
+</ul>
+</li>
+<li><p>特性</p>
+<ul>
+<li><p>自信がある</p></li>
+<li><p>達成志向である</p></li>
+<li><p>誠実である</p></li>
+<li><p>アサーティブである  （相手を尊重しながらも、適切に自己主張を行うことができる）</p></li>
+<li><p>主体性がある</p></li>
+<li><p>推進力がある</p></li>
+<li><p>オリジナリティがある</p></li>
+<li><p>適応力がある</p></li>
+<li><p>外向的である</p></li>
+<li><p>自己コントロール能力が高い（Conscientiousness）</p></li>
+<li><p>オープンである</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>リーダーに求められる2種類の行動<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>以下の2種類のリーダーシップを状況に応じて効果的に使い分けることが理想的である。</p>
+<div class="section" id="task-orientation-initiating-structure">
+<h3>タスク志向のリーダーシップ（Task Orientation/ Initiating Structure）<a class="headerlink" href="#task-orientation-initiating-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>タスク志向のリーダーシップとは、特定の目標を達成するため、または一定のパフォーマンス基準を達成するために、<strong>実行する必要のあるタスクに焦点を当てる</strong>行動アプローチである。</p></li>
+<li><p>目標を達成するために必要なタスク、または一連のタスクを整理することに集中する。仕事と必要な役割を積極的に定義し、構造を整え、チーム内で計画、組織、進捗状況を監視する。</p></li>
+<li><p>利点は、<strong>期限の遵守と仕事の完了を確実にすることであり、時間管理がうまくできないチームメンバーには特に有効である。</strong></p></li>
+<li><p>タスク志向のリーダーは、チームの幸福についてあまり考えない傾向があるため、<strong>このアプローチは、モチベーションやリテンションの問題を引き起こすことがある。</strong></p></li>
+</ul>
+</div>
+<div class="section" id="relationship-orientation-consideration">
+<h3>関係志向のリーダーシップ（Relationship Orientation / Consideration）<a class="headerlink" href="#relationship-orientation-consideration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>関係志向のリーダーシップとは、<strong>チームメンバーの満足度やモチベーション、そして全般的な幸福感に焦点を当てる</strong>行動アプローチである。</p></li>
+<li><p>チーム内の人々や人間関係をサポートし、モチベーションを高め、発展させることに重点を置き、良好な人間関係と良好なコミュニケーションを育むことで、良好なチームワークとコラボレーションを促す。</p></li>
+<li><p>利点は、<strong>個人的な対立、仕事への不満、恨み等が抑えられることにより、個人の生産性が上がることである。</strong> また、個人はリスクのある選択を取りやすくなる。</p></li>
+<li><p><strong>行き過ぎると、</strong> チームケミストリーの構築が <strong>実際のタスクや目標から遠ざかってしまうことがある。</strong></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>リーダーシップのタイミング<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>メンバーの準備が整っている（成熟度が高い⇔意欲・能力が高い）ほど、リーダーは不要である。Situational Leadership theory <em>(Hersey and Blanchard, 1969)</em> <span id="id7">[<a class="reference internal" href="../references.html#id5">HB69</a>]</span></p>
+<div class="figure align-default" id="sl-theory">
+<img alt="Situational Leadership theory" src="../_images/leadership_02.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Situational Leadership theory <span id="id8">[<a class="reference internal" href="../references.html#id6">Her85</a>]</span></span><a class="headerlink" href="#sl-theory" title="Permalink to this image">¶</a></p>
+</div>
+<p>メンバーの成熟度とリーダーシップの種類を４つに分類している。図の横軸は、タスクを指示&amp;監視をする度合い、縦軸は、手助けをする度合いを表している。</p>
+<ul class="simple">
+<li><p>S1, Telling Leadership</p>
+<ul>
+<li><p>対象 = 成熟度の低いメンバー（自信がなく、やり方を知らない）</p></li>
+<li><p>タスクを具体的に指示し、よく監視するべきである。</p></li>
+<li><p>あまり手助けをせず、まずは自分で考えて自由にやってもらう。</p></li>
+</ul>
+</li>
+<li><p>S2, Selling Leadership</p>
+<ul>
+<li><p>対象 = 中程度に成熟したメンバー（やる気や自信があるが、技術がない）</p></li>
+<li><p>タスクを具体的に指示し、よく監視するべきである。</p></li>
+<li><p>必要に応じて手助けをすることで、効果的なやり方を身につけてもらう。</p></li>
+</ul>
+</li>
+<li><p>S3, Participating Leadership</p>
+<ul>
+<li><p>対象 = 中程度に成熟したメンバー（上手にできるが、自信がない）</p></li>
+<li><p>タスクを指示せず、自由にやってもらう方が良い。</p></li>
+<li><p>必要に応じて手助けをすることで、さらに効果的なやり方を身につけてもらう。</p></li>
+</ul>
+</li>
+<li><p>S4, Delegating Leadership</p>
+<ul>
+<li><p>対象 = 成熟度の高いメンバー（上手にでき、自信がある）</p></li>
+<li><p>タスクを指示せず、自由にやってもらう方が良い。</p></li>
+<li><p>わからないことがある場合のみ、報告をもらい、やり方一緒に考える。</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>メンバーの成熟度を日頃のコミュニケーションで理解し、適切なリーダーシップを発揮することで、メンバーの成長を加速させることができる。</p>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>私は、師匠から教わったリーダーシップの定義, <em>“Inspire others to strive and enable them to accomplish great things.”</em>, がすごく好きだ。大切なのはコミュニケーションと相互理解である。</p>
+</dd>
+</dl>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -255,7 +474,7 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">チームの成果を最大化するためにできること</p>
+            <p class="prev-next-title">チームビルディング</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="0201_motivation.html" title="next page">
@@ -275,6 +494,9 @@
       By ryok<br/>
     
         &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://twitter.com/kepler_31?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @kepler_31</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
   </p>
 </footer>
 </main>
