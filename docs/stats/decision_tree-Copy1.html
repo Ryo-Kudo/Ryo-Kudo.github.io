@@ -54,8 +54,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="チームビルディング" href="../0101_team_development.html" />
-    <link rel="prev" title="ロジットモデル (logit model)" href="logit_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +102,7 @@
   統計 with Python
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization.html">
    グラフの表示 (visualization)
@@ -125,8 +123,8 @@
    ロジットモデル (logit model)
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="decision_tree.html">
    決定木 (decision tree)
   </a>
  </li>
@@ -209,7 +207,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/stats/decision_tree.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/docs/stats/decision_tree-Copy1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -234,7 +232,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/decision_tree.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/stats/decision_tree-Copy1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -349,6 +347,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Duplicate key in file PosixPath(&#39;/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/matplotlib/mpl-data/matplotlibrc&#39;), line 768 (&#39;font.family: IPAexGothic&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>PyDotPlusは決定木などの可視化に便利なPythonライブラリである。<a class="reference external" href="https://pypi.org/project/pydotplus/">pydotplus-PyPI</a></p></li>
@@ -454,7 +457,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/decision_tree_5_0.png" src="../../_images/decision_tree_5_0.png" />
+<img alt="../../_images/decision_tree-Copy1_5_0.png" src="../../_images/decision_tree-Copy1_5_0.png" />
 </div>
 </div>
 </div>
@@ -494,7 +497,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class DecisionTreeClassifier in module sklearn.tree._classes:
 
 class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
- |  DecisionTreeClassifier(*, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, class_weight=None, ccp_alpha=0.0)
+ |  DecisionTreeClassifier(*, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, class_weight=None, ccp_alpha=0.0)
  |  
  |  A decision tree classifier.
  |  
@@ -598,17 +601,6 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
  |  
  |      .. versionadded:: 0.19
  |  
- |  min_impurity_split : float, default=0
- |      Threshold for early stopping in tree growth. A node will split
- |      if its impurity is above the threshold, otherwise it is a leaf.
- |  
- |      .. deprecated:: 0.19
- |         ``min_impurity_split`` has been deprecated in favor of
- |         ``min_impurity_decrease`` in 0.19. The default value of
- |         ``min_impurity_split`` has changed from 1e-7 to 0 in 0.23 and it
- |         will be removed in 1.0 (renaming of 0.25).
- |         Use ``min_impurity_decrease`` instead.
- |  
  |  class_weight : dict, list of dict or &quot;balanced&quot;, default=None
  |      Weights associated with classes in the form ``{class_label: weight}``.
  |      If None, all classes are supposed to have weight one. For
@@ -665,6 +657,21 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
  |  
  |  n_features_ : int
  |      The number of features when ``fit`` is performed.
+ |  
+ |      .. deprecated:: 1.0
+ |         `n_features_` is deprecated in 1.0 and will be removed in
+ |         1.2. Use `n_features_in_` instead.
+ |  
+ |  n_features_in_ : int
+ |      Number of features seen during :term:`fit`.
+ |  
+ |      .. versionadded:: 0.24
+ |  
+ |  feature_names_in_ : ndarray of shape (`n_features_in_`,)
+ |      Names of features seen during :term:`fit`. Defined only when `X`
+ |      has feature names that are all strings.
+ |  
+ |      .. versionadded:: 1.0
  |  
  |  n_outputs_ : int
  |      The number of outputs when ``fit`` is performed.
@@ -729,7 +736,7 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
  |  
  |  Methods defined here:
  |  
- |  __init__(self, *, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, class_weight=None, ccp_alpha=0.0)
+ |  __init__(self, *, criterion=&#39;gini&#39;, splitter=&#39;best&#39;, max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=0.0, class_weight=None, ccp_alpha=0.0)
  |      Initialize self.  See help(type(self)) for accurate signature.
  |  
  |  fit(self, X, y, sample_weight=None, check_input=True, X_idx_sorted=&#39;deprecated&#39;)
@@ -760,7 +767,7 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
  |          This parameter is deprecated and has no effect.
  |          It will be removed in 1.1 (renaming of 0.26).
  |      
- |          .. deprecated :: 0.24
+ |          .. deprecated:: 0.24
  |      
  |      Returns
  |      -------
@@ -805,6 +812,12 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
  |      proba : ndarray of shape (n_samples, n_classes) or list of n_outputs             such arrays if n_outputs &gt; 1
  |          The class probabilities of the input samples. The order of the
  |          classes corresponds to that in the attribute :term:`classes_`.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |  
+ |  n_features_
+ |      DEPRECATED: The attribute `n_features_` is deprecated in 1.0 and will be removed in 1.2. Use `n_features_in_` instead.
  |  
  |  ----------------------------------------------------------------------
  |  Data and other attributes defined here:
@@ -1143,7 +1156,7 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/decision_tree_11_0.png" src="../../_images/decision_tree_11_0.png" />
+<img alt="../../_images/decision_tree-Copy1_11_0.png" src="../../_images/decision_tree-Copy1_11_0.png" />
 </div>
 </div>
 </div>
@@ -1219,21 +1232,7 @@ class DecisionTreeClassifier(sklearn.base.ClassifierMixin, BaseDecisionTree)
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="logit_model.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ロジットモデル (logit model)</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../0101_team_development.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">チームビルディング</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
